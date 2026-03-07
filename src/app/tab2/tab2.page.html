@@ -1,17 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 2
+      Statistics
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+<ion-content [fullscreen]="true" color="light" class="ion-padding">
+  <ion-header collapse="condense" class="ion-no-border">
+    <ion-toolbar color="light">
+      <ion-title size="large" class="gradient-text">Statistics</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="summary-card">
+    <p>Total Expenses</p>
+    <h1>${{ stats().total | number:'1.2-2' }}</h1>
+  </div>
+
+  <h3 class="category-header">By Category</h3>
+  <ion-list inset="true" class="glass-list">
+    <ion-item *ngFor="let cat of getCategoryKeys()" lines="full">
+      <ion-label>
+        <h2>{{ cat }}</h2>
+      </ion-label>
+      <ion-note slot="end" color="primary">
+        <b>${{ stats().byCategory[cat] | number:'1.2-2' }}</b>
+      </ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>

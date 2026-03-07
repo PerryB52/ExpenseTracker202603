@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tab3',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class Tab3Page {
-
-  constructor() {}
-
+  constructor(public dataService: DataService) {}
+  
+  clearData() {
+    console.log("Settings action: clearData");
+  }
 }

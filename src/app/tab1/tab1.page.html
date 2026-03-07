@@ -1,17 +1,90 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 1
+      Expenses
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+<ion-content [fullscreen]="true" color="light">
+  <ion-header collapse="condense" class="ion-no-border">
+    <ion-toolbar color="light">
+      <ion-title size="large" class="gradient-text">My Expenses</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list inset="true" class="glass-list">
+    <ion-item-sliding *ngFor="let expense of dataService.expenses()">
+      <ion-item lines="full" detail="false">
+        <ion-icon name="receipt-outline" slot="start" color="tertiary"></ion-icon>
+        <ion-label>
+          <h2><b>{{ expense.description || expense.category }}</b></h2>
+          <p>{{ expense.category }} • {{ expense.date | date:'shortDate' }}</p>
+        </ion-label>
+        <ion-note slot="end" color="danger">
+          <b>-${{ expense.amount | number:'1.2-2' }}</b>
+        </ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteExpense(expense.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item *ngIf="dataService.expenses().length === 0" lines="none" class="ion-text-center">
+      <ion-label color="medium">No expenses recorded yet.</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Add Expense FAB -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button id="open-modal" color="tertiary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- Add Expense Modal -->
+  <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <ion-header class="ion-no-border">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>New Expense</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Save</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Amount</ion-label>
+          <ion-input type="number" [(ngModel)]="newExpense.amount" placeholder="0.00"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Category</ion-label>
+          <ion-select [(ngModel)]="newExpense.category" placeholder="Select One">
+            <ion-select-option *ngFor="let cat of categories" [value]="cat">{{cat}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Description</ion-label>
+          <ion-input type="text" [(ngModel)]="newExpense.description" placeholder="Optional"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="stacked">Date</ion-label>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="datetime" [(ngModel)]="newExpense.date" presentation="date"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
 </ion-content>

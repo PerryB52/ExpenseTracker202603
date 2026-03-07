@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { DataService } from '../services/data.service';
+import { IonModal } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -7,7 +9,42 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class Tab1Page {
+  @ViewChild(IonModal) modal!: IonModal;
 
-  constructor() {}
+  newExpense = {
+    amount: null,
+    category: '',
+    description: '',
+    date: new Date().toISOString()
+  };
 
+  categories = ['Food', 'Transport', 'Utilities', 'Entertainment', 'Shopping', 'Other'];
+
+  constructor(public dataService: DataService) {}
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    if (this.newExpense.amount && this.newExpense.category) {
+      this.dataService.addExpense({
+        amount: Number(this.newExpense.amount),
+        category: this.newExpense.category,
+        description: this.newExpense.description || '',
+        date: this.newExpense.date
+      });
+      this.modal.dismiss(this.newExpense, 'confirm');
+      this.resetForm();
+    }
+  }
+
+  resetForm() {
+    this.newExpense = { amount: null, category: '', description: '', date: new Date().toISOString() };
+  }
+
+  deleteExpense(id: string) {
+    this.dataService.deleteExpense(id);
+  }
 }
+

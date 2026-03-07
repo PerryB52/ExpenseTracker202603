@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "amount": 12.50,
+    "category": "Food",
+    "description": "Lunch",
+    "date": "2026-03-07T12:00:00Z"
+  },
+  {
+    "id": "2",
+    "amount": 4.00,
+    "category": "Transport",
+    "description": "Bus ticket",
+    "date": "2026-03-07T08:30:00Z"
+  },
+  {
+    "id": "3",
+    "amount": 45.00,
+    "category": "Utilities",
+    "description": "Internet Bill",
+    "date": "2026-03-06T10:00:00Z"
+  }
+]

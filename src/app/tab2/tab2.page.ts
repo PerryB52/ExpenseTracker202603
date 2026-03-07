@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,7 +8,11 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class Tab2Page {
+  stats = computed(() => this.dataService.getStats());
 
-  constructor() {}
-
+  constructor(public dataService: DataService) {}
+  
+  getCategoryKeys() {
+    return Object.keys(this.stats().byCategory);
+  }
 }
