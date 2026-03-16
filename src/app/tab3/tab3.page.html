@@ -13,6 +13,43 @@
     </ion-toolbar>
   </ion-header>
 
+  <h3 class="ion-padding-start" style="color: #666; font-weight: 600;">Manage Categories</h3>
+  <ion-list inset="true" class="glass-list">
+    <!-- Add new category input -->
+    <ion-item lines="full">
+      <ion-input type="text" [(ngModel)]="newCategory" placeholder="New Category Name"></ion-input>
+      <ion-button slot="end" fill="clear" (click)="addCategory()" [disabled]="!newCategory.trim()">
+        <ion-icon name="add-circle" color="primary" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+    
+    <!-- Render existing categories -->
+    <ion-item *ngFor="let cat of dataService.categories()" lines="full">
+      <!-- Normal View -->
+      <ng-container *ngIf="editingCategory !== cat">
+        <ion-label>{{ cat }}</ion-label>
+        <ion-button slot="end" fill="clear" color="secondary" (click)="startEdit(cat)">
+          <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear" color="danger" (click)="deleteCategory(cat)">
+          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ng-container>
+
+      <!-- Edit View -->
+      <ng-container *ngIf="editingCategory === cat">
+        <ion-input type="text" [(ngModel)]="editCategoryValue" (keyup.enter)="saveEdit()"></ion-input>
+        <ion-button slot="end" fill="clear" color="success" (click)="saveEdit()" [disabled]="!editCategoryValue.trim()">
+          <ion-icon name="checkmark-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear" color="medium" (click)="cancelEdit()">
+          <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ng-container>
+    </ion-item>
+  </ion-list>
+
+  <h3 class="ion-padding-start ion-margin-top" style="color: #666; font-weight: 600;">General</h3>
   <ion-list inset="true" class="glass-list">
     <ion-item button lines="full">
       <ion-icon name="person-circle-outline" slot="start" color="primary"></ion-icon>

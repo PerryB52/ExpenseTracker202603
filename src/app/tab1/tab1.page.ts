@@ -18,8 +18,6 @@ export class Tab1Page {
     date: new Date().toISOString()
   };
 
-  categories = ['Food', 'Transport', 'Utilities', 'Entertainment', 'Shopping', 'Other'];
-
   constructor(public dataService: DataService) {}
 
   cancel() {

@@ -67,7 +67,7 @@
         <ion-item>
           <ion-label position="stacked">Category</ion-label>
           <ion-select [(ngModel)]="newExpense.category" placeholder="Select One">
-            <ion-select-option *ngFor="let cat of categories" [value]="cat">{{cat}}</ion-select-option>
+            <ion-select-option *ngFor="let cat of dataService.categories()" [value]="cat">{{cat}}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
