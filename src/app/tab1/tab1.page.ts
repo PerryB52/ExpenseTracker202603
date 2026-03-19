@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, computed } from '@angular/core';
 import { DataService, Expense } from '../services/data.service';
 import { IonModal } from '@ionic/angular';
 
@@ -20,6 +20,26 @@ export class Tab1Page {
     description: '',
     date: new Date().toISOString()
   };
+
+  groupedExpenses = computed(() => {
+    const expenses = this.dataService.expenses();
+    const groups: { [dateKey: string]: { date: string, expenses: Expense[], total: number } } = {};
+    
+    expenses.forEach(e => {
+      const dateObj = new Date(e.date);
+      const dateKey = `${dateObj.getFullYear()}-${(dateObj.getMonth()+1).toString().padStart(2, '0')}-${dateObj.getDate().toString().padStart(2, '0')}`;
+      
+      if (!groups[dateKey]) {
+        groups[dateKey] = { date: e.date, expenses: [], total: 0 };
+      }
+      groups[dateKey].expenses.push(e);
+      groups[dateKey].total += e.amount;
+    });
+
+    const sortedDates = Object.keys(groups).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+    
+    return sortedDates.map(date => groups[date]);
+  });
 
   constructor(public dataService: DataService) {}
 
