@@ -1,5 +1,5 @@
-import { Component, computed } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { Component, computed, signal } from '@angular/core';
+import { DataService, Expense } from '../services/data.service';
 
 @Component({
   selector: 'app-tab2',
@@ -8,11 +8,75 @@ import { DataService } from '../services/data.service';
   standalone: false,
 })
 export class Tab2Page {
-  stats = computed(() => this.dataService.getStats());
+  groupingType = signal<'day' | 'week' | 'month' | 'year'>('day');
+
+  totalExpenses = computed(() => {
+    return this.dataService.expenses().reduce((sum, e) => sum + e.amount, 0);
+  });
+
+  groupedData = computed(() => {
+    const expenses = this.dataService.expenses();
+    const type = this.groupingType();
+    
+    const groups: { 
+      [key: string]: { 
+        total: number, 
+        categoriesMap: { [cat: string]: number } 
+      } 
+    } = {};
+    
+    expenses.forEach(e => {
+      let key = '';
+      const d = new Date(e.date);
+      
+      switch (type) {
+        case 'day':
+          key = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;
+          break;
+        case 'week':
+          const dayOfWeek = d.getDay() || 7;  
+          const monday = new Date(d);
+          monday.setDate(monday.getDate() - dayOfWeek + 1);
+          key = `Week of ${monday.getFullYear()}-${(monday.getMonth() + 1).toString().padStart(2, '0')}-${monday.getDate().toString().padStart(2, '0')}`;
+          break;
+        case 'month':
+          key = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}`;
+          break;
+        case 'year':
+          key = `${d.getFullYear()}`;
+          break;
+      }
+      
+      if (!groups[key]) {
+        groups[key] = { total: 0, categoriesMap: {} };
+      }
+      
+      groups[key].total += e.amount;
+      const cat = e.category || 'Uncategorized';
+      groups[key].categoriesMap[cat] = (groups[key].categoriesMap[cat] || 0) + e.amount;
+    });
+
+    const entries = Object.keys(groups).map(k => {
+      const catEntries = Object.keys(groups[k].categoriesMap).map(c => ({
+        category: c,
+        amount: groups[k].categoriesMap[c]
+      })).sort((a, b) => b.amount - a.amount);
+      
+      return {
+        label: k,
+        total: groups[k].total,
+        categories: catEntries
+      };
+    });
+    
+    entries.sort((a, b) => b.label.localeCompare(a.label));
+    
+    return entries;
+  });
 
   constructor(public dataService: DataService) {}
   
-  getCategoryKeys() {
-    return Object.keys(this.stats().byCategory);
+  onGroupingChange(event: any) {
+    this.groupingType.set(event.detail.value);
   }
 }

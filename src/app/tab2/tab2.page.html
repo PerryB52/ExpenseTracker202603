@@ -15,18 +15,35 @@
 
   <div class="summary-card">
     <p>Total Expenses</p>
-    <h1>${{ stats().total | number:'1.2-2' }}</h1>
+    <h1>${{ totalExpenses() | number:'1.2-2' }}</h1>
   </div>
 
-  <h3 class="category-header">By Category</h3>
+  <div class="grouping-header">
+    <h3 class="category-header">Breakdown</h3>
+    <ion-select [value]="groupingType()" (ionChange)="onGroupingChange($event)" interface="popover" style="max-width: 150px; background: rgba(0,0,0,0.05); padding: 4px 12px; border-radius: 8px;">
+      <ion-select-option value="day">By Day</ion-select-option>
+      <ion-select-option value="week">By Week</ion-select-option>
+      <ion-select-option value="month">By Month</ion-select-option>
+      <ion-select-option value="year">By Year</ion-select-option>
+    </ion-select>
+  </div>
+
   <ion-list inset="true" class="glass-list">
-    <ion-item *ngFor="let cat of getCategoryKeys()" lines="full">
-      <ion-label>
-        <h2>{{ cat }}</h2>
-      </ion-label>
-      <ion-note slot="end" color="primary">
-        <b>${{ stats().byCategory[cat] | number:'1.2-2' }}</b>
-      </ion-note>
+    <ion-item-group *ngFor="let group of groupedData()">
+      <ion-item-divider color="light">
+        <ion-label><b>{{ group.label }}</b></ion-label>
+        <ion-note slot="end" color="primary"><b>${{ group.total | number:'1.2-2' }}</b></ion-note>
+      </ion-item-divider>
+
+      <ion-item *ngFor="let cat of group.categories" lines="full">
+        <ion-icon name="pie-chart-outline" slot="start" color="secondary"></ion-icon>
+        <ion-label>{{ cat.category }}</ion-label>
+        <ion-note slot="end" color="medium">${{ cat.amount | number:'1.2-2' }}</ion-note>
+      </ion-item>
+    </ion-item-group>
+    
+    <ion-item *ngIf="groupedData().length === 0" lines="none" class="ion-text-center">
+      <ion-label color="medium">No data available.</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

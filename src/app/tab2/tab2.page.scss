@@ -19,11 +19,22 @@
   h1 { margin: 8px 0 0; font-size: 2.5rem; font-weight: bold; }
 }
 
+.grouping-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-right: 16px;
+  
+  h3.category-header {
+    margin: 0;
+  }
+}
+
 .category-header {
   padding-left: 8px;
   font-weight: 600;
   color: #555;
-  margin-bottom: 8px;
 }
 
 .glass-list {
@@ -31,9 +42,10 @@
   backdrop-filter: blur(10px);
   border-radius: 16px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   margin-top: 0;
-  overflow: hidden;
+  margin-bottom: 24px;
 
   ion-item {
     --background: transparent;
