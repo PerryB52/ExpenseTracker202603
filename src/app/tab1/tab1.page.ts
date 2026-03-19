@@ -14,6 +14,7 @@ export class Tab1Page {
   newExpense = {
     amount: null,
     category: '',
+    subcategory: '',
     description: '',
     date: new Date().toISOString()
   };
@@ -29,6 +30,7 @@ export class Tab1Page {
       this.dataService.addExpense({
         amount: Number(this.newExpense.amount),
         category: this.newExpense.category,
+        subcategory: this.newExpense.subcategory,
         description: this.newExpense.description || '',
         date: this.newExpense.date
       });
@@ -38,7 +40,16 @@ export class Tab1Page {
   }
 
   resetForm() {
-    this.newExpense = { amount: null, category: '', description: '', date: new Date().toISOString() };
+    this.newExpense = { amount: null, category: '', subcategory: '', description: '', date: new Date().toISOString() };
+  }
+
+  onCategoryChange() {
+    this.newExpense.subcategory = '';
+  }
+
+  getSubcategories(): string[] {
+    const cat = this.dataService.categories().find(c => c.name === this.newExpense.category);
+    return cat ? cat.subcategories : [];
   }
 
   deleteExpense(id: string) {

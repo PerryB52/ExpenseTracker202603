@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { DataService, Category } from '../services/data.service';
 
 @Component({
   selector: 'app-tab3',
@@ -12,6 +12,10 @@ export class Tab3Page {
   editingCategory: string | null = null;
   editCategoryValue: string = '';
 
+  newSubcategory: { [parentName: string]: string } = {};
+  editingSubcategory: { parent: string, oldSub: string } | null = null;
+  editSubcategoryValue: string = '';
+
   constructor(public dataService: DataService) {}
 
   addCategory() {
@@ -21,9 +25,9 @@ export class Tab3Page {
     }
   }
 
-  startEdit(cat: string) {
-    this.editingCategory = cat;
-    this.editCategoryValue = cat;
+  startEdit(catName: string) {
+    this.editingCategory = catName;
+    this.editCategoryValue = catName;
   }
 
   saveEdit() {
@@ -39,8 +43,39 @@ export class Tab3Page {
     this.editCategoryValue = '';
   }
 
-  deleteCategory(cat: string) {
-    this.dataService.deleteCategory(cat);
+  deleteCategory(catName: string) {
+    this.dataService.deleteCategory(catName);
+  }
+
+  // --- Subcategories ---
+  addSubcategory(parentName: string) {
+    const sub = this.newSubcategory[parentName];
+    if (sub && sub.trim()) {
+      this.dataService.addSubcategory(parentName, sub);
+      this.newSubcategory[parentName] = '';
+    }
+  }
+
+  startEditSub(parentName: string, subName: string) {
+    this.editingSubcategory = { parent: parentName, oldSub: subName };
+    this.editSubcategoryValue = subName;
+  }
+
+  saveEditSub() {
+    if (this.editingSubcategory && this.editSubcategoryValue.trim()) {
+      this.dataService.editSubcategory(this.editingSubcategory.parent, this.editingSubcategory.oldSub, this.editSubcategoryValue);
+    }
+    this.editingSubcategory = null;
+    this.editSubcategoryValue = '';
+  }
+
+  cancelEditSub() {
+    this.editingSubcategory = null;
+    this.editSubcategoryValue = '';
+  }
+
+  deleteSubcategory(parentName: string, subName: string) {
+    this.dataService.deleteSubcategory(parentName, subName);
   }
   
   clearData() {

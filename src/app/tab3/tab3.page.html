@@ -24,29 +24,68 @@
     </ion-item>
     
     <!-- Render existing categories -->
-    <ion-item *ngFor="let cat of dataService.categories()" lines="full">
-      <!-- Normal View -->
-      <ng-container *ngIf="editingCategory !== cat">
-        <ion-label>{{ cat }}</ion-label>
-        <ion-button slot="end" fill="clear" color="secondary" (click)="startEdit(cat)">
-          <ion-icon name="create-outline" slot="icon-only"></ion-icon>
-        </ion-button>
-        <ion-button slot="end" fill="clear" color="danger" (click)="deleteCategory(cat)">
-          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
-        </ion-button>
-      </ng-container>
+    <ion-accordion-group>
+      <ion-accordion *ngFor="let cat of dataService.categories()" [value]="cat.name">
+        <ion-item slot="header" color="light">
+          <!-- Normal View -->
+          <ng-container *ngIf="editingCategory !== cat.name">
+            <ion-label><b>{{ cat.name }}</b></ion-label>
+            <ion-button slot="end" fill="clear" color="secondary" (click)="startEdit(cat.name); $event.stopPropagation()">
+              <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+            <ion-button slot="end" fill="clear" color="danger" (click)="deleteCategory(cat.name); $event.stopPropagation()">
+              <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ng-container>
 
-      <!-- Edit View -->
-      <ng-container *ngIf="editingCategory === cat">
-        <ion-input type="text" [(ngModel)]="editCategoryValue" (keyup.enter)="saveEdit()"></ion-input>
-        <ion-button slot="end" fill="clear" color="success" (click)="saveEdit()" [disabled]="!editCategoryValue.trim()">
-          <ion-icon name="checkmark-outline" slot="icon-only"></ion-icon>
-        </ion-button>
-        <ion-button slot="end" fill="clear" color="medium" (click)="cancelEdit()">
-          <ion-icon name="close-outline" slot="icon-only"></ion-icon>
-        </ion-button>
-      </ng-container>
-    </ion-item>
+          <!-- Edit View -->
+          <ng-container *ngIf="editingCategory === cat.name">
+            <ion-input type="text" [(ngModel)]="editCategoryValue" (click)="$event.stopPropagation()" (keyup.enter)="saveEdit()"></ion-input>
+            <ion-button slot="end" fill="clear" color="success" (click)="saveEdit(); $event.stopPropagation()" [disabled]="!editCategoryValue.trim()">
+              <ion-icon name="checkmark-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+            <ion-button slot="end" fill="clear" color="medium" (click)="cancelEdit(); $event.stopPropagation()">
+              <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ng-container>
+        </ion-item>
+
+        <div class="ion-padding" slot="content">
+          <ion-list lines="inset">
+            <ion-item *ngFor="let sub of cat.subcategories">
+              <!-- Sub Normal View -->
+              <ng-container *ngIf="editingSubcategory?.parent !== cat.name || editingSubcategory?.oldSub !== sub">
+                <ion-label>{{ sub }}</ion-label>
+                <ion-button slot="end" fill="clear" color="secondary" (click)="startEditSub(cat.name, sub)">
+                  <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+                <ion-button slot="end" fill="clear" color="danger" (click)="deleteSubcategory(cat.name, sub)">
+                  <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+              </ng-container>
+
+              <!-- Sub Edit View -->
+              <ng-container *ngIf="editingSubcategory?.parent === cat.name && editingSubcategory?.oldSub === sub">
+                <ion-input type="text" [(ngModel)]="editSubcategoryValue" (keyup.enter)="saveEditSub()"></ion-input>
+                <ion-button slot="end" fill="clear" color="success" (click)="saveEditSub()" [disabled]="!editSubcategoryValue.trim()">
+                  <ion-icon name="checkmark-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+                <ion-button slot="end" fill="clear" color="medium" (click)="cancelEditSub()">
+                  <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+              </ng-container>
+            </ion-item>
+            
+            <ion-item>
+              <ion-input type="text" [(ngModel)]="newSubcategory[cat.name]" placeholder="New Subcategory"></ion-input>
+              <ion-button slot="end" fill="clear" (click)="addSubcategory(cat.name)" [disabled]="!newSubcategory[cat.name]?.trim()">
+                <ion-icon name="add-circle" color="tertiary" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
   </ion-list>
 
   <h3 class="ion-padding-start ion-margin-top" style="color: #666; font-weight: 600;">General</h3>

@@ -18,8 +18,8 @@
       <ion-item lines="full" detail="false">
         <ion-icon name="receipt-outline" slot="start" color="tertiary"></ion-icon>
         <ion-label>
-          <h2><b>{{ expense.description || expense.category }}</b></h2>
-          <p>{{ expense.category }} • {{ expense.date | date:'shortDate' }}</p>
+          <h2><b>{{ expense.description || (expense.subcategory ? expense.category + ' > ' + expense.subcategory : expense.category) }}</b></h2>
+          <p>{{ expense.category }}{{ expense.subcategory ? ' > ' + expense.subcategory : '' }} • {{ expense.date | date:'shortDate' }}</p>
         </ion-label>
         <ion-note slot="end" color="danger">
           <b>-${{ expense.amount | number:'1.2-2' }}</b>
@@ -66,8 +66,14 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Category</ion-label>
-          <ion-select [(ngModel)]="newExpense.category" placeholder="Select One">
-            <ion-select-option *ngFor="let cat of dataService.categories()" [value]="cat">{{cat}}</ion-select-option>
+          <ion-select [(ngModel)]="newExpense.category" placeholder="Select One" (ngModelChange)="onCategoryChange()">
+            <ion-select-option *ngFor="let cat of dataService.categories()" [value]="cat.name">{{cat.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item [class.disabled-item]="!newExpense.category">
+          <ion-label position="stacked">Subcategory</ion-label>
+          <ion-select [(ngModel)]="newExpense.subcategory" placeholder="Select One (Optional)" [disabled]="!newExpense.category || getSubcategories().length === 0">
+            <ion-select-option *ngFor="let sub of getSubcategories()" [value]="sub">{{sub}}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
