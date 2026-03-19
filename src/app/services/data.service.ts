@@ -55,6 +55,12 @@ export class DataService {
     this.expensesSignal.update(expenses => [newExpense, ...expenses]);
   }
 
+  editExpense(id: string, updatedExpense: Omit<Expense, 'id'>) {
+    this.expensesSignal.update(expenses =>
+      expenses.map(e => (e.id === id ? { ...updatedExpense, id } : e))
+    );
+  }
+
   deleteExpense(id: string) {
     this.expensesSignal.update(expenses => expenses.filter(e => e.id !== id));
   }

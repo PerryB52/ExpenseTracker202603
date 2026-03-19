@@ -27,6 +27,9 @@
       </ion-item>
 
       <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="openEditModal(expense)">
+          <ion-icon slot="icon-only" name="pencil"></ion-icon>
+        </ion-item-option>
         <ion-item-option color="danger" (click)="deleteExpense(expense.id)">
           <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-item-option>
@@ -53,7 +56,7 @@
           <ion-buttons slot="start">
             <ion-button (click)="cancel()">Cancel</ion-button>
           </ion-buttons>
-          <ion-title>New Expense</ion-title>
+          <ion-title>{{ editingExpenseId ? 'Edit Expense' : 'New Expense' }}</ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="confirm()" [strong]="true">Save</ion-button>
           </ion-buttons>
