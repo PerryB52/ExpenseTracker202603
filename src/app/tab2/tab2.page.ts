@@ -10,9 +10,6 @@ import { DataService, Expense } from '../services/data.service';
 export class Tab2Page {
   groupingType = signal<'day' | 'week' | 'month' | 'year'>('day');
 
-  totalExpenses = computed(() => {
-    return this.dataService.expenses().reduce((sum, e) => sum + e.amount, 0);
-  });
 
   groupedData = computed(() => {
     const expenses = this.dataService.expenses();
@@ -74,8 +71,42 @@ export class Tab2Page {
     return entries;
   });
 
+  chartData = computed(() => {
+    return this.groupedData().slice(0, 7).reverse();
+  });
+
+  maxChartValue = computed(() => {
+    const data = this.chartData();
+    if (data.length === 0) return 1;
+    return Math.max(...data.map(d => d.total));
+  });
+
   constructor(public dataService: DataService) {}
   
+  getChartHeight(total: number): number {
+    const max = this.maxChartValue();
+    if (max === 0) return 10;
+    return Math.max((total / max) * 100, 10);
+  }
+  
+  formatChartLabel(label: string): string {
+    const type = this.groupingType();
+    if (type === 'day') {
+      const parts = label.split('-');
+      return `${parts[1]}/${parts[2]}`;
+    }
+    if (type === 'week') {
+      const dateStr = label.replace('Week of ', '');
+      const parts = dateStr.split('-');
+      return `${parts[1]}/${parts[2]}`;
+    }
+    if (type === 'month') {
+      const parts = label.split('-');
+      return `${parts[1]}/${parts[0].substring(2)}`;
+    }
+    return label;
+  }
+
   onGroupingChange(event: any) {
     this.groupingType.set(event.detail.value);
   }

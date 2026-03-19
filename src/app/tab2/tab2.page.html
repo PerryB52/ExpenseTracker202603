@@ -13,9 +13,18 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="summary-card">
-    <p>Total Expenses</p>
-    <h1>${{ totalExpenses() | number:'1.2-2' }}</h1>
+  <div class="chart-card">
+    <div class="bars-container">
+      <div class="chart-bar" *ngFor="let item of chartData()">
+        <span class="bar-value">${{ item.total >= 1000 ? (item.total/1000 | number:'1.0-1') + 'k' : (item.total | number:'1.0-0') }}</span>
+        <div class="bar-fill" [style.height.%]="getChartHeight(item.total)"></div>
+        <span class="bar-label">{{ formatChartLabel(item.label) }}</span>
+      </div>
+      
+      <div *ngIf="chartData().length === 0" class="no-data-msg">
+        No data available for chart.
+      </div>
+    </div>
   </div>
 
   <div class="grouping-header">
