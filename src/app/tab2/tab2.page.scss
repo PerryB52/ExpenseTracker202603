@@ -11,8 +11,9 @@
   color: white;
   border-radius: 20px;
   padding: 24px 16px 16px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   margin-bottom: 24px;
+  margin-inline: 2px !important;
 }
 
 .bars-container {
@@ -66,28 +67,28 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
-  padding-right: 16px;
-  
+  padding-right: 8px;
+
   h3.category-header {
     margin: 0;
   }
 }
 
 .category-header {
-  padding-left: 8px;
+  padding-left: 4px;
   font-weight: 600;
   color: #555;
 }
 
 .glass-list {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(31, 38, 135, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
+  margin-inline: 2px !important;
 
   ion-item {
     --background: transparent;

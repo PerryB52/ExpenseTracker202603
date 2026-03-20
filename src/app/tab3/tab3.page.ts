@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { IonModal } from '@ionic/angular';
 import { DataService, Category } from '../services/data.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { DataService, Category } from '../services/data.service';
   standalone: false,
 })
 export class Tab3Page {
+  @ViewChild('categoriesModal') categoriesModal!: IonModal;
+
   newCategory: string = '';
   editingCategory: string | null = null;
   editCategoryValue: string = '';
@@ -17,6 +20,10 @@ export class Tab3Page {
   editSubcategoryValue: string = '';
 
   constructor(public dataService: DataService) {}
+
+  closeCategoriesModal() {
+    this.categoriesModal.dismiss();
+  }
 
   addCategory() {
     if (this.newCategory.trim()) {
