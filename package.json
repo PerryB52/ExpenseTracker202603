@@ -12,6 +12,9 @@
     "lint": "ng lint"
   },
   "private": true,
+  "browser": {
+    "crypto": false
+  },
   "dependencies": {
     "@angular/animations": "20.3.17",
     "@angular/common": "20.3.17",

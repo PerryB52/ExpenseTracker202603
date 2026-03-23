@@ -74,11 +74,20 @@ export class DatabaseService {
         const fetchRes = await fetch('assets/data/expenses.json');
         if (fetchRes.ok) {
           const data: Expense[] = await fetchRes.json();
-          for (const expense of data) {
-            await this.db.run(
-              'INSERT INTO expenses (id, amount, category, subcategory, description, date) VALUES (?, ?, ?, ?, ?, ?)',
-              [expense.id, expense.amount, expense.category, expense.subcategory || null, expense.description, expense.date]
-            );
+          const expenseValues = data.map(expense => [
+            expense.id,
+            expense.amount,
+            expense.category,
+            expense.subcategory || null,
+            expense.description || '',
+            expense.date
+          ]);
+          
+          if (expenseValues.length > 0) {
+            await this.db.executeSet([{
+              statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date) VALUES (?, ?, ?, ?, ?, ?)',
+              values: expenseValues
+            }]);
           }
         }
       } catch (e) {
