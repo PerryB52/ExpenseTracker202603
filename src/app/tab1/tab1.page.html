@@ -1,6 +1,9 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title>
+    <ion-buttons slot="start" class="ion-padding-start">
+      <ion-datetime-button datetime="monthFilterPicker" style="--background: rgba(255,255,255,0.2); --color: white; border-radius: 8px;"></ion-datetime-button>
+    </ion-buttons>
+    <ion-title style="position: absolute; width: 100%; left: 0; text-align: center; pointer-events: none;">
       Expenses
     </ion-title>
   </ion-toolbar>
@@ -9,7 +12,7 @@
 <ion-content [fullscreen]="true" color="light">
   <ion-header collapse="condense" class="ion-no-border">
     <ion-toolbar color="light">
-      <ion-title size="large" class="gradient-text">My Expenses</ion-title>
+      <ion-title size="large" class="gradient-text ion-text-center" style="width: 100%;">My Expenses</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -44,7 +47,7 @@
     </ion-item-group>
 
     <ion-item *ngIf="groupedExpenses().length === 0" lines="none" class="ion-text-center">
-      <ion-label color="medium">No expenses recorded yet.</ion-label>
+      <ion-label color="medium" style="width: 100%; text-align: center;">No expenses recorded for {{ formatMonth(selectedMonth()) }}.</ion-label>
     </ion-item>
   </ion-list>
 
@@ -100,6 +103,13 @@
           </ion-modal>
         </ion-item>
       </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Month Filter Modal -->
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="monthFilterPicker" presentation="month-year" [value]="selectedMonth()" (ionChange)="selectedMonth.set($event.detail.value ? $event.detail.value.toString().substring(0, 7) : selectedMonth())"></ion-datetime>
     </ng-template>
   </ion-modal>
 

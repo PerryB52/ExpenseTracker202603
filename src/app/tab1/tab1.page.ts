@@ -1,4 +1,4 @@
-import { Component, ViewChild, computed } from '@angular/core';
+import { Component, ViewChild, computed, signal } from '@angular/core';
 import { DataService, Expense } from '../services/data.service';
 import { IonModal } from '@ionic/angular';
 
@@ -12,6 +12,7 @@ export class Tab1Page {
   @ViewChild(IonModal) modal!: IonModal;
 
   editingExpenseId: string | null = null;
+  selectedMonth = signal<string>(new Date().toISOString().substring(0, 7));
 
   newExpense: any = {
     amount: null,
@@ -21,8 +22,16 @@ export class Tab1Page {
     date: new Date().toISOString()
   };
 
+  formatMonth(monthStr: string): string {
+    if (!monthStr) return '';
+    const [year, month] = monthStr.split('-');
+    const date = new Date(parseInt(year), parseInt(month) - 1, 1);
+    return date.toLocaleString('default', { month: 'short', year: 'numeric' });
+  }
+
   groupedExpenses = computed(() => {
-    const expenses = this.dataService.expenses();
+    const monthFilter = this.selectedMonth();
+    const expenses = this.dataService.expenses().filter(e => e.date && e.date.startsWith(monthFilter));
     const groups: { [dateKey: string]: { date: string, expenses: Expense[], total: number } } = {};
     
     expenses.forEach(e => {
