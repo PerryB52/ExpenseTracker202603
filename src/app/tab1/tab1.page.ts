@@ -22,11 +22,68 @@ export class Tab1Page {
     date: new Date().toISOString()
   };
 
+  @ViewChild('customMonthPicker') customMonthPicker!: IonModal;
+  pickerYear = signal<number>(new Date().getFullYear());
+  monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+  openPicker() {
+    this.pickerYear.set(parseInt(this.selectedMonth().substring(0, 4)));
+    this.customMonthPicker.present();
+  }
+
+  changePickerYear(delta: number) {
+    this.pickerYear.update(y => y + delta);
+  }
+
+  prevMonth() {
+    const [year, month] = this.selectedMonth().split('-');
+    let y = parseInt(year);
+    let m = parseInt(month) - 1;
+    if (m === 0) {
+      m = 12;
+      y -= 1;
+    }
+    const monthStr = m.toString().padStart(2, '0');
+    this.selectedMonth.set(`${y}-${monthStr}`);
+  }
+
+  nextMonth() {
+    const [year, month] = this.selectedMonth().split('-');
+    let y = parseInt(year);
+    let m = parseInt(month) + 1;
+    if (m === 13) {
+      m = 1;
+      y += 1;
+    }
+    const monthStr = m.toString().padStart(2, '0');
+    this.selectedMonth.set(`${y}-${monthStr}`);
+  }
+
+  isMonthSelected(index: number): boolean {
+    const selYear = parseInt(this.selectedMonth().substring(0, 4));
+    const selMonth = parseInt(this.selectedMonth().substring(5, 7)) - 1;
+    return this.pickerYear() === selYear && index === selMonth;
+  }
+
+  selectMonth(index: number) {
+    const monthStr = (index + 1).toString().padStart(2, '0');
+    this.selectedMonth.set(`${this.pickerYear()}-${monthStr}`);
+    this.customMonthPicker.dismiss();
+  }
+
+  selectThisMonth() {
+    const now = new Date();
+    this.pickerYear.set(now.getFullYear());
+    const monthStr = (now.getMonth() + 1).toString().padStart(2, '0');
+    this.selectedMonth.set(`${this.pickerYear()}-${monthStr}`);
+    this.customMonthPicker.dismiss();
+  }
+
   formatMonth(monthStr: string): string {
     if (!monthStr) return '';
     const [year, month] = monthStr.split('-');
     const date = new Date(parseInt(year), parseInt(month) - 1, 1);
-    return date.toLocaleString('default', { month: 'short', year: 'numeric' });
+    return date.toLocaleString('default', { month: 'short', year: 'numeric' }).toUpperCase();
   }
 
   groupedExpenses = computed(() => {

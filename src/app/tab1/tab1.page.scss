@@ -21,3 +21,46 @@
     --background: transparent;
   }
 }
+
+.year-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  
+  .year-text {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+}
+
+.month-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .month-row {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .month-col {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .month-btn {
+    font-weight: 600;
+    font-size: 1.1rem;
+    width: 100%;
+    margin: 0;
+    --border-radius: 8px;
+    
+    &.selected {
+      font-weight: 800;
+      color: var(--ion-color-danger);
+    }
+  }
+}
