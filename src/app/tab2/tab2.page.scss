@@ -62,23 +62,6 @@
   opacity: 0.6;
 }
 
-.grouping-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  padding-right: 8px;
-
-  h3.category-header {
-    margin: 0;
-  }
-}
-
-.category-header {
-  padding-left: 4px;
-  font-weight: 600;
-  color: #555;
-}
 
 .glass-list {
   background: rgba(255, 255, 255, 0.7);
@@ -92,5 +75,49 @@
 
   ion-item {
     --background: transparent;
+  }
+}
+
+/* Custom Month Picker Styles */
+.year-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  
+  .year-text {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+}
+
+.month-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .month-row {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .month-col {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .month-btn {
+    font-weight: 600;
+    font-size: 1.1rem;
+    width: 100%;
+    margin: 0;
+    --border-radius: 8px;
+    
+    &.selected {
+      font-weight: 800;
+      color: var(--ion-color-danger);
+    }
   }
 }

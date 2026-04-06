@@ -1,5 +1,6 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal, ViewChild } from '@angular/core';
 import { DataService, Expense } from '../services/data.service';
+import { IonModal } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -8,12 +9,79 @@ import { DataService, Expense } from '../services/data.service';
   standalone: false,
 })
 export class Tab2Page {
-  groupingType = signal<'day' | 'week' | 'month' | 'year'>('day');
+  groupingType = signal<'week' | 'month' | 'year'>('month');
+  
+  @ViewChild('customMonthPicker') customMonthPicker!: IonModal;
+  selectedMonth = signal<string>(new Date().toISOString().substring(0, 7));
+  pickerYear = signal<number>(new Date().getFullYear());
+  monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
+  openPicker() {
+    this.pickerYear.set(parseInt(this.selectedMonth().substring(0, 4)));
+    this.customMonthPicker.present();
+  }
+
+  changePickerYear(delta: number) {
+    this.pickerYear.update(y => y + delta);
+  }
+
+  prevMonth() {
+    const [year, month] = this.selectedMonth().split('-');
+    let y = parseInt(year);
+    let m = parseInt(month) - 1;
+    if (m === 0) {
+      m = 12;
+      y -= 1;
+    }
+    const monthStr = m.toString().padStart(2, '0');
+    this.selectedMonth.set(`${y}-${monthStr}`);
+  }
+
+  nextMonth() {
+    const [year, month] = this.selectedMonth().split('-');
+    let y = parseInt(year);
+    let m = parseInt(month) + 1;
+    if (m === 13) {
+      m = 1;
+      y += 1;
+    }
+    const monthStr = m.toString().padStart(2, '0');
+    this.selectedMonth.set(`${y}-${monthStr}`);
+  }
+
+  isMonthSelected(index: number): boolean {
+    const selYear = parseInt(this.selectedMonth().substring(0, 4));
+    const selMonth = parseInt(this.selectedMonth().substring(5, 7)) - 1;
+    return this.pickerYear() === selYear && index === selMonth;
+  }
+
+  selectMonth(index: number) {
+    const monthStr = (index + 1).toString().padStart(2, '0');
+    this.selectedMonth.set(`${this.pickerYear()}-${monthStr}`);
+    this.customMonthPicker.dismiss();
+  }
+
+  selectThisMonth() {
+    const now = new Date();
+    this.pickerYear.set(now.getFullYear());
+    const monthStr = (now.getMonth() + 1).toString().padStart(2, '0');
+    this.selectedMonth.set(`${this.pickerYear()}-${monthStr}`);
+    this.customMonthPicker.dismiss();
+  }
+
+  formatMonth(monthStr: string): string {
+    if (!monthStr) return '';
+    const [year, month] = monthStr.split('-');
+    const date = new Date(parseInt(year), parseInt(month) - 1, 1);
+    return date.toLocaleString('default', { month: 'short', year: 'numeric' }).toUpperCase();
+  }
 
   groupedData = computed(() => {
-    const expenses = this.dataService.expenses();
     const type = this.groupingType();
+    const monthFilter = this.selectedMonth();
+    
+    // Filter expenses by the selected month first
+    const expenses = this.dataService.expenses().filter(e => e.date && e.date.startsWith(monthFilter));
     
     const groups: { 
       [key: string]: { 
@@ -27,9 +95,6 @@ export class Tab2Page {
       const d = new Date(e.date);
       
       switch (type) {
-        case 'day':
-          key = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;
-          break;
         case 'week':
           const dayOfWeek = d.getDay() || 7;  
           const monday = new Date(d);
@@ -91,10 +156,6 @@ export class Tab2Page {
   
   formatChartLabel(label: string): string {
     const type = this.groupingType();
-    if (type === 'day') {
-      const parts = label.split('-');
-      return `${parts[1]}/${parts[2]}`;
-    }
     if (type === 'week') {
       const dateStr = label.replace('Week of ', '');
       const parts = dateStr.split('-');
