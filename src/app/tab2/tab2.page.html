@@ -5,7 +5,7 @@
         <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
       </ion-button>
       <ion-button (click)="openPicker()" style="--color: white; font-weight: 700; font-size: 1.05rem; --padding-start: 4px; --padding-end: 4px; margin: 0;">
-        {{ groupingType() === 'year' ? selectedYear() : formatMonth(selectedMonth()) }}
+        {{ groupingType() === 'year' ? selectedYear() : (groupingType() === 'week' ? formatWeek(selectedWeekStart()) : formatMonth(selectedMonth())) }}
       </ion-button>
       <ion-button (click)="nextDate()" style="--color: white; --padding-start: 2px; --padding-end: 8px; margin: 0;">
         <ion-icon name="chevron-forward" slot="icon-only"></ion-icon>
@@ -30,7 +30,15 @@
   </ion-header>
 
   <div class="chart-card">
-    <div class="bars-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h3 style="margin: 0; font-size: 1.1rem; color: rgba(255,255,255,0.9);">Overview</h3>
+      <ion-select [value]="chartType()" (ionChange)="chartType.set($event.detail.value)" interface="popover" style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 4px 12px; color: white; min-height: auto; font-weight: 600; font-size: 0.85rem;">
+        <ion-select-option value="bar">Bar Chart</ion-select-option>
+        <ion-select-option value="pie">Pie Chart</ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="bars-container" *ngIf="chartType() === 'bar'">
       <div class="chart-bar" *ngFor="let item of chartData()">
         <span class="bar-value">${{ item.total >= 1000 ? (item.total/1000 | number:'1.0-1') + 'k' : (item.total | number:'1.0-0') }}</span>
         <div class="bar-fill" [style.height.%]="getChartHeight(item.total)"></div>
@@ -39,6 +47,28 @@
       
       <div *ngIf="chartData().length === 0" class="no-data-msg">
         No data available for chart.
+      </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="pie-container" *ngIf="chartType() === 'pie'">
+      <div class="pie-wrapper" *ngIf="pieChartData().legend.length > 0">
+        <div class="pie-chart" [style.background]="pieChartData().gradient"></div>
+        <div class="pie-center">
+           <div style="font-size: 0.8rem; opacity: 0.8;">Total</div>
+           <div style="font-size: 1.2rem; font-weight: bold;">${{ groupedData()[0]?.total | number:'1.0-0' }}</div>
+        </div>
+      </div>
+      <div class="pie-legend" *ngIf="pieChartData().legend.length > 0">
+        <div class="legend-item" *ngFor="let item of pieChartData().legend">
+          <div class="color-box" [style.background]="item.color"></div>
+          <div class="legend-name">{{ item.name }}</div>
+          <div class="legend-percent">{{ item.percent | number:'1.0-1' }}%</div>
+        </div>
+      </div>
+      
+      <div *ngIf="pieChartData().legend.length === 0" class="no-data-msg" style="padding-top: 40px; padding-bottom: 40px;">
+        No data available for Pie Chart.
       </div>
     </div>
   </div>
@@ -137,6 +167,31 @@
             </div>
           </div>
         </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Custom Week Filter Modal -->
+  <ion-modal #customWeekPicker [keepContentsMounted]="true" [initialBreakpoint]="0.6" [breakpoints]="[0, 0.6, 1]">
+    <ng-template>
+      <ion-header class="ion-no-border">
+        <ion-toolbar>
+          <ion-title>Week</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="selectThisWeek()" style="font-weight: 600;">THIS WEEK</ion-button>
+            <ion-button (click)="customWeekPicker.dismiss()" style="font-size: 1.2rem;">
+              <ion-icon name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding ion-text-center">
+        <ion-datetime
+          presentation="date"
+          [value]="selectedWeekStart()"
+          (ionChange)="onWeekDateSelected($event)"
+          style="margin: 0 auto; border-radius: 12px;"
+        ></ion-datetime>
       </ion-content>
     </ng-template>
   </ion-modal>

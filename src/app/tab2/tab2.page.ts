@@ -2,6 +2,24 @@ import { Component, computed, signal, ViewChild } from '@angular/core';
 import { DataService, Expense } from '../services/data.service';
 import { IonModal } from '@ionic/angular';
 
+function parseLocal(dateStr: string): Date {
+  if (!dateStr) return new Date();
+  const parts = dateStr.substring(0, 10).split('-');
+  return new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+}
+
+function formatLocal(d: Date): string {
+  const y = d.getFullYear();
+  const m = (d.getMonth() + 1).toString().padStart(2, '0');
+  const day = d.getDate().toString().padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function getMonday(d: Date): Date {
+  const day = d.getDay(), diff = d.getDate() - day + (day === 0 ? -6 : 1);
+  return new Date(d.getFullYear(), d.getMonth(), diff);
+}
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -10,11 +28,14 @@ import { IonModal } from '@ionic/angular';
 })
 export class Tab2Page {
   groupingType = signal<'week' | 'month' | 'year'>('month');
+  chartType = signal<'bar' | 'pie'>('bar');
   
   @ViewChild('customYearPicker') customYearPicker!: IonModal;
   @ViewChild('customMonthPicker') customMonthPicker!: IonModal;
-  selectedMonth = signal<string>(new Date().toISOString().substring(0, 7));
+  @ViewChild('customWeekPicker') customWeekPicker!: IonModal;
+  selectedMonth = signal<string>(formatLocal(new Date()).substring(0, 7));
   selectedYear = signal<number>(new Date().getFullYear());
+  selectedWeekStart = signal<string>(formatLocal(getMonday(new Date())));
   pickerYear = signal<number>(new Date().getFullYear());
   monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
@@ -22,6 +43,8 @@ export class Tab2Page {
     if (this.groupingType() === 'year') {
       this.pickerYear.set(this.selectedYear());
       this.customYearPicker.present();
+    } else if (this.groupingType() === 'week') {
+      this.customWeekPicker.present();
     } else {
       this.pickerYear.set(parseInt(this.selectedMonth().substring(0, 4)));
       this.customMonthPicker.present();
@@ -35,6 +58,10 @@ export class Tab2Page {
   prevDate() {
     if (this.groupingType() === 'year') {
       this.selectedYear.update(y => y - 1);
+    } else if (this.groupingType() === 'week') {
+      const d = parseLocal(this.selectedWeekStart());
+      d.setDate(d.getDate() - 7);
+      this.selectedWeekStart.set(formatLocal(d));
     } else {
       const [year, month] = this.selectedMonth().split('-');
       let y = parseInt(year);
@@ -51,6 +78,10 @@ export class Tab2Page {
   nextDate() {
     if (this.groupingType() === 'year') {
       this.selectedYear.update(y => y + 1);
+    } else if (this.groupingType() === 'week') {
+      const d = parseLocal(this.selectedWeekStart());
+      d.setDate(d.getDate() + 7);
+      this.selectedWeekStart.set(formatLocal(d));
     } else {
       const [year, month] = this.selectedMonth().split('-');
       let y = parseInt(year);
@@ -99,6 +130,34 @@ export class Tab2Page {
     this.customYearPicker.dismiss();
   }
 
+  onWeekDateSelected(event: any) {
+    if (!event.detail.value) return;
+    const selectedDate = parseLocal(event.detail.value as string);
+    const monday = getMonday(selectedDate);
+    this.selectedWeekStart.set(formatLocal(monday));
+    this.customWeekPicker.dismiss();
+  }
+
+  selectThisWeek() {
+    const monday = getMonday(new Date());
+    this.selectedWeekStart.set(formatLocal(monday));
+    this.customWeekPicker.dismiss();
+  }
+
+  formatWeek(dateStr: string): string {
+    if (!dateStr) return '';
+    const d = parseLocal(dateStr);
+    const sunday = new Date(d);
+    sunday.setDate(sunday.getDate() + 6);
+    
+    const startMonth = (d.getMonth() + 1).toString().padStart(2, '0');
+    const startDate = d.getDate().toString().padStart(2, '0');
+    const endMonth = (sunday.getMonth() + 1).toString().padStart(2, '0');
+    const endDate = sunday.getDate().toString().padStart(2, '0');
+    
+    return `${startMonth}/${startDate} - ${endMonth}/${endDate}`;
+  }
+
   formatMonth(monthStr: string): string {
     if (!monthStr) return '';
     const [year, month] = monthStr.split('-');
@@ -114,6 +173,18 @@ export class Tab2Page {
     if (type === 'year') {
       const yearStr = this.selectedYear().toString();
       expenses = expenses.filter(e => e.date && e.date.startsWith(yearStr));
+    } else if (type === 'week') {
+      const startStr = this.selectedWeekStart();
+      const monDate = parseLocal(startStr);
+      const sunDate = new Date(monDate);
+      sunDate.setDate(sunDate.getDate() + 6);
+      const endStr = formatLocal(sunDate);
+      
+      expenses = expenses.filter(e => {
+        if (!e.date) return false;
+        const eDateStr = e.date.substring(0, 10);
+        return eDateStr >= startStr && eDateStr <= endStr;
+      });
     } else {
       const monthFilter = this.selectedMonth();
       expenses = expenses.filter(e => e.date && e.date.startsWith(monthFilter));
@@ -128,7 +199,7 @@ export class Tab2Page {
     
     expenses.forEach(e => {
       let key = '';
-      const d = new Date(e.date);
+      const d = parseLocal(e.date);
       
       switch (type) {
         case 'week':
@@ -180,6 +251,40 @@ export class Tab2Page {
     const data = this.chartData();
     if (data.length === 0) return 1;
     return Math.max(...data.map(d => d.total));
+  });
+
+  pieChartData = computed(() => {
+    const data = this.groupedData();
+    if (data.length === 0 || data[0].total === 0) return { gradient: '', legend: [] };
+    
+    // Use the first (and only) group block for pie breakdown
+    const categories = data[0].categories;
+    const total = data[0].total;
+
+    // Vibrant palette
+    const colors = ['#ff4c4c', '#4a90e2', '#50E3C2', '#F5A623', '#B8E986', '#BD10E0', '#F8E71C', '#8B572A', '#D0021B'];
+    
+    let gradientParts: string[] = [];
+    let legend: { name: string, percent: number, amount: number, color: string }[] = [];
+    let currentPercent = 0;
+
+    categories.forEach((cat, i) => {
+      const percent = (cat.amount / total) * 100;
+      const color = colors[i % colors.length];
+      gradientParts.push(`${color} ${currentPercent}% ${currentPercent + percent}%`);
+      legend.push({
+        name: cat.category,
+        percent: percent,
+        amount: cat.amount,
+        color: color
+      });
+      currentPercent += percent;
+    });
+
+    return {
+      gradient: `conic-gradient(${gradientParts.join(', ')})`,
+      legend: legend
+    };
   });
 
   constructor(public dataService: DataService) {}
