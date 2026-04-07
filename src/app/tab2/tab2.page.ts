@@ -11,42 +11,57 @@ import { IonModal } from '@ionic/angular';
 export class Tab2Page {
   groupingType = signal<'week' | 'month' | 'year'>('month');
   
+  @ViewChild('customYearPicker') customYearPicker!: IonModal;
   @ViewChild('customMonthPicker') customMonthPicker!: IonModal;
   selectedMonth = signal<string>(new Date().toISOString().substring(0, 7));
+  selectedYear = signal<number>(new Date().getFullYear());
   pickerYear = signal<number>(new Date().getFullYear());
   monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
   openPicker() {
-    this.pickerYear.set(parseInt(this.selectedMonth().substring(0, 4)));
-    this.customMonthPicker.present();
+    if (this.groupingType() === 'year') {
+      this.pickerYear.set(this.selectedYear());
+      this.customYearPicker.present();
+    } else {
+      this.pickerYear.set(parseInt(this.selectedMonth().substring(0, 4)));
+      this.customMonthPicker.present();
+    }
   }
 
   changePickerYear(delta: number) {
     this.pickerYear.update(y => y + delta);
   }
 
-  prevMonth() {
-    const [year, month] = this.selectedMonth().split('-');
-    let y = parseInt(year);
-    let m = parseInt(month) - 1;
-    if (m === 0) {
-      m = 12;
-      y -= 1;
+  prevDate() {
+    if (this.groupingType() === 'year') {
+      this.selectedYear.update(y => y - 1);
+    } else {
+      const [year, month] = this.selectedMonth().split('-');
+      let y = parseInt(year);
+      let m = parseInt(month) - 1;
+      if (m === 0) {
+        m = 12;
+        y -= 1;
+      }
+      const monthStr = m.toString().padStart(2, '0');
+      this.selectedMonth.set(`${y}-${monthStr}`);
     }
-    const monthStr = m.toString().padStart(2, '0');
-    this.selectedMonth.set(`${y}-${monthStr}`);
   }
 
-  nextMonth() {
-    const [year, month] = this.selectedMonth().split('-');
-    let y = parseInt(year);
-    let m = parseInt(month) + 1;
-    if (m === 13) {
-      m = 1;
-      y += 1;
+  nextDate() {
+    if (this.groupingType() === 'year') {
+      this.selectedYear.update(y => y + 1);
+    } else {
+      const [year, month] = this.selectedMonth().split('-');
+      let y = parseInt(year);
+      let m = parseInt(month) + 1;
+      if (m === 13) {
+        m = 1;
+        y += 1;
+      }
+      const monthStr = m.toString().padStart(2, '0');
+      this.selectedMonth.set(`${y}-${monthStr}`);
     }
-    const monthStr = m.toString().padStart(2, '0');
-    this.selectedMonth.set(`${y}-${monthStr}`);
   }
 
   isMonthSelected(index: number): boolean {
@@ -69,6 +84,21 @@ export class Tab2Page {
     this.customMonthPicker.dismiss();
   }
 
+  isYearSelected(year: number): boolean {
+    return this.selectedYear() === year;
+  }
+
+  selectYearBtn(year: number) {
+    this.selectedYear.set(year);
+    this.customYearPicker.dismiss();
+  }
+
+  selectThisYear() {
+    const now = new Date();
+    this.selectedYear.set(now.getFullYear());
+    this.customYearPicker.dismiss();
+  }
+
   formatMonth(monthStr: string): string {
     if (!monthStr) return '';
     const [year, month] = monthStr.split('-');
@@ -78,10 +108,16 @@ export class Tab2Page {
 
   groupedData = computed(() => {
     const type = this.groupingType();
-    const monthFilter = this.selectedMonth();
     
-    // Filter expenses by the selected month first
-    const expenses = this.dataService.expenses().filter(e => e.date && e.date.startsWith(monthFilter));
+    // Filter expenses by the selected period first
+    let expenses = this.dataService.expenses();
+    if (type === 'year') {
+      const yearStr = this.selectedYear().toString();
+      expenses = expenses.filter(e => e.date && e.date.startsWith(yearStr));
+    } else {
+      const monthFilter = this.selectedMonth();
+      expenses = expenses.filter(e => e.date && e.date.startsWith(monthFilter));
+    }
     
     const groups: { 
       [key: string]: { 
