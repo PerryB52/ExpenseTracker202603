@@ -30,22 +30,21 @@
   </ion-header>
 
   <div class="chart-card">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-      <h3 style="margin: 0; font-size: 1.1rem; color: rgba(255,255,255,0.9);">Overview</h3>
-      <ion-select [value]="chartType()" (ionChange)="chartType.set($event.detail.value)" interface="popover" style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 4px 12px; color: white; min-height: auto; font-weight: 600; font-size: 0.85rem;">
-        <ion-select-option value="bar">Bar Chart</ion-select-option>
-        <ion-select-option value="pie">Pie Chart</ion-select-option>
+    <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 20px;">
+      <ion-select [value]="chartType()" (ionChange)="chartType.set($event.detail.value)" interface="popover" style="background: rgba(0,0,0,0.05); border-radius: 8px; padding: 4px 12px; color: #333; min-height: auto; font-weight: 600; font-size: 0.85rem;">
+        <ion-select-option value="pie">Split by category</ion-select-option>
+        <ion-select-option value="bar">History - last 5</ion-select-option>
       </ion-select>
     </div>
 
     <div class="bars-container" *ngIf="chartType() === 'bar'">
-      <div class="chart-bar" *ngFor="let item of chartData()">
+      <div class="chart-bar" *ngFor="let item of historyChartData()">
         <span class="bar-value">${{ item.total >= 1000 ? (item.total/1000 | number:'1.0-1') + 'k' : (item.total | number:'1.0-0') }}</span>
-        <div class="bar-fill" [style.height.%]="getChartHeight(item.total)"></div>
+        <div class="bar-fill" [style.height.%]="getHistoryChartHeight(item.total)"></div>
         <span class="bar-label">{{ formatChartLabel(item.label) }}</span>
       </div>
       
-      <div *ngIf="chartData().length === 0" class="no-data-msg">
+      <div *ngIf="historyChartData().length === 0" class="no-data-msg">
         No data available for chart.
       </div>
     </div>
@@ -53,18 +52,22 @@
     <!-- Pie Chart -->
     <div class="pie-container" *ngIf="chartType() === 'pie'">
       <div class="pie-wrapper" *ngIf="pieChartData().legend.length > 0">
-        <div class="pie-chart" [style.background]="pieChartData().gradient"></div>
-        <div class="pie-center">
-           <div style="font-size: 0.8rem; opacity: 0.8;">Total</div>
-           <div style="font-size: 1.2rem; font-weight: bold;">${{ groupedData()[0]?.total | number:'1.0-0' }}</div>
-        </div>
-      </div>
-      <div class="pie-legend" *ngIf="pieChartData().legend.length > 0">
-        <div class="legend-item" *ngFor="let item of pieChartData().legend">
-          <div class="color-box" [style.background]="item.color"></div>
-          <div class="legend-name">{{ item.name }}</div>
-          <div class="legend-percent">{{ item.percent | number:'1.0-1' }}%</div>
-        </div>
+        <svg viewBox="-1.8 -1.4 3.6 2.9" class="svg-pie">
+          <!-- Pie Slices -->
+          <path *ngFor="let item of pieChartData().paths" 
+                [attr.d]="item.path" 
+                [attr.fill]="item.color" 
+                stroke="#ffffff" 
+                stroke-width="0.015"
+                stroke-linejoin="round" />
+          
+          <!-- Hovering Labels -->
+          <g *ngFor="let lbl of pieChartData().labels">
+            <path [attr.d]="lbl.linePath" fill="none" [attr.stroke]="lbl.color" stroke-width="0.015" />
+            <text [attr.x]="lbl.textX" [attr.y]="lbl.textY1" [attr.text-anchor]="lbl.anchor" fill="#333333" font-size="0.12" font-weight="bold">{{ lbl.category }}</text>
+            <text [attr.x]="lbl.textX" [attr.y]="lbl.textY2" [attr.text-anchor]="lbl.anchor" fill="#333333" font-size="0.1" opacity="0.9">{{ lbl.percent }}</text>
+          </g>
+        </svg>
       </div>
       
       <div *ngIf="pieChartData().legend.length === 0" class="no-data-msg" style="padding-top: 40px; padding-bottom: 40px;">
@@ -81,8 +84,8 @@
         <ion-note slot="end" color="primary"><b>${{ group.total | number:'1.2-2' }}</b></ion-note>
       </ion-item-divider>
 
-      <ion-item *ngFor="let cat of group.categories" lines="full">
-        <ion-icon name="pie-chart-outline" slot="start" color="secondary"></ion-icon>
+      <ion-item *ngFor="let cat of group.categories; let i = index" lines="full">
+        <ion-icon name="pie-chart" slot="start" [style.color]="getCategoryColor(i)"></ion-icon>
         <ion-label>{{ cat.category }}</ion-label>
         <ion-note slot="end" color="medium">${{ cat.amount | number:'1.2-2' }}</ion-note>
       </ion-item>

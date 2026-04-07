@@ -243,54 +243,180 @@ export class Tab2Page {
     return entries;
   });
 
-  chartData = computed(() => {
-    return this.groupedData().slice(0, 7).reverse();
+  historyChartData = computed(() => {
+    const type = this.groupingType();
+    const allExpenses = this.dataService.expenses();
+    
+    let periods: string[] = [];
+    
+    if (type === 'year') {
+      const selected = this.selectedYear();
+      for (let i = 4; i >= 0; i--) {
+        periods.push((selected - i).toString());
+      }
+    } else if (type === 'month') {
+      const [y, mStr] = this.selectedMonth().split('-');
+      let year = parseInt(y);
+      let month = parseInt(mStr);
+      for (let i = 4; i >= 0; i--) {
+        let curM = month - i;
+        let curY = year;
+        while (curM <= 0) {
+          curM += 12;
+          curY -= 1;
+        }
+        periods.push(`${curY}-${curM.toString().padStart(2, '0')}`);
+      }
+    } else if (type === 'week') {
+      const selected = parseLocal(this.selectedWeekStart());
+      for (let i = 4; i >= 0; i--) {
+        const d = new Date(selected);
+        d.setDate(d.getDate() - (i * 7));
+        periods.push(formatLocal(d));
+      }
+    }
+
+    const groups: { [key: string]: number } = {};
+    periods.forEach(p => groups[p] = 0);
+    
+    allExpenses.forEach(e => {
+      const d = parseLocal(e.date);
+      let key = '';
+      if (type === 'year') {
+        key = d.getFullYear().toString();
+      } else if (type === 'month') {
+        key = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}`;
+      } else if (type === 'week') {
+        const monday = getMonday(d);
+        key = formatLocal(monday);
+      }
+      
+      if (groups[key] !== undefined) {
+        groups[key] += e.amount;
+      }
+    });
+
+    return periods.map(p => ({
+      label: p,
+      total: groups[p]
+    }));
   });
 
-  maxChartValue = computed(() => {
-    const data = this.chartData();
+  maxHistoryValue = computed(() => {
+    const data = this.historyChartData();
     if (data.length === 0) return 1;
     return Math.max(...data.map(d => d.total));
   });
 
+  getCategoryColor(i: number): string {
+    const topColors = [
+      '#ff6b6b', // 1st: red
+      '#ff9f43', // 2nd: orange
+      '#ffc048', // 3rd: light orange
+      '#f9ca24', // 4th: darker yellow
+      '#f6e58d', // 5th: lighter yellow
+      '#2ecc71', // 6th: green
+      '#badc58', // 7th: light green
+    ];
+    const palette = ['#00d2d3', '#54a0ff', '#5f27cd', '#c8d6e5', '#ff9ff3', '#0abde3'];
+    return i < 7 ? topColors[i] : palette[(i - 7) % palette.length];
+  }
+
   pieChartData = computed(() => {
     const data = this.groupedData();
-    if (data.length === 0 || data[0].total === 0) return { gradient: '', legend: [] };
+    if (data.length === 0 || data[0].total === 0) return { paths: [], labels: [], legend: [] };
     
-    // Use the first (and only) group block for pie breakdown
     const categories = data[0].categories;
     const total = data[0].total;
 
-    // Vibrant palette
-    const colors = ['#ff4c4c', '#4a90e2', '#50E3C2', '#F5A623', '#B8E986', '#BD10E0', '#F8E71C', '#8B572A', '#D0021B'];
-    
-    let gradientParts: string[] = [];
     let legend: { name: string, percent: number, amount: number, color: string }[] = [];
-    let currentPercent = 0;
+    let svgPaths: { path: string, color: string }[] = [];
+    let svgLabels: any[] = [];
+    
+    let currentAngle = 0;
 
     categories.forEach((cat, i) => {
-      const percent = (cat.amount / total) * 100;
-      const color = colors[i % colors.length];
-      gradientParts.push(`${color} ${currentPercent}% ${currentPercent + percent}%`);
+      const fraction = cat.amount / total;
+      const color = this.getCategoryColor(i);
+      
+      const angle = fraction * Math.PI * 2;
+      const startAngle = currentAngle - Math.PI / 2;
+      const endAngle = currentAngle + angle - Math.PI / 2;
+      
+      const startX = Math.cos(startAngle);
+      const startY = Math.sin(startAngle);
+      const endX = Math.cos(endAngle);
+      const endY = Math.sin(endAngle);
+      
+      const largeArcFlag = fraction > 0.5 ? 1 : 0;
+      
+      let pathData = '';
+      if (fraction >= 0.9999) {
+        pathData = `M -1 0 A 1 1 0 1 1 1 0 A 1 1 0 1 1 -1 0 Z`;
+      } else {
+        pathData = [
+          `M 0 0`,
+          `L ${startX} ${startY}`,
+          `A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}`,
+          `Z`
+        ].join(' ');
+      }
+      
+      svgPaths.push({
+        path: pathData,
+        color: color
+      });
+
+      // Floating labels for slices >= 4%
+      if (fraction >= 0.04) {
+        const midAngle = currentAngle + angle / 2 - Math.PI / 2;
+        
+        const lineStartX = Math.cos(midAngle) * 0.95;
+        const lineStartY = Math.sin(midAngle) * 0.95;
+        
+        let lineOuterX = Math.cos(midAngle) * 1.15;
+        let lineOuterY = Math.sin(midAngle) * 1.15;
+        
+        const isRight = Math.cos(midAngle) >= 0;
+        const lineEndX = lineOuterX + (isRight ? 0.15 : -0.15);
+        
+        const textX = lineEndX + (isRight ? 0.05 : -0.05);
+        const textY1 = lineOuterY - 0.02; 
+        const textY2 = lineOuterY + 0.11;
+        
+        svgLabels.push({
+          linePath: `M ${lineStartX} ${lineStartY} L ${lineOuterX} ${lineOuterY} L ${lineEndX} ${lineOuterY}`,
+          color: color,
+          textX: textX,
+          textY1: textY1,
+          textY2: textY2,
+          anchor: isRight ? 'start' : 'end',
+          category: cat.category,
+          percent: (fraction * 100).toFixed(1) + ' %'
+        });
+      }
+
       legend.push({
         name: cat.category,
-        percent: percent,
+        percent: fraction * 100,
         amount: cat.amount,
         color: color
       });
-      currentPercent += percent;
+      
+      currentAngle += angle;
     });
 
     return {
-      gradient: `conic-gradient(${gradientParts.join(', ')})`,
+      paths: svgPaths,
+      labels: svgLabels,
       legend: legend
     };
   });
 
   constructor(public dataService: DataService) {}
   
-  getChartHeight(total: number): number {
-    const max = this.maxChartValue();
+  getHistoryChartHeight(total: number): number {
+    const max = this.maxHistoryValue();
     if (max === 0) return 10;
     return Math.max((total / max) * 100, 10);
   }
