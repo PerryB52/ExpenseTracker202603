@@ -4,7 +4,8 @@
       <ion-button (click)="prevMonth()" style="--color: white; --padding-start: 8px; --padding-end: 2px; margin: 0;">
         <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
       </ion-button>
-      <ion-button (click)="openPicker()" style="--color: white; font-weight: 700; font-size: 1.05rem; --padding-start: 4px; --padding-end: 4px; margin: 0;">
+      <ion-button (click)="openPicker()"
+        style="--color: white; font-weight: 700; font-size: 1.05rem; --padding-start: 4px; --padding-end: 4px; margin: 0;">
         {{ formatMonth(selectedMonth()) }}
       </ion-button>
       <ion-button (click)="nextMonth()" style="--color: white; --padding-start: 2px; --padding-end: 8px; margin: 0;">
@@ -17,9 +18,12 @@
     </ion-title>
 
     <ion-buttons slot="end" style="visibility: hidden; pointer-events: none;" aria-hidden="true">
-      <ion-button style="--padding-start: 8px; --padding-end: 2px; margin: 0;"><ion-icon name="chevron-back" slot="icon-only"></ion-icon></ion-button>
-      <ion-button style="font-weight: 700; font-size: 1.05rem; --padding-start: 4px; --padding-end: 4px; margin: 0;">XXX 2000</ion-button>
-      <ion-button style="--padding-start: 2px; --padding-end: 8px; margin: 0;"><ion-icon name="chevron-forward" slot="icon-only"></ion-icon></ion-button>
+      <ion-button style="--padding-start: 8px; --padding-end: 2px; margin: 0;"><ion-icon name="chevron-back"
+          slot="icon-only"></ion-icon></ion-button>
+      <ion-button style="font-weight: 700; font-size: 1.05rem; --padding-start: 4px; --padding-end: 4px; margin: 0;">XXX
+        2000</ion-button>
+      <ion-button style="--padding-start: 2px; --padding-end: 8px; margin: 0;"><ion-icon name="chevron-forward"
+          slot="icon-only"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -35,15 +39,18 @@
     <ion-item-group *ngFor="let group of groupedExpenses()">
       <ion-item-divider color="light">
         <ion-label><b>{{ group.date | date:'mediumDate' }}</b></ion-label>
-        <ion-note slot="end" color="primary"><b>Total: {{ dataService.activeCurrencySymbol() }}{{ group.total | number:'1.2-2' }}</b></ion-note>
+        <ion-note slot="end" color="primary"><b>Total: {{ dataService.activeCurrencySymbol() }}{{ group.total |
+            number:'1.2-2' }}</b></ion-note>
       </ion-item-divider>
 
       <ion-item-sliding *ngFor="let expense of group.expenses">
         <ion-item lines="full" detail="false">
           <ion-icon name="receipt-outline" slot="start" color="tertiary"></ion-icon>
           <ion-label>
-            <h2><b>{{ expense.description || (expense.subcategory ? expense.category + ' > ' + expense.subcategory : expense.category) }}</b></h2>
-            <p>{{ expense.category }}{{ expense.subcategory ? ' > ' + expense.subcategory : '' }} • {{ expense.date | date:'shortTime' }}</p>
+            <h2><b>{{ expense.description || (expense.subcategory ? expense.category + ' > ' + expense.subcategory :
+                expense.category) }}</b></h2>
+            <p>{{ expense.category }}{{ expense.subcategory ? ' > ' + expense.subcategory : '' }} • {{ expense.date |
+              date:'shortTime' }}</p>
           </ion-label>
           <ion-note slot="end" color="danger">
             <b>-{{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}</b>
@@ -62,7 +69,8 @@
     </ion-item-group>
 
     <ion-item *ngIf="groupedExpenses().length === 0" lines="none" class="ion-text-center">
-      <ion-label color="medium" style="width: 100%; text-align: center;">No expenses recorded for {{ formatMonth(selectedMonth()) }}.</ion-label>
+      <ion-label color="medium" style="width: 100%; text-align: center;">No expenses recorded for {{
+        formatMonth(selectedMonth()) }}.</ion-label>
     </ion-item>
   </ion-list>
 
@@ -88,35 +96,51 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
+        <ion-item lines="none" style="margin-bottom: 8px;">
+          <ion-label position="stacked">Date & Time</ion-label>
+          <div style="margin-top: 8px;">
+            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+          </div>
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="datetime" [(ngModel)]="newExpense.date" presentation="date-time"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </ion-item>
+
         <ion-item>
           <ion-label position="stacked">Amount</ion-label>
           <ion-input type="number" [(ngModel)]="newExpense.amount" placeholder="0.00"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Category</ion-label>
-          <ion-select [(ngModel)]="newExpense.category" placeholder="Select One" (ngModelChange)="onCategoryChange()">
-            <ion-select-option *ngFor="let cat of dataService.categories()" [value]="cat.name">{{cat.name}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item [class.disabled-item]="!newExpense.category">
-          <ion-label position="stacked">Subcategory</ion-label>
-          <ion-select [(ngModel)]="newExpense.subcategory" placeholder="Select One (Optional)" [disabled]="!newExpense.category || getSubcategories().length === 0">
-            <ion-select-option *ngFor="let sub of getSubcategories()" [value]="sub">{{sub}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item>
           <ion-label position="stacked">Description</ion-label>
           <ion-input type="text" [(ngModel)]="newExpense.description" placeholder="Optional"></ion-input>
         </ion-item>
-        <ion-item lines="none">
-          <ion-label position="stacked">Date</ion-label>
-          <ion-datetime-button datetime="datetime"></ion-datetime-button>
-          <ion-modal [keepContentsMounted]="true">
-            <ng-template>
-              <ion-datetime id="datetime" [(ngModel)]="newExpense.date" presentation="date"></ion-datetime>
-            </ng-template>
-          </ion-modal>
-        </ion-item>
+
+        <div class="category-section">
+          <ion-label class="section-title">Categorization</ion-label>
+          <div class="split-picker">
+            <div class="master-pane">
+              <div class="pane-item" *ngFor="let cat of dataService.categories()"
+                [class.selected]="newExpense.category === cat.name"
+                (click)="newExpense.category = cat.name; onCategoryChange()">
+                {{ cat.name }}
+              </div>
+            </div>
+            <div class="detail-pane">
+              <div class="pane-placeholder" *ngIf="!newExpense.category">
+                Select a category
+              </div>
+              <div class="pane-item" *ngFor="let sub of getSubcategories()"
+                [class.selected]="newExpense.subcategory === sub" (click)="newExpense.subcategory = sub">
+                {{ sub }}
+              </div>
+              <div class="pane-placeholder" *ngIf="newExpense.category && getSubcategories().length === 0">
+                No subcategories
+              </div>
+            </div>
+          </div>
+        </div>
       </ion-content>
     </ng-template>
   </ion-modal>
@@ -149,8 +173,9 @@
         <div class="month-grid">
           <div class="month-row" *ngFor="let row of [0, 1, 2, 3]">
             <div class="month-col" *ngFor="let col of [0, 1, 2]">
-              <ion-button fill="clear" [color]="isMonthSelected(row * 3 + col) ? 'danger' : 'medium'" 
-                  (click)="selectMonth(row * 3 + col)" class="month-btn" [class.selected]="isMonthSelected(row * 3 + col)">
+              <ion-button fill="clear" [color]="isMonthSelected(row * 3 + col) ? 'danger' : 'medium'"
+                (click)="selectMonth(row * 3 + col)" class="month-btn"
+                [class.selected]="isMonthSelected(row * 3 + col)">
                 {{ monthNames[row * 3 + col] }}
               </ion-button>
             </div>
