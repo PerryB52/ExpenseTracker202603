@@ -39,7 +39,7 @@
 
     <div class="bars-container" *ngIf="chartType() === 'bar'">
       <div class="chart-bar" *ngFor="let item of historyChartData()">
-        <span class="bar-value">${{ item.total >= 1000 ? (item.total/1000 | number:'1.0-1') + 'k' : (item.total | number:'1.0-0') }}</span>
+        <span class="bar-value">{{ dataService.activeCurrencySymbol() }}{{ item.total >= 1000 ? (item.total/1000 | number:'1.0-1') + 'k' : (item.total | number:'1.0-0') }}</span>
         <div class="bar-fill" [style.height.%]="getHistoryChartHeight(item.total)"></div>
         <span class="bar-label">{{ formatChartLabel(item.label) }}</span>
       </div>
@@ -81,13 +81,13 @@
     <ion-item-group *ngFor="let group of groupedData()">
       <ion-item-divider color="light">
         <ion-label><b>{{ group.label }}</b></ion-label>
-        <ion-note slot="end" color="primary"><b>${{ group.total | number:'1.2-2' }}</b></ion-note>
+        <ion-note slot="end" color="primary"><b>{{ dataService.activeCurrencySymbol() }}{{ group.total | number:'1.2-2' }}</b></ion-note>
       </ion-item-divider>
 
       <ion-item *ngFor="let cat of group.categories; let i = index" lines="full">
         <ion-icon name="pie-chart" slot="start" [style.color]="getCategoryColor(i)"></ion-icon>
         <ion-label>{{ cat.category }}</ion-label>
-        <ion-note slot="end" color="medium">${{ cat.amount | number:'1.2-2' }}</ion-note>
+        <ion-note slot="end" color="medium">{{ dataService.activeCurrencySymbol() }}{{ cat.amount | number:'1.2-2' }}</ion-note>
       </ion-item>
     </ion-item-group>
     

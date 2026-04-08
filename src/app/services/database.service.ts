@@ -33,12 +33,22 @@ export class DatabaseService {
       await this.db.open();
       
       await this.createSchema();
+      await this.runMigrations(); // Safely add columns if missing
       await this.seedDatabase();
 
       this.isReady = true;
     } catch (error) {
       console.error('SQLite initialization failed', error);
       throw error;
+    }
+  }
+
+  private async runMigrations() {
+    try {
+      await this.db.execute('ALTER TABLE expenses ADD COLUMN currency TEXT DEFAULT "USD";');
+      console.log("Successfully migrated expenses to add currency column.");
+    } catch (e) {
+      // Column likely already exists, ignore
     }
   }
 
@@ -50,7 +60,8 @@ export class DatabaseService {
         category TEXT NOT NULL,
         subcategory TEXT,
         description TEXT NOT NULL,
-        date TEXT NOT NULL
+        date TEXT NOT NULL,
+        currency TEXT DEFAULT 'USD'
       );
       CREATE TABLE IF NOT EXISTS categories (
         name TEXT PRIMARY KEY NOT NULL
@@ -60,6 +71,10 @@ export class DatabaseService {
         name TEXT NOT NULL,
         PRIMARY KEY (parent_category, name),
         FOREIGN KEY (parent_category) REFERENCES categories (name) ON DELETE CASCADE
+      );
+      CREATE TABLE IF NOT EXISTS settings (
+        key TEXT PRIMARY KEY NOT NULL,
+        value TEXT NOT NULL
       );
     `;
     await this.db.execute(schema);
@@ -80,12 +95,13 @@ export class DatabaseService {
             expense.category,
             expense.subcategory || null,
             expense.description || '',
-            expense.date
+            expense.date,
+            expense.currency || 'USD'
           ]);
           
           if (expenseValues.length > 0) {
             await this.db.executeSet([{
-              statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date) VALUES (?, ?, ?, ?, ?, ?)',
+              statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
               values: expenseValues
             }]);
           }

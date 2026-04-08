@@ -19,7 +19,8 @@ export class Tab1Page {
     category: '',
     subcategory: '',
     description: '',
-    date: new Date().toISOString()
+    date: new Date().toISOString(),
+    currency: ''
   };
 
   @ViewChild('customMonthPicker') customMonthPicker!: IonModal;
@@ -116,7 +117,7 @@ export class Tab1Page {
 
   confirm() {
     if (this.newExpense.amount && this.newExpense.category) {
-      const expenseData = {
+      const expenseData: any = {
         amount: Number(this.newExpense.amount),
         category: this.newExpense.category,
         subcategory: this.newExpense.subcategory,
@@ -125,9 +126,10 @@ export class Tab1Page {
       };
 
       if (this.editingExpenseId) {
-        this.dataService.editExpense(this.editingExpenseId, expenseData);
+        expenseData.currency = this.newExpense.currency;
+        this.dataService.editExpense(this.editingExpenseId, expenseData as Omit<Expense, 'id'>);
       } else {
-        this.dataService.addExpense(expenseData);
+        this.dataService.addExpense(expenseData as Omit<Expense, 'id' | 'currency'>);
       }
       
       this.modal.dismiss(this.newExpense, 'confirm');
@@ -137,7 +139,7 @@ export class Tab1Page {
 
   resetForm() {
     this.editingExpenseId = null;
-    this.newExpense = { amount: null, category: '', subcategory: '', description: '', date: new Date().toISOString() };
+    this.newExpense = { amount: null, category: '', subcategory: '', description: '', date: new Date().toISOString(), currency: '' };
   }
 
   onCategoryChange() {
@@ -151,7 +153,8 @@ export class Tab1Page {
       category: expense.category,
       subcategory: expense.subcategory || '',
       description: expense.description || '',
-      date: expense.date
+      date: expense.date,
+      currency: expense.currency
     };
     this.modal.present();
   }
@@ -163,6 +166,11 @@ export class Tab1Page {
 
   deleteExpense(id: string) {
     this.dataService.deleteExpense(id);
+  }
+
+  getCurrencySymbol(code: string): string {
+    const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$' };
+    return map[code] || code;
   }
 }
 

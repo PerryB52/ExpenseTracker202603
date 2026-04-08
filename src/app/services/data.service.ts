@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { DatabaseService } from './database.service';
 
 export interface Expense {
@@ -8,6 +8,7 @@ export interface Expense {
   subcategory?: string;
   description: string;
   date: string;
+  currency: string;
 }
 
 export interface Category {
@@ -24,6 +25,15 @@ export class DataService {
 
   private categoriesSignal = signal<Category[]>([]);
   public readonly categories = this.categoriesSignal.asReadonly();
+
+  public activeCurrencySignal = signal<string>('USD');
+  public readonly activeCurrency = this.activeCurrencySignal.asReadonly();
+  
+  public activeCurrencySymbol = computed(() => {
+    const code = this.activeCurrencySignal();
+    const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$' };
+    return map[code] || code;
+  });
 
   constructor(private dbService: DatabaseService) {
     this.loadInitialData();
@@ -50,20 +60,37 @@ export class DataService {
         }
       }
       this.categoriesSignal.set(loadedCategories);
+      
+      const settingsRes = await db.query('SELECT value FROM settings WHERE key = ?', ['active_currency']);
+      if (settingsRes.values && settingsRes.values.length > 0) {
+        this.activeCurrencySignal.set(settingsRes.values[0].value);
+      }
     } catch (err) {
       console.error('Failed to load data from SQLite', err);
     }
   }
 
-  async addExpense(expense: Omit<Expense, 'id'>) {
+  async setActiveCurrency(currency: string) {
+    try {
+      const db = this.dbService.getDb();
+      await db.run('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', ['active_currency', currency]);
+      this.dbService.saveStore();
+      this.activeCurrencySignal.set(currency);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async addExpense(expense: Omit<Expense, 'id' | 'currency'>) {
     const id = Math.random().toString(36).substr(2, 9);
-    const newExpense: Expense = { ...expense, id };
+    const currency = this.activeCurrencySignal();
+    const newExpense: Expense = { ...expense, id, currency };
     
     try {
       const db = this.dbService.getDb();
       await db.run(
-        'INSERT INTO expenses (id, amount, category, subcategory, description, date) VALUES (?, ?, ?, ?, ?, ?)',
-        [newExpense.id, newExpense.amount, newExpense.category, newExpense.subcategory || null, newExpense.description, newExpense.date]
+        'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [newExpense.id, newExpense.amount, newExpense.category, newExpense.subcategory || null, newExpense.description, newExpense.date, newExpense.currency]
       );
       this.dbService.saveStore();
       this.expensesSignal.update(expenses => [newExpense, ...expenses]);
@@ -76,8 +103,8 @@ export class DataService {
     try {
       const db = this.dbService.getDb();
       await db.run(
-        'UPDATE expenses SET amount = ?, category = ?, subcategory = ?, description = ?, date = ? WHERE id = ?',
-        [updatedExpense.amount, updatedExpense.category, updatedExpense.subcategory || null, updatedExpense.description, updatedExpense.date, id]
+        'UPDATE expenses SET amount = ?, category = ?, subcategory = ?, description = ?, date = ?, currency = ? WHERE id = ?',
+        [updatedExpense.amount, updatedExpense.category, updatedExpense.subcategory || null, updatedExpense.description, updatedExpense.date, updatedExpense.currency, id]
       );
       this.dbService.saveStore();
       this.expensesSignal.update(expenses =>
@@ -239,7 +266,8 @@ export class DataService {
       const sub = `"${(e.subcategory || '').replace(/"/g, '""')}"`;
       const desc = `"${e.description.replace(/"/g, '""')}"`;
       const date = e.date;
-      csvStr += `${id},${amount},${cat},${sub},${desc},${date}\n`;
+      const curr = e.currency || 'USD';
+      csvStr += `${id},${amount},${cat},${sub},${desc},${date},${curr}\n`;
     }
 
     const blob = new Blob([csvStr], { type: 'text/csv' });
@@ -290,8 +318,9 @@ export class DataService {
           const subcategory = row[3];
           const description = row[4];
           const date = row[5];
+          const currency = row[6] || this.activeCurrencySignal();
           
-          parsedExpenses.push({ id, amount, category, subcategory, description, date });
+          parsedExpenses.push({ id, amount, category, subcategory, description, date, currency });
           if (category) distinctCats.add(category);
           if (category && subcategory) distinctSubs.add(`${category}|${subcategory}`);
         }
@@ -310,11 +339,11 @@ export class DataService {
         await db.run('INSERT INTO subcategories (parent_category, name) VALUES (?, ?)', [p, s]);
       }
 
-      const expenseValues = parsedExpenses.map(e => [e.id, e.amount, e.category, e.subcategory || null, e.description, e.date]);
+      const expenseValues = parsedExpenses.map(e => [e.id, e.amount, e.category, e.subcategory || null, e.description, e.date, e.currency]);
       
       if (expenseValues.length > 0) {
         await db.executeSet([{
-          statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date) VALUES (?, ?, ?, ?, ?, ?)',
+          statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
           values: expenseValues
         }]);
       }

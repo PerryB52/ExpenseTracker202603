@@ -46,6 +46,27 @@
         <p>Dark mode, Themes</p>
       </ion-label>
     </ion-item>
+  </ion-list>
+
+  <h3 class="ion-padding-start" style="color: #666; font-weight: 600;">Preferences</h3>
+  <ion-list inset="true" class="glass-list">
+    <ion-item lines="none">
+      <ion-icon name="cash-outline" slot="start" color="success"></ion-icon>
+      <ion-select label="Default Currency" interface="action-sheet" 
+                  [value]="dataService.activeCurrency()" 
+                  (ionChange)="dataService.setActiveCurrency($event.detail.value)"
+                  style="font-weight: 600;">
+        <ion-select-option value="USD">USD ($)</ion-select-option>
+        <ion-select-option value="EUR">EUR (€)</ion-select-option>
+        <ion-select-option value="GBP">GBP (£)</ion-select-option>
+        <ion-select-option value="JPY">JPY (¥)</ion-select-option>
+        <ion-select-option value="CAD">CAD ($)</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <h3 class="ion-padding-start" style="color: #666; font-weight: 600;">Data Management</h3>
+  <ion-list class="glass-list" inset="true">
 
     <ion-item button lines="full" (click)="exportCSV()">
       <ion-icon name="download-outline" slot="start" color="primary"></ion-icon>
