@@ -165,10 +165,8 @@ export class Tab2Page {
     return date.toLocaleString('default', { month: 'short', year: 'numeric' }).toUpperCase();
   }
 
-  groupedData = computed(() => {
+  periodExpenses = computed(() => {
     const type = this.groupingType();
-    
-    // Filter expenses by the selected period first
     let expenses = this.dataService.expenses();
     if (type === 'year') {
       const yearStr = this.selectedYear().toString();
@@ -189,6 +187,12 @@ export class Tab2Page {
       const monthFilter = this.selectedMonth();
       expenses = expenses.filter(e => e.date && e.date.startsWith(monthFilter));
     }
+    return expenses;
+  });
+
+  groupedData = computed(() => {
+    const type = this.groupingType();
+    const expenses = this.periodExpenses();
     
     const groups: { 
       [key: string]: { 
@@ -437,5 +441,66 @@ export class Tab2Page {
 
   onGroupingChange(event: any) {
     this.groupingType.set(event.detail.value);
+  }
+
+  isCategoryModalOpen = signal<boolean>(false);
+  selectedDetailCategory = signal<string | null>(null);
+  selectedSubcategoryFilter = signal<string | null>(null);
+
+  categoryDetailsData = computed(() => {
+    const parentCategory = this.selectedDetailCategory();
+    if (!parentCategory) return null;
+
+    const baseExpenses = [...this.periodExpenses().filter(e => (e.category || 'Uncategorized') === parentCategory)];
+    baseExpenses.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    let total = 0;
+    const subMap: { [sub: string]: number } = {};
+
+    baseExpenses.forEach(e => {
+        total += e.amount;
+        const sub = e.subcategory || 'Uncategorized';
+        subMap[sub] = (subMap[sub] || 0) + e.amount;
+    });
+
+    const subcategories = Object.keys(subMap).map(sub => ({
+        name: sub,
+        amount: subMap[sub],
+        percent: total > 0 ? (subMap[sub] / total) * 100 : 0
+    })).sort((a, b) => b.amount - a.amount);
+
+    const filterSub = this.selectedSubcategoryFilter();
+    const filteredExpenses = filterSub 
+        ? baseExpenses.filter(e => (e.subcategory || 'Uncategorized') === filterSub)
+        : baseExpenses;
+
+    return {
+        total,
+        subcategories,
+        expenses: filteredExpenses
+    };
+  });
+
+  openCategoryDetails(categoryName: string) {
+    this.selectedDetailCategory.set(categoryName);
+    this.selectedSubcategoryFilter.set(null);
+    this.isCategoryModalOpen.set(true);
+  }
+
+  closeCategoryDetails() {
+    this.isCategoryModalOpen.set(false);
+  }
+
+  toggleSubcategoryFilter(sub: string) {
+    if (this.selectedSubcategoryFilter() === sub) {
+        this.selectedSubcategoryFilter.set(null);
+    } else {
+        this.selectedSubcategoryFilter.set(sub);
+    }
+  }
+
+  getCurrencySymbol(code: string): string {
+    const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$' };
+    return map[code] || code;
   }
 }

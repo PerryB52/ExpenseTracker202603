@@ -84,7 +84,7 @@
         <ion-note slot="end" color="primary"><b>{{ dataService.activeCurrencySymbol() }}{{ group.total | number:'1.2-2' }}</b></ion-note>
       </ion-item-divider>
 
-      <ion-item *ngFor="let cat of group.categories; let i = index" lines="full">
+      <ion-item *ngFor="let cat of group.categories; let i = index" lines="full" button="true" (click)="openCategoryDetails(cat.category)">
         <ion-icon name="pie-chart" slot="start" [style.color]="getCategoryColor(i)"></ion-icon>
         <ion-label>{{ cat.category }}</ion-label>
         <ion-note slot="end" color="medium">{{ dataService.activeCurrencySymbol() }}{{ cat.amount | number:'1.2-2' }}</ion-note>
@@ -195,6 +195,69 @@
           (ionChange)="onWeekDateSelected($event)"
           style="margin: 0 auto; border-radius: 12px;"
         ></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Category Details Full Screen Modal -->
+  <ion-modal [isOpen]="isCategoryModalOpen()" (didDismiss)="closeCategoryDetails()">
+    <ng-template>
+      <ion-header class="ion-no-border">
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <ion-button (click)="closeCategoryDetails()">Back</ion-button>
+          </ion-buttons>
+          <ion-title>{{ selectedDetailCategory() }}</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding" color="light" *ngIf="categoryDetailsData() as details">
+        <div class="category-total-card">
+          <h4>Total Spent</h4>
+          <h1 class="gradient-text">{{ dataService.activeCurrencySymbol() }}{{ details.total | number:'1.2-2' }}</h1>
+        </div>
+
+        <h3 class="ion-padding-start section-headline">Subcategory Breakdown</h3>
+        <ion-list inset="true" class="glass-list subcategory-list">
+          <ion-item *ngFor="let sub of details.subcategories" button="true" [class.selected-sub]="selectedSubcategoryFilter() === sub.name" (click)="toggleSubcategoryFilter(sub.name)">
+            <ion-label>
+              <h2><b>{{ sub.name }}</b></h2>
+              <p>{{ sub.percent | number:'1.1-1' }}%</p>
+            </ion-label>
+            <ion-note slot="end" [color]="selectedSubcategoryFilter() === sub.name ? 'primary' : 'dark'">
+              <b>{{ dataService.activeCurrencySymbol() }}{{ sub.amount | number:'1.2-2' }}</b>
+            </ion-note>
+          </ion-item>
+          <ion-item *ngIf="details.subcategories.length === 0" lines="none">
+             <ion-label color="medium">No subcategories used.</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <h3 class="ion-padding-start section-headline" style="margin-top: 24px;">
+          Expenses {{ selectedSubcategoryFilter() ? '(' + selectedSubcategoryFilter() + ')' : '' }}
+        </h3>
+        
+        <ion-list inset="true" class="glass-list expense-feed">
+          <ion-item-group *ngIf="details.expenses.length > 0">
+            <ion-item-sliding *ngFor="let expense of details.expenses">
+              <ion-item lines="full" detail="false">
+                <ion-icon name="receipt-outline" slot="start" color="tertiary"></ion-icon>
+                <ion-label>
+                  <h2><b>{{ expense.description || (expense.subcategory ? expense.category + ' > ' + expense.subcategory : expense.category) }}</b></h2>
+                  <p>{{ expense.date | date:'mediumDate' }} • {{ expense.date | date:'shortTime' }}</p>
+                </ion-label>
+                <ion-note slot="end" color="danger">
+                  <b>-{{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}</b>
+                </ion-note>
+              </ion-item>
+            </ion-item-sliding>
+          </ion-item-group>
+
+          <ion-item *ngIf="details.expenses.length === 0" lines="none" class="ion-text-center">
+            <ion-label color="medium" style="width: 100%; text-align: center;">No expenses found.</ion-label>
+          </ion-item>
+        </ion-list>
+
       </ion-content>
     </ng-template>
   </ion-modal>
