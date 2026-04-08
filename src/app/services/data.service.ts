@@ -227,4 +227,103 @@ export class DataService {
     
     return { total, byCategory };
   }
+
+  async exportToCSV() {
+    const expenses = this.expensesSignal();
+    let csvStr = "id,amount,category,subcategory,description,date\n";
+    
+    for (const e of expenses) {
+      const id = e.id;
+      const amount = e.amount.toString();
+      const cat = `"${e.category.replace(/"/g, '""')}"`;
+      const sub = `"${(e.subcategory || '').replace(/"/g, '""')}"`;
+      const desc = `"${e.description.replace(/"/g, '""')}"`;
+      const date = e.date;
+      csvStr += `${id},${amount},${cat},${sub},${desc},${date}\n`;
+    }
+
+    const blob = new Blob([csvStr], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `expense_tracker_backup_${new Date().toISOString().substring(0,10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }
+
+  async importFromCSV(file: File) {
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const lines = text.split('\n').filter(l => l.trim().length > 0);
+      if (lines.length <= 1) return; 
+      
+      const parsedExpenses: Expense[] = [];
+      const distinctCats = new Set<string>();
+      const distinctSubs = new Set<string>();
+
+      for (let i = 1; i < lines.length; i++) {
+        let line = lines[i];
+        let row = [];
+        let inQuotes = false;
+        let buf = '';
+        for(let j=0; j<line.length; j++) {
+            const char = line[j];
+            if(char === '"' && line[j+1] === '"') {
+                buf += '"'; j++;
+            } else if(char === '"') {
+                inQuotes = !inQuotes;
+            } else if(char === ',' && !inQuotes) {
+                row.push(buf); buf = '';
+            } else {
+                buf += char;
+            }
+        }
+        row.push(buf);
+
+        if (row.length >= 6) {
+          const id = row[0] || Math.random().toString(36).substr(2, 9);
+          const amount = parseFloat(row[1]) || 0;
+          const category = row[2];
+          const subcategory = row[3];
+          const description = row[4];
+          const date = row[5];
+          
+          parsedExpenses.push({ id, amount, category, subcategory, description, date });
+          if (category) distinctCats.add(category);
+          if (category && subcategory) distinctSubs.add(`${category}|${subcategory}`);
+        }
+      }
+
+      const db = this.dbService.getDb();
+      await db.run('DELETE FROM expenses');
+      await db.run('DELETE FROM subcategories');
+      await db.run('DELETE FROM categories');
+
+      for (const cat of distinctCats) {
+        await db.run('INSERT INTO categories (name) VALUES (?)', [cat]);
+      }
+      for (const parentSub of distinctSubs) {
+        const [p, s] = parentSub.split('|');
+        await db.run('INSERT INTO subcategories (parent_category, name) VALUES (?, ?)', [p, s]);
+      }
+
+      const expenseValues = parsedExpenses.map(e => [e.id, e.amount, e.category, e.subcategory || null, e.description, e.date]);
+      
+      if (expenseValues.length > 0) {
+        await db.executeSet([{
+          statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date) VALUES (?, ?, ?, ?, ?, ?)',
+          values: expenseValues
+        }]);
+      }
+      
+      this.dbService.saveStore();
+      await this.loadInitialData();
+      
+    } catch (e) {
+      console.error('Failed to parse or import CSV', e);
+    }
+  }
 }

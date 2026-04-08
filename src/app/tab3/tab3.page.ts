@@ -85,6 +85,18 @@ export class Tab3Page {
     this.dataService.deleteSubcategory(parentName, subName);
   }
   
+  exportCSV() {
+    this.dataService.exportToCSV();
+  }
+
+  async importCSV(event: any) {
+    const file = event.target.files?.[0];
+    if (file) {
+      await this.dataService.importFromCSV(file);
+      event.target.value = ''; 
+    }
+  }
+
   clearData() {
     console.log("Settings action: clearData");
   }
