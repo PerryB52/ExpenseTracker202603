@@ -1,6 +1,6 @@
 import { Component, ViewChild, computed, signal } from '@angular/core';
 import { DataService, Expense } from '../services/data.service';
-import { IonModal } from '@ionic/angular';
+import { IonModal, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -91,11 +91,11 @@ export class Tab1Page {
     const monthFilter = this.selectedMonth();
     const expenses = this.dataService.expenses().filter(e => e.date && e.date.startsWith(monthFilter));
     const groups: { [dateKey: string]: { date: string, expenses: Expense[], total: number } } = {};
-    
+
     expenses.forEach(e => {
       const dateObj = new Date(e.date);
-      const dateKey = `${dateObj.getFullYear()}-${(dateObj.getMonth()+1).toString().padStart(2, '0')}-${dateObj.getDate().toString().padStart(2, '0')}`;
-      
+      const dateKey = `${dateObj.getFullYear()}-${(dateObj.getMonth() + 1).toString().padStart(2, '0')}-${dateObj.getDate().toString().padStart(2, '0')}`;
+
       if (!groups[dateKey]) {
         groups[dateKey] = { date: e.date, expenses: [], total: 0 };
       }
@@ -104,18 +104,18 @@ export class Tab1Page {
     });
 
     const sortedDates = Object.keys(groups).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
-    
+
     return sortedDates.map(date => groups[date]);
   });
 
-  constructor(public dataService: DataService) {}
+  constructor(public dataService: DataService, private toastCtrl: ToastController) { }
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
     this.resetForm();
   }
 
-  confirm() {
+  async confirm() {
     if (this.newExpense.amount && this.newExpense.category) {
       const expenseData: any = {
         amount: Number(this.newExpense.amount),
@@ -131,9 +131,17 @@ export class Tab1Page {
       } else {
         this.dataService.addExpense(expenseData as Omit<Expense, 'id' | 'currency'>);
       }
-      
+
       this.modal.dismiss(this.newExpense, 'confirm');
       this.resetForm();
+    } else {
+      const toast = await this.toastCtrl.create({
+        message: 'Please fill in all required fields.',
+        duration: 2500,
+        color: 'dark',
+        position: 'bottom'
+      });
+      await toast.present();
     }
   }
 
