@@ -257,7 +257,7 @@ export class DataService {
 
   async exportToCSV() {
     const expenses = this.expensesSignal();
-    let csvStr = "id,amount,category,subcategory,description,date\n";
+    let csvStr = "id,amount,category,subcategory,description,date,currency\n";
 
     for (const e of expenses) {
       const id = e.id;
@@ -353,6 +353,19 @@ export class DataService {
 
     } catch (e) {
       console.error('Failed to parse or import CSV', e);
+    }
+  }
+
+  async clearAllData() {
+    try {
+      const db = this.dbService.getDb();
+      await db.run('DELETE FROM expenses');
+
+      this.dbService.saveStore();
+
+      this.expensesSignal.set([]);
+    } catch (e) {
+      console.error(e);
     }
   }
 }

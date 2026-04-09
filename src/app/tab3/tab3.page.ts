@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonModal } from '@ionic/angular';
+import { IonModal, AlertController } from '@ionic/angular';
 import { DataService, Category } from '../services/data.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class Tab3Page {
   editingSubcategory: { parent: string, oldSub: string } | null = null;
   editSubcategoryValue: string = '';
 
-  constructor(public dataService: DataService) {}
+  constructor(public dataService: DataService, private alertCtrl: AlertController) {}
 
   closeCategoriesModal() {
     this.categoriesModal.dismiss();
@@ -97,7 +97,21 @@ export class Tab3Page {
     }
   }
 
-  clearData() {
-    console.log("Settings action: clearData");
+  async clearData() {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete Expenses?',
+      message: 'Are you sure you want to completely erase all expense history? This action cannot be undone!',
+      buttons: [
+        { text: 'Cancel', role: 'cancel' },
+        { 
+          text: 'Delete', 
+          role: 'destructive', 
+          handler: () => {
+            this.dataService.clearAllData();
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }
