@@ -169,7 +169,7 @@ export class Tab1Page {
   }
 
   getCurrencySymbol(code: string): string {
-    const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$' };
+    const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$', 'RON': 'lei' };
     return map[code] || code;
   }
 }

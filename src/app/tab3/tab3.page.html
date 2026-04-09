@@ -52,15 +52,14 @@
   <ion-list inset="true" class="glass-list">
     <ion-item lines="none">
       <ion-icon name="cash-outline" slot="start" color="success"></ion-icon>
-      <ion-select label="Default Currency" interface="action-sheet" 
-                  [value]="dataService.activeCurrency()" 
-                  (ionChange)="dataService.setActiveCurrency($event.detail.value)"
-                  style="font-weight: 600;">
+      <ion-select label="Default Currency" interface="action-sheet" [value]="dataService.activeCurrency()"
+        (ionChange)="dataService.setActiveCurrency($event.detail.value)" style="font-weight: 600;">
         <ion-select-option value="USD">USD ($)</ion-select-option>
         <ion-select-option value="EUR">EUR (€)</ion-select-option>
         <ion-select-option value="GBP">GBP (£)</ion-select-option>
         <ion-select-option value="JPY">JPY (¥)</ion-select-option>
         <ion-select-option value="CAD">CAD ($)</ion-select-option>
+        <ion-select-option value="RON">RON (lei)</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>

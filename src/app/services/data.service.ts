@@ -28,10 +28,10 @@ export class DataService {
 
   public activeCurrencySignal = signal<string>('USD');
   public readonly activeCurrency = this.activeCurrencySignal.asReadonly();
-  
+
   public activeCurrencySymbol = computed(() => {
     const code = this.activeCurrencySignal();
-    const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$' };
+    const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$', 'RON': 'lei' };
     return map[code] || code;
   });
 
@@ -60,7 +60,7 @@ export class DataService {
         }
       }
       this.categoriesSignal.set(loadedCategories);
-      
+
       const settingsRes = await db.query('SELECT value FROM settings WHERE key = ?', ['active_currency']);
       if (settingsRes.values && settingsRes.values.length > 0) {
         this.activeCurrencySignal.set(settingsRes.values[0].value);
@@ -85,7 +85,7 @@ export class DataService {
     const id = Math.random().toString(36).substr(2, 9);
     const currency = this.activeCurrencySignal();
     const newExpense: Expense = { ...expense, id, currency };
-    
+
     try {
       const db = this.dbService.getDb();
       await db.run(
@@ -161,10 +161,10 @@ export class DataService {
         await db.run('UPDATE expenses SET category = ? WHERE category = ?', [trimmedNew, oldCategory]);
         this.dbService.saveStore();
 
-        this.categoriesSignal.update(cats => 
+        this.categoriesSignal.update(cats =>
           cats.map(c => c.name === oldCategory ? { ...c, name: trimmedNew } : c)
         );
-        this.expensesSignal.update(expenses => 
+        this.expensesSignal.update(expenses =>
           expenses.map(e => e.category === oldCategory ? { ...e, category: trimmedNew } : e)
         );
       } catch (e) {
@@ -181,7 +181,7 @@ export class DataService {
         await db.run('INSERT INTO subcategories (parent_category, name) VALUES (?, ?)', [parentCategory, trimmed]);
         this.dbService.saveStore();
 
-        this.categoriesSignal.update(cats => 
+        this.categoriesSignal.update(cats =>
           cats.map(c => {
             if (c.name === parentCategory && !c.subcategories.includes(trimmed)) {
               return { ...c, subcategories: [...c.subcategories, trimmed] };
@@ -201,7 +201,7 @@ export class DataService {
       await db.run('DELETE FROM subcategories WHERE parent_category = ? AND name = ?', [parentCategory, subcategory]);
       this.dbService.saveStore();
 
-      this.categoriesSignal.update(cats => 
+      this.categoriesSignal.update(cats =>
         cats.map(c => {
           if (c.name === parentCategory) {
             return { ...c, subcategories: c.subcategories.filter(s => s !== subcategory) };
@@ -223,7 +223,7 @@ export class DataService {
         await db.run('UPDATE expenses SET subcategory = ? WHERE category = ? AND subcategory = ?', [trimmedNew, parentCategory, oldSub]);
         this.dbService.saveStore();
 
-        this.categoriesSignal.update(cats => 
+        this.categoriesSignal.update(cats =>
           cats.map(c => {
             if (c.name === parentCategory && !c.subcategories.includes(trimmedNew)) {
               return {
@@ -234,8 +234,8 @@ export class DataService {
             return c;
           })
         );
-        this.expensesSignal.update(expenses => 
-          expenses.map(e => (e.category === parentCategory && e.subcategory === oldSub) 
+        this.expensesSignal.update(expenses =>
+          expenses.map(e => (e.category === parentCategory && e.subcategory === oldSub)
             ? { ...e, subcategory: trimmedNew } : e)
         );
       } catch (e) {
@@ -251,14 +251,14 @@ export class DataService {
       acc[e.category] = (acc[e.category] || 0) + e.amount;
       return acc;
     }, {} as Record<string, number>);
-    
+
     return { total, byCategory };
   }
 
   async exportToCSV() {
     const expenses = this.expensesSignal();
     let csvStr = "id,amount,category,subcategory,description,date\n";
-    
+
     for (const e of expenses) {
       const id = e.id;
       const amount = e.amount.toString();
@@ -274,7 +274,7 @@ export class DataService {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `expense_tracker_backup_${new Date().toISOString().substring(0,10)}.csv`;
+    a.download = `expense_tracker_backup_${new Date().toISOString().substring(0, 10)}.csv`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -286,8 +286,8 @@ export class DataService {
     try {
       const text = await file.text();
       const lines = text.split('\n').filter(l => l.trim().length > 0);
-      if (lines.length <= 1) return; 
-      
+      if (lines.length <= 1) return;
+
       const parsedExpenses: Expense[] = [];
       const distinctCats = new Set<string>();
       const distinctSubs = new Set<string>();
@@ -297,17 +297,17 @@ export class DataService {
         let row = [];
         let inQuotes = false;
         let buf = '';
-        for(let j=0; j<line.length; j++) {
-            const char = line[j];
-            if(char === '"' && line[j+1] === '"') {
-                buf += '"'; j++;
-            } else if(char === '"') {
-                inQuotes = !inQuotes;
-            } else if(char === ',' && !inQuotes) {
-                row.push(buf); buf = '';
-            } else {
-                buf += char;
-            }
+        for (let j = 0; j < line.length; j++) {
+          const char = line[j];
+          if (char === '"' && line[j + 1] === '"') {
+            buf += '"'; j++;
+          } else if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            row.push(buf); buf = '';
+          } else {
+            buf += char;
+          }
         }
         row.push(buf);
 
@@ -319,7 +319,7 @@ export class DataService {
           const description = row[4];
           const date = row[5];
           const currency = row[6] || this.activeCurrencySignal();
-          
+
           parsedExpenses.push({ id, amount, category, subcategory, description, date, currency });
           if (category) distinctCats.add(category);
           if (category && subcategory) distinctSubs.add(`${category}|${subcategory}`);
@@ -340,17 +340,17 @@ export class DataService {
       }
 
       const expenseValues = parsedExpenses.map(e => [e.id, e.amount, e.category, e.subcategory || null, e.description, e.date, e.currency]);
-      
+
       if (expenseValues.length > 0) {
         await db.executeSet([{
           statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
           values: expenseValues
         }]);
       }
-      
+
       this.dbService.saveStore();
       await this.loadInitialData();
-      
+
     } catch (e) {
       console.error('Failed to parse or import CSV', e);
     }
