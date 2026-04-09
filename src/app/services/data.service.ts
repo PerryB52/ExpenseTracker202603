@@ -356,6 +356,120 @@ export class DataService {
     }
   }
 
+  async importExternalCSV(file: File) {
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const lines = text.split('\n').filter(l => l.trim().length > 0);
+      if (lines.length <= 1) return;
+
+      let headerLine = lines[0];
+      let headers: string[] = [];
+      let inQuotes = false;
+      let buf = '';
+      for (let j = 0; j < headerLine.length; j++) {
+        const char = headerLine[j];
+        if (char === '"' && headerLine[j + 1] === '"') {
+          buf += '"'; j++;
+        } else if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          headers.push(buf.trim().toLowerCase()); buf = '';
+        } else {
+          buf += char;
+        }
+      }
+      headers.push(buf.trim().toLowerCase());
+
+      const indexMap = {
+        amount: headers.indexOf('amount'),
+        category: headers.indexOf('category'),
+        subcategory: headers.indexOf('subcategory'),
+        description: headers.indexOf('description'),
+        date: headers.indexOf('date'),
+        currency: headers.indexOf('currency')
+      };
+
+      const parsedExpenses: Expense[] = [];
+      const distinctCats = new Set<string>();
+      const distinctSubs = new Set<string>();
+
+      for (let i = 1; i < lines.length; i++) {
+        let line = lines[i];
+        let row: string[] = [];
+        inQuotes = false;
+        buf = '';
+        for (let j = 0; j < line.length; j++) {
+          const char = line[j];
+          if (char === '"' && line[j + 1] === '"') {
+            buf += '"'; j++;
+          } else if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            row.push(buf); buf = '';
+          } else {
+            buf += char;
+          }
+        }
+        row.push(buf);
+
+        const id = Math.random().toString(36).substr(2, 9);
+        const amount = indexMap.amount >= 0 ? parseFloat(row[indexMap.amount]) || 0 : 0;
+        const category = indexMap.category >= 0 ? row[indexMap.category] : '';
+        const subcategory = indexMap.subcategory >= 0 ? row[indexMap.subcategory] : '';
+        const description = indexMap.description >= 0 ? row[indexMap.description] : '';
+        let rawDate = indexMap.date >= 0 && row[indexMap.date] ? row[indexMap.date].trim() : '';
+        let finalDateObj = new Date();
+        if (rawDate) {
+          const tryStandard = new Date(rawDate);
+          if (!isNaN(tryStandard.getTime())) {
+            finalDateObj = tryStandard;
+          } else {
+            const parts = rawDate.split(/[-/.]/);
+            if (parts.length === 3) {
+              const tryEuro = new Date(`${parts[2]}-${parts[1]}-${parts[0]}T12:00:00Z`);
+              if (!isNaN(tryEuro.getTime())) finalDateObj = tryEuro;
+            }
+          }
+        }
+        const date = finalDateObj.toISOString();
+        const currency = indexMap.currency >= 0 && row[indexMap.currency] ? row[indexMap.currency] : this.activeCurrencySignal();
+
+        parsedExpenses.push({ id, amount, category, subcategory, description, date, currency });
+        if (category) distinctCats.add(category);
+        if (category && subcategory) distinctSubs.add(`${category}|${subcategory}`);
+      }
+
+      const db = this.dbService.getDb();
+      await db.run('DELETE FROM expenses');
+      await db.run('DELETE FROM subcategories');
+      await db.run('DELETE FROM categories');
+
+      for (const cat of distinctCats) {
+        await db.run('INSERT INTO categories (name) VALUES (?)', [cat]);
+      }
+      for (const parentSub of distinctSubs) {
+        const [p, s] = parentSub.split('|');
+        await db.run('INSERT INTO subcategories (parent_category, name) VALUES (?, ?)', [p, s]);
+      }
+
+      const expenseValues = parsedExpenses.map(e => [e.id, e.amount, e.category, e.subcategory || null, e.description, e.date, e.currency]);
+
+      if (expenseValues.length > 0) {
+        await db.executeSet([{
+          statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
+          values: expenseValues
+        }]);
+      }
+
+      this.dbService.saveStore();
+      await this.loadInitialData();
+
+    } catch (e) {
+      console.error('Failed to parse or import External CSV', e);
+    }
+  }
+
   async clearAllData() {
     try {
       const db = this.dbService.getDb();

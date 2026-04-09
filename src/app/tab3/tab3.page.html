@@ -84,6 +84,15 @@
     </ion-item>
     <input type="file" #fileInput (change)="importCSV($event)" accept=".csv" style="display: none;">
 
+    <ion-item button lines="full" (click)="externalFileInput.click()">
+      <ion-icon name="cloud-upload-outline" slot="start" color="secondary"></ion-icon>
+      <ion-label>
+        <h2>Import External CSV</h2>
+        <p>Import expenses from other apps</p>
+      </ion-label>
+    </ion-item>
+    <input type="file" #externalFileInput (change)="importExternalCSV($event)" accept=".csv" style="display: none;">
+
     <ion-item button lines="none" (click)="clearData()">
       <ion-icon name="trash-outline" slot="start" color="danger"></ion-icon>
       <ion-label color="danger">

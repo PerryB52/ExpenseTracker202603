@@ -97,6 +97,14 @@ export class Tab3Page {
     }
   }
 
+  async importExternalCSV(event: any) {
+    const file = event.target.files?.[0];
+    if (file) {
+      await this.dataService.importExternalCSV(file);
+      event.target.value = ''; 
+    }
+  }
+
   async clearData() {
     const alert = await this.alertCtrl.create({
       header: 'Delete Expenses?',
