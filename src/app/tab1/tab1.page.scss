@@ -10,12 +10,12 @@
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   border-radius: 16px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  margin-top: 6px;
+  margin-top: 8px;
   margin-bottom: 80px;
   /* Leave space for FAB */
-  margin-inline: 6px !important;
+  margin-inline: 8px !important;
 
   ion-item {
     --background: transparent;
@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
-  
+
   .year-text {
     margin: 0;
     font-size: 1.4rem;
@@ -57,7 +57,7 @@
     width: 100%;
     margin: 0;
     --border-radius: 8px;
-    
+
     &.selected {
       font-weight: 800;
       color: var(--ion-color-danger);
@@ -68,7 +68,7 @@
 .category-section {
   margin-top: 16px;
   padding: 0 16px 20px;
-  
+
   .section-title {
     display: block;
     font-size: 0.9rem;
@@ -83,13 +83,13 @@
   height: 240px;
   background: white;
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
 
   .master-pane {
     flex: 1;
     background: #f8f9fa;
-    border-right: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
     overflow-y: auto;
   }
 
@@ -104,7 +104,7 @@
     font-size: 0.95rem;
     font-weight: 500;
     color: #444;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     cursor: pointer;
 
     &.selected {

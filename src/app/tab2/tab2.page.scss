@@ -13,7 +13,7 @@
   padding: 24px 16px 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-bottom: 24px;
-  margin-inline: 2px !important;
+  margin-inline: -4px !important;
 }
 
 .bars-container {
@@ -81,19 +81,19 @@
   width: 100%;
   height: 100%;
   overflow: visible;
-  filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.1));
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.1));
 }
 
 
 .glass-list {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(6px);
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow: 0 8px 16px 0 rgba(31, 38, 135, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   margin-top: 0;
   margin-bottom: 12px;
-  margin-inline: 2px !important;
+  margin-inline: -4px !important;
 
   ion-item {
     --background: transparent;
@@ -106,7 +106,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
-  
+
   .year-text {
     margin: 0;
     font-size: 1.4rem;
@@ -136,7 +136,7 @@
     width: 100%;
     margin: 0;
     --border-radius: 8px;
-    
+
     &.selected {
       font-weight: 800;
       color: var(--ion-color-danger);
@@ -147,7 +147,7 @@
 .category-total-card {
   text-align: center;
   padding: 30px 16px;
-  
+
   h4 {
     color: var(--ion-color-medium);
     margin: 0 0 8px 0;

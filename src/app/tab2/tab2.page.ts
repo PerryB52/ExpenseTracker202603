@@ -28,7 +28,7 @@ function getMonday(d: Date): Date {
 })
 export class Tab2Page {
   groupingType = signal<'week' | 'month' | 'year'>('month');
-  chartType = signal<'bar' | 'pie'>('bar');
+  chartType = signal<'bar' | 'pie'>('pie');
   
   @ViewChild('customYearPicker') customYearPicker!: IonModal;
   @ViewChild('customMonthPicker') customMonthPicker!: IonModal;

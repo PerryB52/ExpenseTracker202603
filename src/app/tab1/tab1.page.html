@@ -45,7 +45,7 @@
 
       <ion-item-sliding *ngFor="let expense of group.expenses">
         <ion-item lines="full" detail="false">
-          <ion-icon name="receipt-outline" slot="start" color="tertiary"></ion-icon>
+          <ion-icon name="journal" slot="start" color="medium"></ion-icon>
           <ion-label>
             <h2><b>{{ expense.description || (expense.subcategory ? expense.category + ' > ' + expense.subcategory :
                 expense.category) }}</b></h2>
