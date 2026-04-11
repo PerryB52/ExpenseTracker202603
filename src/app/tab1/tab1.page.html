@@ -44,7 +44,7 @@
       </ion-item-divider>
 
       <ion-item-sliding *ngFor="let expense of group.expenses">
-        <ion-item lines="full" detail="false">
+        <ion-item lines="full" detail="false" button="true" (click)="openEditModal(expense)">
           <!-- <ion-icon name="journal" slot="start" color="medium"></ion-icon> -->
           <ion-label>
             <h2><b>{{ expense.description || (expense.subcategory ? expense.category + ' > ' + expense.subcategory :
