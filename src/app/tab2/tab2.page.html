@@ -91,7 +91,9 @@
 
       <ion-item *ngFor="let cat of group.categories; let i = index" lines="full" button="true"
         (click)="openCategoryDetails(cat.category)">
-        <ion-icon name="pie-chart" slot="start" [style.color]="getCategoryColor(i)"></ion-icon>
+        <div slot="start" class="percent-badge" [style.background-color]="getCategoryColor(i)">
+          {{ cat.percent }}%
+        </div>
         <ion-label>{{ cat.category }}</ion-label>
         <ion-note slot="end" color="medium">{{ dataService.activeCurrencySymbol() }}{{ cat.amount | number:'1.2-2'
           }}</ion-note>

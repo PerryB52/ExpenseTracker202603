@@ -230,10 +230,15 @@ export class Tab2Page {
     });
 
     const entries = Object.keys(groups).map(k => {
-      const catEntries = Object.keys(groups[k].categoriesMap).map(c => ({
-        category: c,
-        amount: groups[k].categoriesMap[c]
-      })).sort((a, b) => b.amount - a.amount);
+      const catEntries = Object.keys(groups[k].categoriesMap).map(c => {
+        const amount = groups[k].categoriesMap[c];
+        const percent = Math.round((amount / groups[k].total) * 100);
+        return {
+          category: c,
+          amount: amount,
+          percent: percent
+        };
+      }).sort((a, b) => b.amount - a.amount);
       
       return {
         label: k,

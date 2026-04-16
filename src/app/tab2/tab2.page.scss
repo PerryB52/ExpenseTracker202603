@@ -180,3 +180,15 @@
     border-left: 3px solid var(--ion-color-primary);
   }
 }
+
+.percent-badge {
+  color: #333333;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  min-width: 44px;
+  text-align: center;
+  margin-right: 16px;
+  display: inline-block;
+}
