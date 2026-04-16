@@ -156,9 +156,10 @@ export class DataService {
     if (trimmedNew && oldCategory !== trimmedNew && !this.categoriesSignal().some(c => c.name === trimmedNew)) {
       try {
         const db = this.dbService.getDb();
-        await db.run('UPDATE categories SET name = ? WHERE name = ?', [trimmedNew, oldCategory]);
+        await db.run('INSERT INTO categories (name) VALUES (?)', [trimmedNew]);
         await db.run('UPDATE subcategories SET parent_category = ? WHERE parent_category = ?', [trimmedNew, oldCategory]);
         await db.run('UPDATE expenses SET category = ? WHERE category = ?', [trimmedNew, oldCategory]);
+        await db.run('DELETE FROM categories WHERE name = ?', [oldCategory]);
         this.dbService.saveStore();
 
         this.categoriesSignal.update(cats =>
