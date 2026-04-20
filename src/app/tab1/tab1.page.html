@@ -45,16 +45,18 @@
 
       <ion-item-sliding *ngFor="let expense of group.expenses">
         <ion-item lines="full" detail="false" button="true" (click)="openEditModal(expense)">
-          <!-- <ion-icon name="journal" slot="start" color="medium"></ion-icon> -->
-          <ion-label>
-            <h2><b>{{ expense.description || (expense.subcategory ? expense.category + ' > ' + expense.subcategory :
-                expense.category) }}</b></h2>
-            <p>{{ expense.category }}{{ expense.subcategory ? ' > ' + expense.subcategory : '' }} • {{ expense.date |
-              date:'shortTime' }}</p>
-          </ion-label>
-          <ion-note slot="end" color="danger">
-            <b>-{{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}</b>
-          </ion-note>
+          <div class="expense-item-grid">
+            <div class="col-category">
+              <span class="cat-text">{{ expense.category }}</span>
+              <span class="subcat-text" *ngIf="expense.subcategory">{{ expense.subcategory }}</span>
+            </div>
+            <div class="col-description">
+              {{ expense.description }}
+            </div>
+            <div class="col-amount">
+              {{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}
+            </div>
+          </div>
         </ion-item>
 
         <ion-item-options side="end">
@@ -114,7 +116,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Description</ion-label>
-          <ion-input type="text" [(ngModel)]="newExpense.description" placeholder="Optional"></ion-input>
+          <ion-input type="text" [(ngModel)]="newExpense.description" placeholder="Optional" maxlength="60"></ion-input>
         </ion-item>
 
         <div class="category-section">
