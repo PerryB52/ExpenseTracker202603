@@ -38,9 +38,9 @@
   <ion-list inset="true" class="glass-list">
     <ion-item-group *ngFor="let group of groupedExpenses()">
       <ion-item-divider color="light">
-        <ion-label><b>{{ group.date | date:'mediumDate' }}</b></ion-label>
-        <ion-note slot="end" color="primary"><b>Total: {{ dataService.activeCurrencySymbol() }}{{ group.total |
-            number:'1.2-2' }}</b></ion-note>
+        <ion-label class="day-header-date"><b>{{ group.date | date:'mediumDate' }}</b></ion-label>
+        <ion-note slot="end" color="primary" class="day-header-total"><b>{{ dataService.activeCurrencySymbol() }}{{
+            group.total | number:'1.2-2' }}</b></ion-note>
       </ion-item-divider>
 
       <ion-item-sliding *ngFor="let expense of group.expenses">
