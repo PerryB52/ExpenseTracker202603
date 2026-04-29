@@ -260,14 +260,14 @@ export class Tab2Page {
     
     if (type === 'year') {
       const selected = this.selectedYear();
-      for (let i = 4; i >= 0; i--) {
+      for (let i = 5; i >= 0; i--) {
         periods.push((selected - i).toString());
       }
     } else if (type === 'month') {
       const [y, mStr] = this.selectedMonth().split('-');
       let year = parseInt(y);
       let month = parseInt(mStr);
-      for (let i = 4; i >= 0; i--) {
+      for (let i = 5; i >= 0; i--) {
         let curM = month - i;
         let curY = year;
         while (curM <= 0) {
@@ -278,7 +278,7 @@ export class Tab2Page {
       }
     } else if (type === 'week') {
       const selected = parseLocal(this.selectedWeekStart());
-      for (let i = 4; i >= 0; i--) {
+      for (let i = 5; i >= 0; i--) {
         const d = new Date(selected);
         d.setDate(d.getDate() - (i * 7));
         periods.push(formatLocal(d));
