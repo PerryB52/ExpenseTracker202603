@@ -32,28 +32,17 @@
     </ion-item>
 
     <ion-item button lines="full">
-      <ion-icon name="notifications-outline" slot="start" color="tertiary"></ion-icon>
-      <ion-label>
-        <h2>Notifications</h2>
-        <p>Alerts & Reminders</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item button lines="full">
       <ion-icon name="color-palette-outline" slot="start" color="secondary"></ion-icon>
       <ion-label>
         <h2>Appearance</h2>
         <p>Dark mode, Themes</p>
       </ion-label>
     </ion-item>
-  </ion-list>
 
-  <h3 class="ion-padding-start" style="color: #666; font-weight: 600;">Preferences</h3>
-  <ion-list inset="true" class="glass-list">
     <ion-item lines="none">
       <ion-icon name="cash-outline" slot="start" color="success"></ion-icon>
       <ion-select label="Default Currency" interface="action-sheet" [value]="dataService.activeCurrency()"
-        (ionChange)="dataService.setActiveCurrency($event.detail.value)" style="font-weight: 600;">
+        (ionChange)="dataService.setActiveCurrency($event.detail.value)">
         <ion-select-option value="USD">USD ($)</ion-select-option>
         <ion-select-option value="EUR">EUR (€)</ion-select-option>
         <ion-select-option value="GBP">GBP (£)</ion-select-option>
