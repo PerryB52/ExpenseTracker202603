@@ -1,5 +1,5846 @@
 [
   {
+    "id": "947",
+    "amount": 70.84,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-12-31T12:27:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "943",
+    "amount": 43.99,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-12-30T16:07:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "944",
+    "amount": 35.38,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-12-30T11:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "945",
+    "amount": 39.77,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-12-30T11:30:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "946",
+    "amount": 86.78,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-12-30T11:22:00.000Z"
+  },
+  {
+    "id": "940",
+    "amount": 94.27,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-12-29T17:30:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "941",
+    "amount": 37.83,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-12-29T13:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "942",
+    "amount": 32.39,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-12-29T09:40:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "939",
+    "amount": 86.28,
+    "category": "Shopping",
+    "description": "Weekly groceries",
+    "date": "2026-12-28T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "937",
+    "amount": 21.21,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-12-27T15:10:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "938",
+    "amount": 90.75,
+    "category": "Transport",
+    "description": "New shirt",
+    "date": "2026-12-27T12:55:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "935",
+    "amount": 50.64,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-12-26T19:11:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "936",
+    "amount": 52.41,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-12-26T09:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "931",
+    "amount": 76.13,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-12-25T21:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "932",
+    "amount": 20.59,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-12-25T20:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "933",
+    "amount": 23.63,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-12-25T20:01:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "934",
+    "amount": 26.69,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-12-25T14:50:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "930",
+    "amount": 8.33,
+    "category": "Shopping",
+    "description": "Lunch at work",
+    "date": "2026-12-24T13:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "929",
+    "amount": 35.26,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-12-23T09:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "925",
+    "amount": 40.74,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-12-22T19:28:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "926",
+    "amount": 48.39,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-12-22T18:12:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "927",
+    "amount": 70.57,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-12-22T13:32:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "928",
+    "amount": 84.57,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-12-22T11:10:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "922",
+    "amount": 36.18,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-12-21T21:20:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "923",
+    "amount": 93.49,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-12-21T20:55:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "924",
+    "amount": 48.72,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-12-21T11:32:00.000Z"
+  },
+  {
+    "id": "921",
+    "amount": 43.26,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-12-20T08:58:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "917",
+    "amount": 37.51,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-12-19T19:06:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "918",
+    "amount": 52.84,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-12-19T17:17:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "919",
+    "amount": 5.06,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-12-19T16:19:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "920",
+    "amount": 68.68,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-12-19T12:06:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "916",
+    "amount": 78.26,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-12-18T14:52:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "912",
+    "amount": 69.63,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-12-17T20:42:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "913",
+    "amount": 6.32,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-12-17T18:54:00.000Z"
+  },
+  {
+    "id": "914",
+    "amount": 6.58,
+    "category": "Food",
+    "description": "Utility bill",
+    "date": "2026-12-17T18:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "915",
+    "amount": 20.45,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-12-17T15:14:00.000Z"
+  },
+  {
+    "id": "908",
+    "amount": 70.8,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-12-16T21:37:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "909",
+    "amount": 36.45,
+    "category": "Other",
+    "description": "Weekly groceries",
+    "date": "2026-12-16T19:25:00.000Z"
+  },
+  {
+    "id": "910",
+    "amount": 20.42,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-12-16T15:47:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "911",
+    "amount": 46.98,
+    "category": "Entertainment",
+    "description": "Lunch at work",
+    "date": "2026-12-16T15:37:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "905",
+    "amount": 7.71,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-12-15T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "906",
+    "amount": 36.4,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2026-12-15T15:57:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "907",
+    "amount": 56.35,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-12-15T12:07:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "903",
+    "amount": 67.09,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-12-14T16:49:00.000Z"
+  },
+  {
+    "id": "904",
+    "amount": 60.48,
+    "category": "Utilities",
+    "description": "Snacks",
+    "date": "2026-12-14T08:46:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "901",
+    "amount": 18.11,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-12-13T20:07:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "902",
+    "amount": 66.36,
+    "category": "Utilities",
+    "description": "Morning coffee",
+    "date": "2026-12-13T12:20:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "897",
+    "amount": 50.68,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-12-12T21:28:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "898",
+    "amount": 70.54,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-12-12T20:50:00.000Z"
+  },
+  {
+    "id": "899",
+    "amount": 40.81,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-12-12T14:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "900",
+    "amount": 14.8,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-12-12T12:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "896",
+    "amount": 22,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-12-11T09:50:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "894",
+    "amount": 68.81,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-12-10T18:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "895",
+    "amount": 50.87,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-12-10T09:06:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "891",
+    "amount": 15.22,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-12-09T21:51:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "892",
+    "amount": 47.29,
+    "category": "Utilities",
+    "description": "Train ticket",
+    "date": "2026-12-09T21:13:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "893",
+    "amount": 78.46,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-12-09T20:54:00.000Z"
+  },
+  {
+    "id": "888",
+    "amount": 55.08,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-12-08T16:53:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "889",
+    "amount": 74.15,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-12-08T15:41:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "890",
+    "amount": 56.21,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-12-08T14:22:00.000Z"
+  },
+  {
+    "id": "884",
+    "amount": 12.01,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-12-07T13:47:00.000Z"
+  },
+  {
+    "id": "885",
+    "amount": 18.07,
+    "category": "Transport",
+    "description": "Train ticket",
+    "date": "2026-12-07T13:26:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "886",
+    "amount": 35.94,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-12-07T11:29:00.000Z"
+  },
+  {
+    "id": "887",
+    "amount": 36.66,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-12-07T10:12:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "881",
+    "amount": 8.61,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-12-06T21:14:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "882",
+    "amount": 11.56,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-12-06T20:45:00.000Z"
+  },
+  {
+    "id": "883",
+    "amount": 89.48,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-12-06T15:39:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "878",
+    "amount": 40.19,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-12-05T21:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "879",
+    "amount": 74.49,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-12-05T20:33:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "880",
+    "amount": 40.87,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-12-05T13:36:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "877",
+    "amount": 73.5,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-12-04T18:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "874",
+    "amount": 44.57,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-12-03T19:05:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "875",
+    "amount": 72.98,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-12-03T18:28:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "876",
+    "amount": 20.31,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-12-03T08:15:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "873",
+    "amount": 9.13,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-12-02T17:23:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "869",
+    "amount": 47.31,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-12-01T21:15:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "870",
+    "amount": 91.04,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-12-01T12:30:00.000Z"
+  },
+  {
+    "id": "871",
+    "amount": 83.95,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-12-01T11:14:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "872",
+    "amount": 76.77,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-12-01T09:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "866",
+    "amount": 23.08,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-11-30T21:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "867",
+    "amount": 12.16,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-11-30T19:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "868",
+    "amount": 28.52,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-11-30T13:57:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "862",
+    "amount": 13.47,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-11-29T21:35:00.000Z"
+  },
+  {
+    "id": "863",
+    "amount": 28.34,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-11-29T13:54:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "864",
+    "amount": 42.66,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-11-29T12:02:00.000Z"
+  },
+  {
+    "id": "865",
+    "amount": 70.74,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-11-29T08:06:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "860",
+    "amount": 38.03,
+    "category": "Food",
+    "description": "Movie night",
+    "date": "2026-11-28T13:35:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "861",
+    "amount": 63.33,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-11-28T11:32:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "858",
+    "amount": 6.31,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-11-27T20:32:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "859",
+    "amount": 56.74,
+    "category": "Entertainment",
+    "description": "New shirt",
+    "date": "2026-11-27T13:21:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "854",
+    "amount": 44.04,
+    "category": "Utilities",
+    "description": "Utility bill",
+    "date": "2026-11-26T19:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "855",
+    "amount": 76.48,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-11-26T15:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "856",
+    "amount": 88.87,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-11-26T12:24:00.000Z"
+  },
+  {
+    "id": "857",
+    "amount": 41.39,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-11-26T09:16:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "851",
+    "amount": 41.74,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-11-25T21:38:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "852",
+    "amount": 29.64,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-11-25T18:17:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "853",
+    "amount": 62.71,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-11-25T16:29:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "849",
+    "amount": 16.4,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-11-24T19:11:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "850",
+    "amount": 65.39,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-11-24T08:02:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "847",
+    "amount": 57.95,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-11-23T18:42:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "848",
+    "amount": 86.25,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-11-23T11:40:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "845",
+    "amount": 65.51,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-11-22T17:17:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "846",
+    "amount": 36.58,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-11-22T16:00:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "841",
+    "amount": 15.53,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-11-21T21:54:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "842",
+    "amount": 65.2,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-11-21T21:14:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "843",
+    "amount": 92.71,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-11-21T19:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "844",
+    "amount": 55.32,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-11-21T12:17:00.000Z"
+  },
+  {
+    "id": "839",
+    "amount": 22.45,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-11-20T17:59:00.000Z"
+  },
+  {
+    "id": "840",
+    "amount": 12.36,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-11-20T14:34:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "835",
+    "amount": 93.98,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-11-19T15:51:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "836",
+    "amount": 48.04,
+    "category": "Other",
+    "description": "Gym membership",
+    "date": "2026-11-19T14:37:00.000Z"
+  },
+  {
+    "id": "837",
+    "amount": 33.93,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-11-19T13:05:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "838",
+    "amount": 17.46,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-11-19T12:38:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "833",
+    "amount": 82.71,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-11-18T21:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "834",
+    "amount": 26.23,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-11-18T21:27:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "829",
+    "amount": 77.76,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-11-17T21:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "830",
+    "amount": 49.53,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-11-17T16:45:00.000Z"
+  },
+  {
+    "id": "831",
+    "amount": 43.5,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-11-17T16:00:00.000Z"
+  },
+  {
+    "id": "832",
+    "amount": 25.64,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-11-17T13:20:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "826",
+    "amount": 10.38,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-11-16T17:21:00.000Z"
+  },
+  {
+    "id": "827",
+    "amount": 52.77,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-11-16T13:49:00.000Z"
+  },
+  {
+    "id": "828",
+    "amount": 20.19,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-11-16T10:34:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "822",
+    "amount": 58.81,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-11-15T14:14:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "823",
+    "amount": 8.83,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-11-15T11:25:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "824",
+    "amount": 46.51,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-11-15T09:55:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "825",
+    "amount": 70.2,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-11-15T09:51:00.000Z"
+  },
+  {
+    "id": "818",
+    "amount": 56.04,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-11-14T20:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "819",
+    "amount": 78.59,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-11-14T19:48:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "820",
+    "amount": 57.5,
+    "category": "Entertainment",
+    "description": "Weekly groceries",
+    "date": "2026-11-14T16:25:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "821",
+    "amount": 81.01,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-11-14T15:13:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "815",
+    "amount": 59.11,
+    "category": "Food",
+    "description": "Uber ride",
+    "date": "2026-11-13T21:43:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "816",
+    "amount": 62.6,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-11-13T18:27:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "817",
+    "amount": 23.26,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-11-13T11:05:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "814",
+    "amount": 70.21,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-11-12T11:22:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "812",
+    "amount": 76.44,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-11-11T21:14:00.000Z"
+  },
+  {
+    "id": "813",
+    "amount": 16.27,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-11-11T12:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "811",
+    "amount": 53.58,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-11-10T09:40:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "808",
+    "amount": 54.36,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-11-09T21:41:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "809",
+    "amount": 9.94,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-11-09T19:05:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "810",
+    "amount": 72.33,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-11-09T09:20:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "807",
+    "amount": 42.22,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-11-08T21:05:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "806",
+    "amount": 88.21,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-11-07T11:33:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "802",
+    "amount": 86.56,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-11-06T19:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "803",
+    "amount": 63.01,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-11-06T19:23:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "804",
+    "amount": 50.02,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-11-06T14:30:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "805",
+    "amount": 76.17,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-11-06T08:24:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "799",
+    "amount": 51.55,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-11-05T21:57:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "800",
+    "amount": 8.54,
+    "category": "Other",
+    "description": "Snacks",
+    "date": "2026-11-05T17:50:00.000Z"
+  },
+  {
+    "id": "801",
+    "amount": 54.54,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-11-05T09:57:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "795",
+    "amount": 30.45,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-11-04T17:00:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "796",
+    "amount": 8.82,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-11-04T14:39:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "797",
+    "amount": 45.74,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-11-04T13:38:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "798",
+    "amount": 67.12,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-11-04T13:16:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "793",
+    "amount": 18.63,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-11-03T12:12:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "794",
+    "amount": 80.08,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-11-03T08:19:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "792",
+    "amount": 23.76,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-11-02T14:06:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "791",
+    "amount": 70.84,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-11-01T12:27:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "787",
+    "amount": 43.99,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-10-31T16:07:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "788",
+    "amount": 35.38,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-10-31T11:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "789",
+    "amount": 39.77,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-10-31T11:30:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "790",
+    "amount": 86.78,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-10-31T11:22:00.000Z"
+  },
+  {
+    "id": "784",
+    "amount": 94.27,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-10-30T17:30:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "785",
+    "amount": 37.83,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-10-30T13:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "786",
+    "amount": 32.39,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-10-30T09:40:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "783",
+    "amount": 86.28,
+    "category": "Shopping",
+    "description": "Weekly groceries",
+    "date": "2026-10-29T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "781",
+    "amount": 21.21,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-10-28T15:10:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "782",
+    "amount": 90.75,
+    "category": "Transport",
+    "description": "New shirt",
+    "date": "2026-10-28T12:55:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "779",
+    "amount": 50.64,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-10-27T19:11:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "780",
+    "amount": 52.41,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-10-27T09:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "775",
+    "amount": 76.13,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-10-26T21:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "776",
+    "amount": 20.59,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-10-26T20:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "777",
+    "amount": 23.63,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-10-26T20:01:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "778",
+    "amount": 26.69,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-10-26T14:50:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "774",
+    "amount": 8.33,
+    "category": "Shopping",
+    "description": "Lunch at work",
+    "date": "2026-10-25T13:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "773",
+    "amount": 35.26,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-10-24T09:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "769",
+    "amount": 40.74,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-10-23T19:28:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "770",
+    "amount": 48.39,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-10-23T18:12:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "771",
+    "amount": 70.57,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-10-23T13:32:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "772",
+    "amount": 84.57,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-10-23T11:10:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "766",
+    "amount": 36.18,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-10-22T21:20:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "767",
+    "amount": 93.49,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-10-22T20:55:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "768",
+    "amount": 48.72,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-10-22T11:32:00.000Z"
+  },
+  {
+    "id": "765",
+    "amount": 43.26,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-10-21T08:58:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "761",
+    "amount": 37.51,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-10-20T19:06:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "762",
+    "amount": 52.84,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-10-20T17:17:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "763",
+    "amount": 5.06,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-10-20T16:19:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "764",
+    "amount": 68.68,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-10-20T12:06:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "760",
+    "amount": 78.26,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-10-19T14:52:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "756",
+    "amount": 69.63,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-10-18T20:42:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "757",
+    "amount": 6.32,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-10-18T18:54:00.000Z"
+  },
+  {
+    "id": "758",
+    "amount": 6.58,
+    "category": "Food",
+    "description": "Utility bill",
+    "date": "2026-10-18T18:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "759",
+    "amount": 20.45,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-10-18T15:14:00.000Z"
+  },
+  {
+    "id": "752",
+    "amount": 70.8,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-10-17T21:37:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "753",
+    "amount": 36.45,
+    "category": "Other",
+    "description": "Weekly groceries",
+    "date": "2026-10-17T19:25:00.000Z"
+  },
+  {
+    "id": "754",
+    "amount": 20.42,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-10-17T15:47:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "755",
+    "amount": 46.98,
+    "category": "Entertainment",
+    "description": "Lunch at work",
+    "date": "2026-10-17T15:37:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "749",
+    "amount": 7.71,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-10-16T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "750",
+    "amount": 36.4,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2026-10-16T15:57:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "751",
+    "amount": 56.35,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-10-16T12:07:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "747",
+    "amount": 67.09,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-10-15T16:49:00.000Z"
+  },
+  {
+    "id": "748",
+    "amount": 60.48,
+    "category": "Utilities",
+    "description": "Snacks",
+    "date": "2026-10-15T08:46:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "745",
+    "amount": 18.11,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-10-14T20:07:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "746",
+    "amount": 66.36,
+    "category": "Utilities",
+    "description": "Morning coffee",
+    "date": "2026-10-14T12:20:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "741",
+    "amount": 50.68,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-10-13T21:28:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "742",
+    "amount": 70.54,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-10-13T20:50:00.000Z"
+  },
+  {
+    "id": "743",
+    "amount": 40.81,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-10-13T14:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "744",
+    "amount": 14.8,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-10-13T12:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "740",
+    "amount": 22,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-10-12T09:50:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "738",
+    "amount": 68.81,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-10-11T18:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "739",
+    "amount": 50.87,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-10-11T09:06:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "735",
+    "amount": 15.22,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-10-10T21:51:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "736",
+    "amount": 47.29,
+    "category": "Utilities",
+    "description": "Train ticket",
+    "date": "2026-10-10T21:13:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "737",
+    "amount": 78.46,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-10-10T20:54:00.000Z"
+  },
+  {
+    "id": "732",
+    "amount": 55.08,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-10-09T16:53:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "733",
+    "amount": 74.15,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-10-09T15:41:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "734",
+    "amount": 56.21,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-10-09T14:22:00.000Z"
+  },
+  {
+    "id": "728",
+    "amount": 12.01,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-10-08T13:47:00.000Z"
+  },
+  {
+    "id": "729",
+    "amount": 18.07,
+    "category": "Transport",
+    "description": "Train ticket",
+    "date": "2026-10-08T13:26:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "730",
+    "amount": 35.94,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-10-08T11:29:00.000Z"
+  },
+  {
+    "id": "731",
+    "amount": 36.66,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-10-08T10:12:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "725",
+    "amount": 8.61,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-10-07T21:14:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "726",
+    "amount": 11.56,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-10-07T20:45:00.000Z"
+  },
+  {
+    "id": "727",
+    "amount": 89.48,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-10-07T15:39:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "722",
+    "amount": 40.19,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-10-06T21:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "723",
+    "amount": 74.49,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-10-06T20:33:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "724",
+    "amount": 40.87,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-10-06T13:36:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "721",
+    "amount": 73.5,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-10-05T18:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "718",
+    "amount": 44.57,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-10-04T19:05:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "719",
+    "amount": 72.98,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-10-04T18:28:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "720",
+    "amount": 20.31,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-10-04T08:15:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "717",
+    "amount": 9.13,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-10-03T17:23:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "713",
+    "amount": 47.31,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-10-02T21:15:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "714",
+    "amount": 91.04,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-10-02T12:30:00.000Z"
+  },
+  {
+    "id": "715",
+    "amount": 83.95,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-10-02T11:14:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "716",
+    "amount": 76.77,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-10-02T09:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "710",
+    "amount": 23.08,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-10-01T21:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "711",
+    "amount": 12.16,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-10-01T19:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "712",
+    "amount": 28.52,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-10-01T13:57:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "706",
+    "amount": 13.47,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-09-30T21:35:00.000Z"
+  },
+  {
+    "id": "707",
+    "amount": 28.34,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-09-30T13:54:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "708",
+    "amount": 42.66,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-09-30T12:02:00.000Z"
+  },
+  {
+    "id": "709",
+    "amount": 70.74,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-09-30T08:06:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "704",
+    "amount": 38.03,
+    "category": "Food",
+    "description": "Movie night",
+    "date": "2026-09-29T13:35:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "705",
+    "amount": 63.33,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-09-29T11:32:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "702",
+    "amount": 6.31,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-09-28T20:32:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "703",
+    "amount": 56.74,
+    "category": "Entertainment",
+    "description": "New shirt",
+    "date": "2026-09-28T13:21:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "698",
+    "amount": 44.04,
+    "category": "Utilities",
+    "description": "Utility bill",
+    "date": "2026-09-27T19:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "699",
+    "amount": 76.48,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-09-27T15:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "700",
+    "amount": 88.87,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-09-27T12:24:00.000Z"
+  },
+  {
+    "id": "701",
+    "amount": 41.39,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-09-27T09:16:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "695",
+    "amount": 41.74,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-09-26T21:38:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "696",
+    "amount": 29.64,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-09-26T18:17:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "697",
+    "amount": 62.71,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-09-26T16:29:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "693",
+    "amount": 16.4,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-09-25T19:11:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "694",
+    "amount": 65.39,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-09-25T08:02:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "691",
+    "amount": 57.95,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-09-24T18:42:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "692",
+    "amount": 86.25,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-09-24T11:40:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "689",
+    "amount": 65.51,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-09-23T17:17:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "690",
+    "amount": 36.58,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-09-23T16:00:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "685",
+    "amount": 15.53,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-09-22T21:54:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "686",
+    "amount": 65.2,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-09-22T21:14:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "687",
+    "amount": 92.71,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-09-22T19:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "688",
+    "amount": 55.32,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-09-22T12:17:00.000Z"
+  },
+  {
+    "id": "683",
+    "amount": 22.45,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-09-21T17:59:00.000Z"
+  },
+  {
+    "id": "684",
+    "amount": 12.36,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-09-21T14:34:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "679",
+    "amount": 93.98,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-09-20T15:51:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "680",
+    "amount": 48.04,
+    "category": "Other",
+    "description": "Gym membership",
+    "date": "2026-09-20T14:37:00.000Z"
+  },
+  {
+    "id": "681",
+    "amount": 33.93,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-09-20T13:05:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "682",
+    "amount": 17.46,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-09-20T12:38:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "677",
+    "amount": 82.71,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-09-19T21:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "678",
+    "amount": 26.23,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-09-19T21:27:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "673",
+    "amount": 77.76,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-09-18T21:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "674",
+    "amount": 49.53,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-09-18T16:45:00.000Z"
+  },
+  {
+    "id": "675",
+    "amount": 43.5,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-09-18T16:00:00.000Z"
+  },
+  {
+    "id": "676",
+    "amount": 25.64,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-09-18T13:20:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "670",
+    "amount": 10.38,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-09-17T17:21:00.000Z"
+  },
+  {
+    "id": "671",
+    "amount": 52.77,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-09-17T13:49:00.000Z"
+  },
+  {
+    "id": "672",
+    "amount": 20.19,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-09-17T10:34:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "666",
+    "amount": 58.81,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-09-16T14:14:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "667",
+    "amount": 8.83,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-09-16T11:25:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "668",
+    "amount": 46.51,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-09-16T09:55:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "669",
+    "amount": 70.2,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-09-16T09:51:00.000Z"
+  },
+  {
+    "id": "662",
+    "amount": 56.04,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-09-15T20:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "663",
+    "amount": 78.59,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-09-15T19:48:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "664",
+    "amount": 57.5,
+    "category": "Entertainment",
+    "description": "Weekly groceries",
+    "date": "2026-09-15T16:25:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "665",
+    "amount": 81.01,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-09-15T15:13:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "659",
+    "amount": 59.11,
+    "category": "Food",
+    "description": "Uber ride",
+    "date": "2026-09-14T21:43:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "660",
+    "amount": 62.6,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-09-14T18:27:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "661",
+    "amount": 23.26,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-09-14T11:05:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "658",
+    "amount": 70.21,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-09-13T11:22:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "656",
+    "amount": 76.44,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-09-12T21:14:00.000Z"
+  },
+  {
+    "id": "657",
+    "amount": 16.27,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-09-12T12:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "655",
+    "amount": 53.58,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-09-11T09:40:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "652",
+    "amount": 54.36,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-09-10T21:41:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "653",
+    "amount": 9.94,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-09-10T19:05:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "654",
+    "amount": 72.33,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-09-10T09:20:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "651",
+    "amount": 42.22,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-09-09T21:05:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "650",
+    "amount": 88.21,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-09-08T11:33:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "646",
+    "amount": 86.56,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-09-07T19:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "647",
+    "amount": 63.01,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-09-07T19:23:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "648",
+    "amount": 50.02,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-09-07T14:30:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "649",
+    "amount": 76.17,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-09-07T08:24:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "643",
+    "amount": 51.55,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-09-06T21:57:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "644",
+    "amount": 8.54,
+    "category": "Other",
+    "description": "Snacks",
+    "date": "2026-09-06T17:50:00.000Z"
+  },
+  {
+    "id": "645",
+    "amount": 54.54,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-09-06T09:57:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "639",
+    "amount": 30.45,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-09-05T17:00:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "640",
+    "amount": 8.82,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-09-05T14:39:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "641",
+    "amount": 45.74,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-09-05T13:38:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "642",
+    "amount": 67.12,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-09-05T13:16:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "637",
+    "amount": 18.63,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-09-04T12:12:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "638",
+    "amount": 80.08,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-09-04T08:19:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "636",
+    "amount": 23.76,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-09-03T14:06:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "635",
+    "amount": 70.84,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-09-02T12:27:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "631",
+    "amount": 43.99,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-09-01T16:07:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "632",
+    "amount": 35.38,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-09-01T11:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "633",
+    "amount": 39.77,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-09-01T11:30:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "634",
+    "amount": 86.78,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-09-01T11:22:00.000Z"
+  },
+  {
+    "id": "628",
+    "amount": 94.27,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-08-31T17:30:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "629",
+    "amount": 37.83,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-08-31T13:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "630",
+    "amount": 32.39,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-08-31T09:40:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "627",
+    "amount": 86.28,
+    "category": "Shopping",
+    "description": "Weekly groceries",
+    "date": "2026-08-30T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "625",
+    "amount": 21.21,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-08-29T15:10:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "626",
+    "amount": 90.75,
+    "category": "Transport",
+    "description": "New shirt",
+    "date": "2026-08-29T12:55:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "623",
+    "amount": 50.64,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-08-28T19:11:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "624",
+    "amount": 52.41,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-08-28T09:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "619",
+    "amount": 76.13,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-08-27T21:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "620",
+    "amount": 20.59,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-08-27T20:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "621",
+    "amount": 23.63,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-08-27T20:01:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "622",
+    "amount": 26.69,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-08-27T14:50:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "618",
+    "amount": 8.33,
+    "category": "Shopping",
+    "description": "Lunch at work",
+    "date": "2026-08-26T13:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "617",
+    "amount": 35.26,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-08-25T09:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "613",
+    "amount": 40.74,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-08-24T19:28:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "614",
+    "amount": 48.39,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-08-24T18:12:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "615",
+    "amount": 70.57,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-08-24T13:32:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "616",
+    "amount": 84.57,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-08-24T11:10:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "610",
+    "amount": 36.18,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-08-23T21:20:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "611",
+    "amount": 93.49,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-08-23T20:55:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "612",
+    "amount": 48.72,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-08-23T11:32:00.000Z"
+  },
+  {
+    "id": "609",
+    "amount": 43.26,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-08-22T08:58:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "605",
+    "amount": 37.51,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-08-21T19:06:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "606",
+    "amount": 52.84,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-08-21T17:17:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "607",
+    "amount": 5.06,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-08-21T16:19:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "608",
+    "amount": 68.68,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-08-21T12:06:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "604",
+    "amount": 78.26,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-08-20T14:52:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "600",
+    "amount": 69.63,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-08-19T20:42:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "601",
+    "amount": 6.32,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-08-19T18:54:00.000Z"
+  },
+  {
+    "id": "602",
+    "amount": 6.58,
+    "category": "Food",
+    "description": "Utility bill",
+    "date": "2026-08-19T18:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "603",
+    "amount": 20.45,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-08-19T15:14:00.000Z"
+  },
+  {
+    "id": "596",
+    "amount": 70.8,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-08-18T21:37:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "597",
+    "amount": 36.45,
+    "category": "Other",
+    "description": "Weekly groceries",
+    "date": "2026-08-18T19:25:00.000Z"
+  },
+  {
+    "id": "598",
+    "amount": 20.42,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-08-18T15:47:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "599",
+    "amount": 46.98,
+    "category": "Entertainment",
+    "description": "Lunch at work",
+    "date": "2026-08-18T15:37:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "593",
+    "amount": 7.71,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-08-17T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "594",
+    "amount": 36.4,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2026-08-17T15:57:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "595",
+    "amount": 56.35,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-08-17T12:07:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "591",
+    "amount": 67.09,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-08-16T16:49:00.000Z"
+  },
+  {
+    "id": "592",
+    "amount": 60.48,
+    "category": "Utilities",
+    "description": "Snacks",
+    "date": "2026-08-16T08:46:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "589",
+    "amount": 18.11,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-08-15T20:07:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "590",
+    "amount": 66.36,
+    "category": "Utilities",
+    "description": "Morning coffee",
+    "date": "2026-08-15T12:20:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "585",
+    "amount": 50.68,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-08-14T21:28:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "586",
+    "amount": 70.54,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-08-14T20:50:00.000Z"
+  },
+  {
+    "id": "587",
+    "amount": 40.81,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-08-14T14:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "588",
+    "amount": 14.8,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-08-14T12:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "584",
+    "amount": 22,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-08-13T09:50:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "582",
+    "amount": 68.81,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-08-12T18:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "583",
+    "amount": 50.87,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-08-12T09:06:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "579",
+    "amount": 15.22,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-08-11T21:51:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "580",
+    "amount": 47.29,
+    "category": "Utilities",
+    "description": "Train ticket",
+    "date": "2026-08-11T21:13:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "581",
+    "amount": 78.46,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-08-11T20:54:00.000Z"
+  },
+  {
+    "id": "576",
+    "amount": 55.08,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-08-10T16:53:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "577",
+    "amount": 74.15,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-08-10T15:41:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "578",
+    "amount": 56.21,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-08-10T14:22:00.000Z"
+  },
+  {
+    "id": "572",
+    "amount": 12.01,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-08-09T13:47:00.000Z"
+  },
+  {
+    "id": "573",
+    "amount": 18.07,
+    "category": "Transport",
+    "description": "Train ticket",
+    "date": "2026-08-09T13:26:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "574",
+    "amount": 35.94,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-08-09T11:29:00.000Z"
+  },
+  {
+    "id": "575",
+    "amount": 36.66,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-08-09T10:12:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "569",
+    "amount": 8.61,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-08-08T21:14:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "570",
+    "amount": 11.56,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-08-08T20:45:00.000Z"
+  },
+  {
+    "id": "571",
+    "amount": 89.48,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-08-08T15:39:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "566",
+    "amount": 40.19,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-08-07T21:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "567",
+    "amount": 74.49,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-08-07T20:33:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "568",
+    "amount": 40.87,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-08-07T13:36:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "565",
+    "amount": 73.5,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-08-06T18:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "562",
+    "amount": 44.57,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-08-05T19:05:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "563",
+    "amount": 72.98,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-08-05T18:28:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "564",
+    "amount": 20.31,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-08-05T08:15:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "561",
+    "amount": 9.13,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-08-04T17:23:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "557",
+    "amount": 47.31,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-08-03T21:15:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "558",
+    "amount": 91.04,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-08-03T12:30:00.000Z"
+  },
+  {
+    "id": "559",
+    "amount": 83.95,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-08-03T11:14:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "560",
+    "amount": 76.77,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-08-03T09:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "554",
+    "amount": 23.08,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-08-02T21:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "555",
+    "amount": 12.16,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-08-02T19:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "556",
+    "amount": 28.52,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-08-02T13:57:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "550",
+    "amount": 13.47,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-08-01T21:35:00.000Z"
+  },
+  {
+    "id": "551",
+    "amount": 28.34,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-08-01T13:54:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "552",
+    "amount": 42.66,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-08-01T12:02:00.000Z"
+  },
+  {
+    "id": "553",
+    "amount": 70.74,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-08-01T08:06:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "548",
+    "amount": 38.03,
+    "category": "Food",
+    "description": "Movie night",
+    "date": "2026-07-31T13:35:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "549",
+    "amount": 63.33,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-07-31T11:32:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "546",
+    "amount": 6.31,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-07-30T20:32:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "547",
+    "amount": 56.74,
+    "category": "Entertainment",
+    "description": "New shirt",
+    "date": "2026-07-30T13:21:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "542",
+    "amount": 44.04,
+    "category": "Utilities",
+    "description": "Utility bill",
+    "date": "2026-07-29T19:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "543",
+    "amount": 76.48,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-07-29T15:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "544",
+    "amount": 88.87,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-07-29T12:24:00.000Z"
+  },
+  {
+    "id": "545",
+    "amount": 41.39,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-07-29T09:16:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "539",
+    "amount": 41.74,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-07-28T21:38:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "540",
+    "amount": 29.64,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-07-28T18:17:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "541",
+    "amount": 62.71,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-07-28T16:29:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "537",
+    "amount": 16.4,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-07-27T19:11:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "538",
+    "amount": 65.39,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-07-27T08:02:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "535",
+    "amount": 57.95,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-07-26T18:42:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "536",
+    "amount": 86.25,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-07-26T11:40:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "533",
+    "amount": 65.51,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-07-25T17:17:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "534",
+    "amount": 36.58,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-07-25T16:00:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "529",
+    "amount": 15.53,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-07-24T21:54:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "530",
+    "amount": 65.2,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-07-24T21:14:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "531",
+    "amount": 92.71,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-07-24T19:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "532",
+    "amount": 55.32,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-07-24T12:17:00.000Z"
+  },
+  {
+    "id": "527",
+    "amount": 22.45,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-07-23T17:59:00.000Z"
+  },
+  {
+    "id": "528",
+    "amount": 12.36,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-07-23T14:34:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "523",
+    "amount": 93.98,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-07-22T15:51:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "524",
+    "amount": 48.04,
+    "category": "Other",
+    "description": "Gym membership",
+    "date": "2026-07-22T14:37:00.000Z"
+  },
+  {
+    "id": "525",
+    "amount": 33.93,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-07-22T13:05:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "526",
+    "amount": 17.46,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-07-22T12:38:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "521",
+    "amount": 82.71,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-07-21T21:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "522",
+    "amount": 26.23,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-07-21T21:27:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "517",
+    "amount": 77.76,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-07-20T21:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "518",
+    "amount": 49.53,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-07-20T16:45:00.000Z"
+  },
+  {
+    "id": "519",
+    "amount": 43.5,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-07-20T16:00:00.000Z"
+  },
+  {
+    "id": "520",
+    "amount": 25.64,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-07-20T13:20:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "514",
+    "amount": 10.38,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-07-19T17:21:00.000Z"
+  },
+  {
+    "id": "515",
+    "amount": 52.77,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-07-19T13:49:00.000Z"
+  },
+  {
+    "id": "516",
+    "amount": 20.19,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-07-19T10:34:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "510",
+    "amount": 58.81,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-07-18T14:14:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "511",
+    "amount": 8.83,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-07-18T11:25:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "512",
+    "amount": 46.51,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-07-18T09:55:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "513",
+    "amount": 70.2,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-07-18T09:51:00.000Z"
+  },
+  {
+    "id": "506",
+    "amount": 56.04,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-07-17T20:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "507",
+    "amount": 78.59,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-07-17T19:48:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "508",
+    "amount": 57.5,
+    "category": "Entertainment",
+    "description": "Weekly groceries",
+    "date": "2026-07-17T16:25:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "509",
+    "amount": 81.01,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-07-17T15:13:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "503",
+    "amount": 59.11,
+    "category": "Food",
+    "description": "Uber ride",
+    "date": "2026-07-16T21:43:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "504",
+    "amount": 62.6,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-07-16T18:27:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "505",
+    "amount": 23.26,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-07-16T11:05:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "502",
+    "amount": 70.21,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-07-15T11:22:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "500",
+    "amount": 76.44,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-07-14T21:14:00.000Z"
+  },
+  {
+    "id": "501",
+    "amount": 16.27,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-07-14T12:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "499",
+    "amount": 53.58,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-07-13T09:40:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "496",
+    "amount": 54.36,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-07-12T21:41:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "497",
+    "amount": 9.94,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-07-12T19:05:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "498",
+    "amount": 72.33,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-07-12T09:20:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "495",
+    "amount": 42.22,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-07-11T21:05:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "494",
+    "amount": 88.21,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-07-10T11:33:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "490",
+    "amount": 86.56,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-07-09T19:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "491",
+    "amount": 63.01,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-07-09T19:23:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "492",
+    "amount": 50.02,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-07-09T14:30:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "493",
+    "amount": 76.17,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-07-09T08:24:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "487",
+    "amount": 51.55,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-07-08T21:57:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "488",
+    "amount": 8.54,
+    "category": "Other",
+    "description": "Snacks",
+    "date": "2026-07-08T17:50:00.000Z"
+  },
+  {
+    "id": "489",
+    "amount": 54.54,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-07-08T09:57:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "483",
+    "amount": 30.45,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-07-07T17:00:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "484",
+    "amount": 8.82,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-07-07T14:39:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "485",
+    "amount": 45.74,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-07-07T13:38:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "486",
+    "amount": 67.12,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-07-07T13:16:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "481",
+    "amount": 18.63,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-07-06T12:12:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "482",
+    "amount": 80.08,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-07-06T08:19:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "480",
+    "amount": 23.76,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-07-05T14:06:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "479",
+    "amount": 70.84,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-07-04T12:27:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "475",
+    "amount": 43.99,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-07-03T16:07:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "476",
+    "amount": 35.38,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-07-03T11:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "477",
+    "amount": 39.77,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-07-03T11:30:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "478",
+    "amount": 86.78,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-07-03T11:22:00.000Z"
+  },
+  {
+    "id": "472",
+    "amount": 94.27,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-07-02T17:30:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "473",
+    "amount": 37.83,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-07-02T13:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "474",
+    "amount": 32.39,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-07-02T09:40:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "471",
+    "amount": 86.28,
+    "category": "Shopping",
+    "description": "Weekly groceries",
+    "date": "2026-07-01T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "469",
+    "amount": 21.21,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-06-30T15:10:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "470",
+    "amount": 90.75,
+    "category": "Transport",
+    "description": "New shirt",
+    "date": "2026-06-30T12:55:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "467",
+    "amount": 50.64,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-06-29T19:11:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "468",
+    "amount": 52.41,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-06-29T09:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "463",
+    "amount": 76.13,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-06-28T21:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "464",
+    "amount": 20.59,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-06-28T20:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "465",
+    "amount": 23.63,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-06-28T20:01:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "466",
+    "amount": 26.69,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-06-28T14:50:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "462",
+    "amount": 8.33,
+    "category": "Shopping",
+    "description": "Lunch at work",
+    "date": "2026-06-27T13:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "461",
+    "amount": 35.26,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-06-26T09:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "457",
+    "amount": 40.74,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-06-25T19:28:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "458",
+    "amount": 48.39,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-06-25T18:12:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "459",
+    "amount": 70.57,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-06-25T13:32:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "460",
+    "amount": 84.57,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-06-25T11:10:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "454",
+    "amount": 36.18,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-06-24T21:20:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "455",
+    "amount": 93.49,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-06-24T20:55:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "456",
+    "amount": 48.72,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-06-24T11:32:00.000Z"
+  },
+  {
+    "id": "453",
+    "amount": 43.26,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-06-23T08:58:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "449",
+    "amount": 37.51,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-06-22T19:06:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "450",
+    "amount": 52.84,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-06-22T17:17:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "451",
+    "amount": 5.06,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-06-22T16:19:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "452",
+    "amount": 68.68,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-06-22T12:06:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "448",
+    "amount": 78.26,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-06-21T14:52:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "444",
+    "amount": 69.63,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-06-20T20:42:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "445",
+    "amount": 6.32,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-06-20T18:54:00.000Z"
+  },
+  {
+    "id": "446",
+    "amount": 6.58,
+    "category": "Food",
+    "description": "Utility bill",
+    "date": "2026-06-20T18:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "447",
+    "amount": 20.45,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-06-20T15:14:00.000Z"
+  },
+  {
+    "id": "440",
+    "amount": 70.8,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-06-19T21:37:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "441",
+    "amount": 36.45,
+    "category": "Other",
+    "description": "Weekly groceries",
+    "date": "2026-06-19T19:25:00.000Z"
+  },
+  {
+    "id": "442",
+    "amount": 20.42,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-06-19T15:47:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "443",
+    "amount": 46.98,
+    "category": "Entertainment",
+    "description": "Lunch at work",
+    "date": "2026-06-19T15:37:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "437",
+    "amount": 7.71,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-06-18T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "438",
+    "amount": 36.4,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2026-06-18T15:57:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "439",
+    "amount": 56.35,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-06-18T12:07:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "435",
+    "amount": 67.09,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-06-17T16:49:00.000Z"
+  },
+  {
+    "id": "436",
+    "amount": 60.48,
+    "category": "Utilities",
+    "description": "Snacks",
+    "date": "2026-06-17T08:46:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "433",
+    "amount": 18.11,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-06-16T20:07:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "434",
+    "amount": 66.36,
+    "category": "Utilities",
+    "description": "Morning coffee",
+    "date": "2026-06-16T12:20:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "429",
+    "amount": 50.68,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-06-15T21:28:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "430",
+    "amount": 70.54,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-06-15T20:50:00.000Z"
+  },
+  {
+    "id": "431",
+    "amount": 40.81,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-06-15T14:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "432",
+    "amount": 14.8,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-06-15T12:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "428",
+    "amount": 22,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-06-14T09:50:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "426",
+    "amount": 68.81,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-06-13T18:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "427",
+    "amount": 50.87,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-06-13T09:06:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "423",
+    "amount": 15.22,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-06-12T21:51:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "424",
+    "amount": 47.29,
+    "category": "Utilities",
+    "description": "Train ticket",
+    "date": "2026-06-12T21:13:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "425",
+    "amount": 78.46,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-06-12T20:54:00.000Z"
+  },
+  {
+    "id": "420",
+    "amount": 55.08,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-06-11T16:53:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "421",
+    "amount": 74.15,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-06-11T15:41:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "422",
+    "amount": 56.21,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-06-11T14:22:00.000Z"
+  },
+  {
+    "id": "416",
+    "amount": 12.01,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-06-10T13:47:00.000Z"
+  },
+  {
+    "id": "417",
+    "amount": 18.07,
+    "category": "Transport",
+    "description": "Train ticket",
+    "date": "2026-06-10T13:26:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "418",
+    "amount": 35.94,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-06-10T11:29:00.000Z"
+  },
+  {
+    "id": "419",
+    "amount": 36.66,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-06-10T10:12:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "413",
+    "amount": 8.61,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-06-09T21:14:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "414",
+    "amount": 11.56,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-06-09T20:45:00.000Z"
+  },
+  {
+    "id": "415",
+    "amount": 89.48,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-06-09T15:39:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "410",
+    "amount": 40.19,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-06-08T21:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "411",
+    "amount": 74.49,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-06-08T20:33:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "412",
+    "amount": 40.87,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-06-08T13:36:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "409",
+    "amount": 73.5,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-06-07T18:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "406",
+    "amount": 44.57,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-06-06T19:05:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "407",
+    "amount": 72.98,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-06-06T18:28:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "408",
+    "amount": 20.31,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-06-06T08:15:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "405",
+    "amount": 9.13,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-06-05T17:23:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "401",
+    "amount": 47.31,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-06-04T21:15:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "402",
+    "amount": 91.04,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-06-04T12:30:00.000Z"
+  },
+  {
+    "id": "403",
+    "amount": 83.95,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-06-04T11:14:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "404",
+    "amount": 76.77,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-06-04T09:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "398",
+    "amount": 23.08,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-06-03T21:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "399",
+    "amount": 12.16,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-06-03T19:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "400",
+    "amount": 28.52,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-06-03T13:57:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "394",
+    "amount": 13.47,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-06-02T21:35:00.000Z"
+  },
+  {
+    "id": "395",
+    "amount": 28.34,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-06-02T13:54:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "396",
+    "amount": 42.66,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-06-02T12:02:00.000Z"
+  },
+  {
+    "id": "397",
+    "amount": 70.74,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-06-02T08:06:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "392",
+    "amount": 38.03,
+    "category": "Food",
+    "description": "Movie night",
+    "date": "2026-06-01T13:35:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "393",
+    "amount": 63.33,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-06-01T11:32:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "390",
+    "amount": 6.31,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-05-31T20:32:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "391",
+    "amount": 56.74,
+    "category": "Entertainment",
+    "description": "New shirt",
+    "date": "2026-05-31T13:21:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "386",
+    "amount": 44.04,
+    "category": "Utilities",
+    "description": "Utility bill",
+    "date": "2026-05-30T19:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "387",
+    "amount": 76.48,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-05-30T15:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "388",
+    "amount": 88.87,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-05-30T12:24:00.000Z"
+  },
+  {
+    "id": "389",
+    "amount": 41.39,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-05-30T09:16:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "383",
+    "amount": 41.74,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-05-29T21:38:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "384",
+    "amount": 29.64,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-05-29T18:17:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "385",
+    "amount": 62.71,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-05-29T16:29:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "381",
+    "amount": 16.4,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-05-28T19:11:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "382",
+    "amount": 65.39,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-05-28T08:02:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "379",
+    "amount": 57.95,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-05-27T18:42:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "380",
+    "amount": 86.25,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-05-27T11:40:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "377",
+    "amount": 65.51,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-05-26T17:17:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "378",
+    "amount": 36.58,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-05-26T16:00:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "373",
+    "amount": 15.53,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-05-25T21:54:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "374",
+    "amount": 65.2,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-05-25T21:14:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "375",
+    "amount": 92.71,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-05-25T19:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "376",
+    "amount": 55.32,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-05-25T12:17:00.000Z"
+  },
+  {
+    "id": "371",
+    "amount": 22.45,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-05-24T17:59:00.000Z"
+  },
+  {
+    "id": "372",
+    "amount": 12.36,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-05-24T14:34:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "367",
+    "amount": 93.98,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-05-23T15:51:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "368",
+    "amount": 48.04,
+    "category": "Other",
+    "description": "Gym membership",
+    "date": "2026-05-23T14:37:00.000Z"
+  },
+  {
+    "id": "369",
+    "amount": 33.93,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-05-23T13:05:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "370",
+    "amount": 17.46,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-05-23T12:38:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "365",
+    "amount": 82.71,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-05-22T21:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "366",
+    "amount": 26.23,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-05-22T21:27:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "361",
+    "amount": 77.76,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-05-21T21:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "362",
+    "amount": 49.53,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-05-21T16:45:00.000Z"
+  },
+  {
+    "id": "363",
+    "amount": 43.5,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-05-21T16:00:00.000Z"
+  },
+  {
+    "id": "364",
+    "amount": 25.64,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-05-21T13:20:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "358",
+    "amount": 10.38,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-05-20T17:21:00.000Z"
+  },
+  {
+    "id": "359",
+    "amount": 52.77,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-05-20T13:49:00.000Z"
+  },
+  {
+    "id": "360",
+    "amount": 20.19,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-05-20T10:34:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "354",
+    "amount": 58.81,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-05-19T14:14:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "355",
+    "amount": 8.83,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-05-19T11:25:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "356",
+    "amount": 46.51,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-05-19T09:55:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "357",
+    "amount": 70.2,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-05-19T09:51:00.000Z"
+  },
+  {
+    "id": "350",
+    "amount": 56.04,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-05-18T20:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "351",
+    "amount": 78.59,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-05-18T19:48:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "352",
+    "amount": 57.5,
+    "category": "Entertainment",
+    "description": "Weekly groceries",
+    "date": "2026-05-18T16:25:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "353",
+    "amount": 81.01,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-05-18T15:13:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "347",
+    "amount": 59.11,
+    "category": "Food",
+    "description": "Uber ride",
+    "date": "2026-05-17T21:43:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "348",
+    "amount": 62.6,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-05-17T18:27:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "349",
+    "amount": 23.26,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-05-17T11:05:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "346",
+    "amount": 70.21,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-05-16T11:22:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "344",
+    "amount": 76.44,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-05-15T21:14:00.000Z"
+  },
+  {
+    "id": "345",
+    "amount": 16.27,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-05-15T12:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "343",
+    "amount": 53.58,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-05-14T09:40:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "340",
+    "amount": 54.36,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-05-13T21:41:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "341",
+    "amount": 9.94,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-05-13T19:05:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "342",
+    "amount": 72.33,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-05-13T09:20:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "339",
+    "amount": 42.22,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-05-12T21:05:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "338",
+    "amount": 88.21,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-05-11T11:33:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "334",
+    "amount": 86.56,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-05-10T19:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "335",
+    "amount": 63.01,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-05-10T19:23:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "336",
+    "amount": 50.02,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-05-10T14:30:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "337",
+    "amount": 76.17,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-05-10T08:24:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "331",
+    "amount": 51.55,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-05-09T21:57:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "332",
+    "amount": 8.54,
+    "category": "Other",
+    "description": "Snacks",
+    "date": "2026-05-09T17:50:00.000Z"
+  },
+  {
+    "id": "333",
+    "amount": 54.54,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-05-09T09:57:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "327",
+    "amount": 30.45,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-05-08T17:00:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "328",
+    "amount": 8.82,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-05-08T14:39:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "329",
+    "amount": 45.74,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-05-08T13:38:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "330",
+    "amount": 67.12,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-05-08T13:16:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "325",
+    "amount": 18.63,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-05-07T12:12:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "326",
+    "amount": 80.08,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-05-07T08:19:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "324",
+    "amount": 23.76,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-05-06T14:06:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "323",
+    "amount": 70.84,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-05-05T12:27:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "319",
+    "amount": 43.99,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-05-04T16:07:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "320",
+    "amount": 35.38,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-05-04T11:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "321",
+    "amount": 39.77,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-05-04T11:30:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "322",
+    "amount": 86.78,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-05-04T11:22:00.000Z"
+  },
+  {
+    "id": "316",
+    "amount": 94.27,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-05-03T17:30:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "317",
+    "amount": 37.83,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-05-03T13:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "318",
+    "amount": 32.39,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-05-03T09:40:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "315",
+    "amount": 86.28,
+    "category": "Shopping",
+    "description": "Weekly groceries",
+    "date": "2026-05-02T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "313",
+    "amount": 21.21,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-05-01T15:10:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "314",
+    "amount": 90.75,
+    "category": "Transport",
+    "description": "New shirt",
+    "date": "2026-05-01T12:55:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "311",
+    "amount": 50.64,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-04-30T19:11:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "312",
+    "amount": 52.41,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-04-30T09:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "307",
+    "amount": 76.13,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-04-29T21:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "308",
+    "amount": 20.59,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-04-29T20:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "309",
+    "amount": 23.63,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-04-29T20:01:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "310",
+    "amount": 26.69,
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-04-29T14:50:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "306",
+    "amount": 8.33,
+    "category": "Shopping",
+    "description": "Lunch at work",
+    "date": "2026-04-28T13:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "305",
+    "amount": 35.26,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-04-27T09:37:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "301",
+    "amount": 40.74,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-04-26T19:28:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "302",
+    "amount": 48.39,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-04-26T18:12:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "303",
+    "amount": 70.57,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-04-26T13:32:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "304",
+    "amount": 84.57,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-04-26T11:10:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "298",
+    "amount": 36.18,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-04-25T21:20:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "299",
+    "amount": 93.49,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-04-25T20:55:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "300",
+    "amount": 48.72,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-04-25T11:32:00.000Z"
+  },
+  {
+    "id": "297",
+    "amount": 43.26,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-04-24T08:58:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "293",
+    "amount": 37.51,
+    "category": "Entertainment",
+    "description": "Snacks",
+    "date": "2026-04-23T19:06:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "294",
+    "amount": 52.84,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-04-23T17:17:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "295",
+    "amount": 5.06,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-04-23T16:19:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "296",
+    "amount": 68.68,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-04-23T12:06:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "292",
+    "amount": 78.26,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-04-22T14:52:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "288",
+    "amount": 69.63,
+    "category": "Utilities",
+    "description": "Dinner with friends",
+    "date": "2026-04-21T20:42:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "289",
+    "amount": 6.32,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-04-21T18:54:00.000Z"
+  },
+  {
+    "id": "290",
+    "amount": 6.58,
+    "category": "Food",
+    "description": "Utility bill",
+    "date": "2026-04-21T18:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "291",
+    "amount": 20.45,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-04-21T15:14:00.000Z"
+  },
+  {
+    "id": "284",
+    "amount": 70.8,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-04-20T21:37:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "285",
+    "amount": 36.45,
+    "category": "Other",
+    "description": "Weekly groceries",
+    "date": "2026-04-20T19:25:00.000Z"
+  },
+  {
+    "id": "286",
+    "amount": 20.42,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-04-20T15:47:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "287",
+    "amount": 46.98,
+    "category": "Entertainment",
+    "description": "Lunch at work",
+    "date": "2026-04-20T15:37:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "281",
+    "amount": 7.71,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-04-19T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "282",
+    "amount": 36.4,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2026-04-19T15:57:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "283",
+    "amount": 56.35,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-04-19T12:07:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "279",
+    "amount": 67.09,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-04-18T16:49:00.000Z"
+  },
+  {
+    "id": "280",
+    "amount": 60.48,
+    "category": "Utilities",
+    "description": "Snacks",
+    "date": "2026-04-18T08:46:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "277",
+    "amount": 18.11,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-04-17T20:07:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "278",
+    "amount": 66.36,
+    "category": "Utilities",
+    "description": "Morning coffee",
+    "date": "2026-04-17T12:20:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "273",
+    "amount": 50.68,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-04-16T21:28:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "274",
+    "amount": 70.54,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-04-16T20:50:00.000Z"
+  },
+  {
+    "id": "275",
+    "amount": 40.81,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-04-16T14:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "276",
+    "amount": 14.8,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-04-16T12:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "272",
+    "amount": 22,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-04-15T09:50:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "270",
+    "amount": 68.81,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-04-14T18:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "271",
+    "amount": 50.87,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-04-14T09:06:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "267",
+    "amount": 15.22,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-04-13T21:51:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "268",
+    "amount": 47.29,
+    "category": "Utilities",
+    "description": "Train ticket",
+    "date": "2026-04-13T21:13:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "269",
+    "amount": 78.46,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-04-13T20:54:00.000Z"
+  },
+  {
+    "id": "264",
+    "amount": 55.08,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-04-12T16:53:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "265",
+    "amount": 74.15,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-04-12T15:41:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "266",
+    "amount": 56.21,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-04-12T14:22:00.000Z"
+  },
+  {
+    "id": "260",
+    "amount": 12.01,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-04-11T13:47:00.000Z"
+  },
+  {
+    "id": "261",
+    "amount": 18.07,
+    "category": "Transport",
+    "description": "Train ticket",
+    "date": "2026-04-11T13:26:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "262",
+    "amount": 35.94,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-04-11T11:29:00.000Z"
+  },
+  {
+    "id": "263",
+    "amount": 36.66,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-04-11T10:12:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "257",
+    "amount": 8.61,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-04-10T21:14:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "258",
+    "amount": 11.56,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-04-10T20:45:00.000Z"
+  },
+  {
+    "id": "259",
+    "amount": 89.48,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-04-10T15:39:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "254",
+    "amount": 40.19,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-04-09T21:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "255",
+    "amount": 74.49,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-04-09T20:33:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "256",
+    "amount": 40.87,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-04-09T13:36:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "253",
+    "amount": 73.5,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-04-08T18:35:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "250",
+    "amount": 44.57,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-04-07T19:05:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "251",
+    "amount": 72.98,
+    "category": "Food",
+    "description": "Gym membership",
+    "date": "2026-04-07T18:28:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "252",
+    "amount": 20.31,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-04-07T08:15:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "249",
+    "amount": 9.13,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-04-06T17:23:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "245",
+    "amount": 47.31,
+    "category": "Shopping",
+    "description": "Movie night",
+    "date": "2026-04-05T21:15:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "246",
+    "amount": 91.04,
+    "category": "Other",
+    "description": "Train ticket",
+    "date": "2026-04-05T12:30:00.000Z"
+  },
+  {
+    "id": "247",
+    "amount": 83.95,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-04-05T11:14:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "248",
+    "amount": 76.77,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-04-05T09:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "242",
+    "amount": 23.08,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-04-04T21:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "243",
+    "amount": 12.16,
+    "category": "Entertainment",
+    "description": "Gym membership",
+    "date": "2026-04-04T19:34:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "244",
+    "amount": 28.52,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-04-04T13:57:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "238",
+    "amount": 13.47,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-04-03T21:35:00.000Z"
+  },
+  {
+    "id": "239",
+    "amount": 28.34,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-04-03T13:54:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "240",
+    "amount": 42.66,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-04-03T12:02:00.000Z"
+  },
+  {
+    "id": "241",
+    "amount": 70.74,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-04-03T08:06:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "236",
+    "amount": 38.03,
+    "category": "Food",
+    "description": "Movie night",
+    "date": "2026-04-02T13:35:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "237",
+    "amount": 63.33,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-04-02T11:32:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "234",
+    "amount": 6.31,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-04-01T20:32:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "235",
+    "amount": 56.74,
+    "category": "Entertainment",
+    "description": "New shirt",
+    "date": "2026-04-01T13:21:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "230",
+    "amount": 44.04,
+    "category": "Utilities",
+    "description": "Utility bill",
+    "date": "2026-03-31T19:03:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "231",
+    "amount": 76.48,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-03-31T15:23:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "232",
+    "amount": 88.87,
+    "category": "Other",
+    "description": "Morning coffee",
+    "date": "2026-03-31T12:24:00.000Z"
+  },
+  {
+    "id": "233",
+    "amount": 41.39,
+    "category": "Food",
+    "description": "New shirt",
+    "date": "2026-03-31T09:16:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "227",
+    "amount": 41.74,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-03-30T21:38:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "228",
+    "amount": 29.64,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-03-30T18:17:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "229",
+    "amount": 62.71,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-03-30T16:29:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "225",
+    "amount": 16.4,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-03-29T19:11:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "226",
+    "amount": 65.39,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-03-29T08:02:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "223",
+    "amount": 57.95,
+    "category": "Entertainment",
+    "description": "Train ticket",
+    "date": "2026-03-28T18:42:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "224",
+    "amount": 86.25,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-03-28T11:40:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "221",
+    "amount": 65.51,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-03-27T17:17:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "222",
+    "amount": 36.58,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-03-27T16:00:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "217",
+    "amount": 15.53,
+    "category": "Shopping",
+    "description": "Morning coffee",
+    "date": "2026-03-26T21:54:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "218",
+    "amount": 65.2,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-03-26T21:14:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "219",
+    "amount": 92.71,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-03-26T19:34:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "220",
+    "amount": 55.32,
+    "category": "Other",
+    "description": "Utility bill",
+    "date": "2026-03-26T12:17:00.000Z"
+  },
+  {
+    "id": "215",
+    "amount": 22.45,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-03-25T17:59:00.000Z"
+  },
+  {
+    "id": "216",
+    "amount": 12.36,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-03-25T14:34:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "211",
+    "amount": 93.98,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-03-24T15:51:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "212",
+    "amount": 48.04,
+    "category": "Other",
+    "description": "Gym membership",
+    "date": "2026-03-24T14:37:00.000Z"
+  },
+  {
+    "id": "213",
+    "amount": 33.93,
+    "category": "Food",
+    "description": "Dinner with friends",
+    "date": "2026-03-24T13:05:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "214",
+    "amount": 17.46,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-03-24T12:38:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "209",
+    "amount": 82.71,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-03-23T21:49:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "210",
+    "amount": 26.23,
+    "category": "Transport",
+    "description": "Uber ride",
+    "date": "2026-03-23T21:27:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "205",
+    "amount": 77.76,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-03-22T21:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "206",
+    "amount": 49.53,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-03-22T16:45:00.000Z"
+  },
+  {
+    "id": "207",
+    "amount": 43.5,
+    "category": "Other",
+    "description": "Lunch at work",
+    "date": "2026-03-22T16:00:00.000Z"
+  },
+  {
+    "id": "208",
+    "amount": 25.64,
+    "category": "Food",
+    "description": "Snacks",
+    "date": "2026-03-22T13:20:00.000Z",
+    "subcategory": "Restaurants"
+  },
+  {
+    "id": "202",
+    "amount": 10.38,
+    "category": "Other",
+    "description": "New shirt",
+    "date": "2026-03-21T17:21:00.000Z"
+  },
+  {
+    "id": "203",
+    "amount": 52.77,
+    "category": "Other",
+    "description": "Uber ride",
+    "date": "2026-03-21T13:49:00.000Z"
+  },
+  {
+    "id": "204",
+    "amount": 20.19,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-03-21T10:34:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
     "id": "3",
     "amount": 58.81,
     "category": "Entertainment",
@@ -1220,5 +7061,361 @@
     "description": "Dinner with friends",
     "date": "2026-01-20T10:34:00.000Z",
     "subcategory": "Subscriptions"
+  },
+  {
+    "id": "198",
+    "amount": 58.81,
+    "category": "Entertainment",
+    "description": "Utility bill",
+    "date": "2026-01-19T14:14:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "199",
+    "amount": 8.83,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-01-19T11:25:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "200",
+    "amount": 46.51,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-01-19T09:55:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "201",
+    "amount": 70.2,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-01-19T09:51:00.000Z"
+  },
+  {
+    "id": "194",
+    "amount": 56.04,
+    "category": "Transport",
+    "description": "Weekly groceries",
+    "date": "2026-01-18T20:33:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "195",
+    "amount": 78.59,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-01-18T19:48:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "196",
+    "amount": 57.5,
+    "category": "Entertainment",
+    "description": "Weekly groceries",
+    "date": "2026-01-18T16:25:00.000Z",
+    "subcategory": "Subscriptions"
+  },
+  {
+    "id": "197",
+    "amount": 81.01,
+    "category": "Shopping",
+    "description": "Dinner with friends",
+    "date": "2026-01-18T15:13:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "191",
+    "amount": 59.11,
+    "category": "Food",
+    "description": "Uber ride",
+    "date": "2026-01-17T21:43:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "192",
+    "amount": 62.6,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-01-17T18:27:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "193",
+    "amount": 23.26,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-01-17T11:05:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "190",
+    "amount": 70.21,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-01-16T11:22:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "188",
+    "amount": 76.44,
+    "category": "Other",
+    "description": "Movie night",
+    "date": "2026-01-15T21:14:00.000Z"
+  },
+  {
+    "id": "189",
+    "amount": 16.27,
+    "category": "Shopping",
+    "description": "Snacks",
+    "date": "2026-01-15T12:26:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "187",
+    "amount": 53.58,
+    "category": "Utilities",
+    "description": "Gym membership",
+    "date": "2026-01-14T09:40:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "184",
+    "amount": 54.36,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-01-13T21:41:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "185",
+    "amount": 9.94,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-01-13T19:05:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "186",
+    "amount": 72.33,
+    "category": "Food",
+    "description": "Lunch at work",
+    "date": "2026-01-13T09:20:00.000Z",
+    "subcategory": "Groceries"
+  },
+  {
+    "id": "183",
+    "amount": 42.22,
+    "category": "Transport",
+    "description": "Movie night",
+    "date": "2026-01-12T21:05:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "182",
+    "amount": 88.21,
+    "category": "Shopping",
+    "description": "Gym membership",
+    "date": "2026-01-11T11:33:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "178",
+    "amount": 86.56,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-01-10T19:44:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "179",
+    "amount": 63.01,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-01-10T19:23:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "180",
+    "amount": 50.02,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-01-10T14:30:00.000Z",
+    "subcategory": "Internet"
+  },
+  {
+    "id": "181",
+    "amount": 76.17,
+    "category": "Transport",
+    "description": "Lunch at work",
+    "date": "2026-01-10T08:24:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "175",
+    "amount": 51.55,
+    "category": "Utilities",
+    "description": "Weekly groceries",
+    "date": "2026-01-09T21:57:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "176",
+    "amount": 8.54,
+    "category": "Other",
+    "description": "Snacks",
+    "date": "2026-01-09T17:50:00.000Z"
+  },
+  {
+    "id": "177",
+    "amount": 54.54,
+    "category": "Transport",
+    "description": "Utility bill",
+    "date": "2026-01-09T09:57:00.000Z",
+    "subcategory": "Gas"
+  },
+  {
+    "id": "171",
+    "amount": 30.45,
+    "category": "Utilities",
+    "description": "Movie night",
+    "date": "2026-01-08T17:00:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "172",
+    "amount": 8.82,
+    "category": "Transport",
+    "description": "Snacks",
+    "date": "2026-01-08T14:39:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "173",
+    "amount": 45.74,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-01-08T13:38:00.000Z",
+    "subcategory": "Taxi"
+  },
+  {
+    "id": "174",
+    "amount": 67.12,
+    "category": "Transport",
+    "description": "Dinner with friends",
+    "date": "2026-01-08T13:16:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "169",
+    "amount": 18.63,
+    "category": "Food",
+    "description": "Train ticket",
+    "date": "2026-01-07T12:12:00.000Z",
+    "subcategory": "Fast Food"
+  },
+  {
+    "id": "170",
+    "amount": 80.08,
+    "category": "Entertainment",
+    "description": "Morning coffee",
+    "date": "2026-01-07T08:19:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "168",
+    "amount": 23.76,
+    "category": "Utilities",
+    "description": "Uber ride",
+    "date": "2026-01-06T14:06:00.000Z",
+    "subcategory": "Water"
+  },
+  {
+    "id": "167",
+    "amount": 70.84,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-01-05T12:27:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "163",
+    "amount": 43.99,
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-01-04T16:07:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "164",
+    "amount": 35.38,
+    "category": "Utilities",
+    "description": "Lunch at work",
+    "date": "2026-01-04T11:43:00.000Z",
+    "subcategory": "Electricity"
+  },
+  {
+    "id": "165",
+    "amount": 39.77,
+    "category": "Entertainment",
+    "description": "Uber ride",
+    "date": "2026-01-04T11:30:00.000Z",
+    "subcategory": "Movies"
+  },
+  {
+    "id": "166",
+    "amount": 86.78,
+    "category": "Other",
+    "description": "Dinner with friends",
+    "date": "2026-01-04T11:22:00.000Z"
+  },
+  {
+    "id": "160",
+    "amount": 94.27,
+    "category": "Entertainment",
+    "description": "Dinner with friends",
+    "date": "2026-01-03T17:30:00.000Z",
+    "subcategory": "Games"
+  },
+  {
+    "id": "161",
+    "amount": 37.83,
+    "category": "Shopping",
+    "description": "New shirt",
+    "date": "2026-01-03T13:15:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "162",
+    "amount": 32.39,
+    "category": "Shopping",
+    "description": "Utility bill",
+    "date": "2026-01-03T09:40:00.000Z",
+    "subcategory": "Clothes"
+  },
+  {
+    "id": "159",
+    "amount": 86.28,
+    "category": "Shopping",
+    "description": "Weekly groceries",
+    "date": "2026-01-02T19:00:00.000Z",
+    "subcategory": "Electronics"
+  },
+  {
+    "id": "157",
+    "amount": 21.21,
+    "category": "Transport",
+    "description": "Gym membership",
+    "date": "2026-01-01T15:10:00.000Z",
+    "subcategory": "Public Transit"
+  },
+  {
+    "id": "158",
+    "amount": 90.75,
+    "category": "Transport",
+    "description": "New shirt",
+    "date": "2026-01-01T12:55:00.000Z",
+    "subcategory": "Gas"
   }
 ]

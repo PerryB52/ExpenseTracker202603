@@ -475,6 +475,7 @@ export class DataService {
     try {
       const db = this.dbService.getDb();
       await db.run('DELETE FROM expenses');
+      await db.run('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', ['seed_version', 'cleared']);
 
       this.dbService.saveStore();
 

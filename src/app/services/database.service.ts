@@ -81,10 +81,19 @@ export class DatabaseService {
   }
 
   private async seedDatabase() {
-    // Check if expenses exist
     const res = await this.db.query('SELECT COUNT(*) AS count FROM expenses;');
-    if (res.values && res.values.length > 0 && res.values[0].count === 0) {
-      console.log('Database empty. Seeding...');
+    const currentCount = res.values && res.values.length > 0 ? res.values[0].count : 0;
+
+    const versionRes = await this.db.query('SELECT value FROM settings WHERE key = ?;', ['seed_version']);
+    const seedVersion = versionRes.values && versionRes.values.length > 0 ? versionRes.values[0].value : null;
+
+    const afterMarchRes = await this.db.query("SELECT COUNT(*) AS count FROM expenses WHERE date >= '2026-04-01';");
+    const countAfterMarch = afterMarchRes.values && afterMarchRes.values.length > 0 ? afterMarchRes.values[0].count : 0;
+
+    const needsFullYearSeed = currentCount === 0 || (countAfterMarch === 0 && seedVersion !== '2026_full_year' && seedVersion !== 'cleared');
+
+    if (needsFullYearSeed) {
+      console.log('Seeding full year expenses...');
       try {
         const fetchRes = await fetch('assets/data/expenses.json');
         if (fetchRes.ok) {
@@ -101,16 +110,21 @@ export class DatabaseService {
           
           if (expenseValues.length > 0) {
             await this.db.executeSet([{
-              statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
+              statement: 'INSERT OR IGNORE INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
               values: expenseValues
             }]);
           }
+
+          await this.db.run('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', ['seed_version', '2026_full_year']);
         }
       } catch (e) {
         console.error('Error seeding expenses', e);
       }
+    }
 
-      // Seed default categories
+    // Seed default categories if not present
+    const catCountRes = await this.db.query('SELECT COUNT(*) AS count FROM categories;');
+    if (catCountRes.values && catCountRes.values.length > 0 && catCountRes.values[0].count === 0) {
       const defaultCategories: Category[] = [
         { name: 'Food', subcategories: ['Groceries', 'Restaurants', 'Fast Food'] },
         { name: 'Transport', subcategories: ['Public Transit', 'Taxi', 'Gas'] },
@@ -126,10 +140,10 @@ export class DatabaseService {
           await this.db.run('INSERT OR IGNORE INTO subcategories (parent_category, name) VALUES (?, ?)', [cat.name, sub]);
         }
       }
-      
-      if (Capacitor.getPlatform() === 'web') {
-        await this.sqlite.saveToStore(DB_NAME);
-      }
+    }
+    
+    if (Capacitor.getPlatform() === 'web') {
+      await this.sqlite.saveToStore(DB_NAME);
     }
   }
   
