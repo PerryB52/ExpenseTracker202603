@@ -19,7 +19,11 @@ export class Tab3Page {
   editingSubcategory: { parent: string, oldSub: string } | null = null;
   editSubcategoryValue: string = '';
 
-  constructor(public dataService: DataService, private alertCtrl: AlertController) {}
+  constructor(public dataService: DataService, private alertCtrl: AlertController) { }
+
+  ionViewWillLeave() {
+    this.dataService.lastActiveTab = 'tab3';
+  }
 
   closeCategoriesModal() {
     this.categoriesModal.dismiss();
@@ -84,7 +88,7 @@ export class Tab3Page {
   deleteSubcategory(parentName: string, subName: string) {
     this.dataService.deleteSubcategory(parentName, subName);
   }
-  
+
   exportCSV() {
     this.dataService.exportToCSV();
   }
@@ -93,7 +97,7 @@ export class Tab3Page {
     const file = event.target.files?.[0];
     if (file) {
       await this.dataService.importFromCSV(file);
-      event.target.value = ''; 
+      event.target.value = '';
     }
   }
 
@@ -101,7 +105,7 @@ export class Tab3Page {
     const file = event.target.files?.[0];
     if (file) {
       await this.dataService.importExternalCSV(file);
-      event.target.value = ''; 
+      event.target.value = '';
     }
   }
 
@@ -111,9 +115,9 @@ export class Tab3Page {
       message: 'Are you sure you want to completely erase all expense history? This action cannot be undone!',
       buttons: [
         { text: 'Cancel', role: 'cancel' },
-        { 
-          text: 'Delete', 
-          role: 'destructive', 
+        {
+          text: 'Delete',
+          role: 'destructive',
           handler: () => {
             this.dataService.clearAllData();
           }

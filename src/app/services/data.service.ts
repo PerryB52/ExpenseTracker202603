@@ -29,6 +29,9 @@ export class DataService {
   public activeCurrencySignal = signal<string>('USD');
   public readonly activeCurrency = this.activeCurrencySignal.asReadonly();
 
+  public selectedExpenseMonth = signal<string>(new Date().toISOString().substring(0, 7));
+  public lastActiveTab = 'tab1';
+
   public activeCurrencySymbol = computed(() => {
     const code = this.activeCurrencySignal();
     const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$', 'RON': 'lei' };

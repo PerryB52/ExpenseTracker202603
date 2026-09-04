@@ -12,7 +12,11 @@ export class Tab1Page {
   @ViewChild(IonModal) modal!: IonModal;
 
   editingExpenseId: string | null = null;
-  selectedMonth = signal<string>(new Date().toISOString().substring(0, 7));
+  selectedMonth = this.dataService.selectedExpenseMonth;
+
+  ionViewWillLeave() {
+    this.dataService.lastActiveTab = 'tab1';
+  }
 
   newExpense: any = {
     amount: null,

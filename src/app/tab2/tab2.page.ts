@@ -29,7 +29,7 @@ function getMonday(d: Date): Date {
 export class Tab2Page {
   groupingType = signal<'week' | 'month' | 'year'>('month');
   chartType = signal<'bar' | 'pie'>('pie');
-  
+
   @ViewChild('customYearPicker') customYearPicker!: IonModal;
   @ViewChild('customMonthPicker') customMonthPicker!: IonModal;
   @ViewChild('customWeekPicker') customWeekPicker!: IonModal;
@@ -38,6 +38,20 @@ export class Tab2Page {
   selectedWeekStart = signal<string>(formatLocal(getMonday(new Date())));
   pickerYear = signal<number>(new Date().getFullYear());
   monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+  ionViewWillEnter() {
+    if (this.dataService.lastActiveTab === 'tab1') {
+      const tab1Month = this.dataService.selectedExpenseMonth();
+      this.selectedMonth.set(tab1Month);
+      this.pickerYear.set(parseInt(tab1Month.substring(0, 4)));
+      this.selectedYear.set(parseInt(tab1Month.substring(0, 4)));
+      this.groupingType.set('month');
+    }
+  }
+
+  ionViewWillLeave() {
+    this.dataService.lastActiveTab = 'tab2';
+  }
 
   openPicker() {
     if (this.groupingType() === 'year') {
@@ -149,12 +163,12 @@ export class Tab2Page {
     const d = parseLocal(dateStr);
     const sunday = new Date(d);
     sunday.setDate(sunday.getDate() + 6);
-    
+
     const startMonth = (d.getMonth() + 1).toString().padStart(2, '0');
     const startDate = d.getDate().toString().padStart(2, '0');
     const endMonth = (sunday.getMonth() + 1).toString().padStart(2, '0');
     const endDate = sunday.getDate().toString().padStart(2, '0');
-    
+
     return `${startMonth}/${startDate} - ${endMonth}/${endDate}`;
   }
 
@@ -177,7 +191,7 @@ export class Tab2Page {
       const sunDate = new Date(monDate);
       sunDate.setDate(sunDate.getDate() + 6);
       const endStr = formatLocal(sunDate);
-      
+
       expenses = expenses.filter(e => {
         if (!e.date) return false;
         const eDateStr = e.date.substring(0, 10);
@@ -193,21 +207,21 @@ export class Tab2Page {
   groupedData = computed(() => {
     const type = this.groupingType();
     const expenses = this.periodExpenses();
-    
-    const groups: { 
-      [key: string]: { 
-        total: number, 
-        categoriesMap: { [cat: string]: number } 
-      } 
+
+    const groups: {
+      [key: string]: {
+        total: number,
+        categoriesMap: { [cat: string]: number }
+      }
     } = {};
-    
+
     expenses.forEach(e => {
       let key = '';
       const d = parseLocal(e.date);
-      
+
       switch (type) {
         case 'week':
-          const dayOfWeek = d.getDay() || 7;  
+          const dayOfWeek = d.getDay() || 7;
           const monday = new Date(d);
           monday.setDate(monday.getDate() - dayOfWeek + 1);
           key = `Week of ${monday.getFullYear()}-${(monday.getMonth() + 1).toString().padStart(2, '0')}-${monday.getDate().toString().padStart(2, '0')}`;
@@ -219,11 +233,11 @@ export class Tab2Page {
           key = `${d.getFullYear()}`;
           break;
       }
-      
+
       if (!groups[key]) {
         groups[key] = { total: 0, categoriesMap: {} };
       }
-      
+
       groups[key].total += e.amount;
       const cat = e.category || 'Uncategorized';
       groups[key].categoriesMap[cat] = (groups[key].categoriesMap[cat] || 0) + e.amount;
@@ -239,25 +253,25 @@ export class Tab2Page {
           percent: percent
         };
       }).sort((a, b) => b.amount - a.amount);
-      
+
       return {
         label: k,
         total: groups[k].total,
         categories: catEntries
       };
     });
-    
+
     entries.sort((a, b) => b.label.localeCompare(a.label));
-    
+
     return entries;
   });
 
   historyChartData = computed(() => {
     const type = this.groupingType();
     const allExpenses = this.dataService.expenses();
-    
+
     let periods: string[] = [];
-    
+
     if (type === 'year') {
       const selected = this.selectedYear();
       for (let i = 5; i >= 0; i--) {
@@ -287,7 +301,7 @@ export class Tab2Page {
 
     const groups: { [key: string]: number } = {};
     periods.forEach(p => groups[p] = 0);
-    
+
     allExpenses.forEach(e => {
       const d = parseLocal(e.date);
       let key = '';
@@ -299,7 +313,7 @@ export class Tab2Page {
         const monday = getMonday(d);
         key = formatLocal(monday);
       }
-      
+
       if (groups[key] !== undefined) {
         groups[key] += e.amount;
       }
@@ -334,31 +348,31 @@ export class Tab2Page {
   pieChartData = computed(() => {
     const data = this.groupedData();
     if (data.length === 0 || data[0].total === 0) return { paths: [], labels: [], legend: [] };
-    
+
     const categories = data[0].categories;
     const total = data[0].total;
 
     let legend: { name: string, percent: number, amount: number, color: string }[] = [];
     let svgPaths: { path: string, color: string }[] = [];
     let svgLabels: any[] = [];
-    
+
     let currentAngle = 0;
 
     categories.forEach((cat, i) => {
       const fraction = cat.amount / total;
       const color = this.getCategoryColor(i);
-      
+
       const angle = fraction * Math.PI * 2;
       const startAngle = currentAngle - Math.PI / 2;
       const endAngle = currentAngle + angle - Math.PI / 2;
-      
+
       const startX = Math.cos(startAngle);
       const startY = Math.sin(startAngle);
       const endX = Math.cos(endAngle);
       const endY = Math.sin(endAngle);
-      
+
       const largeArcFlag = fraction > 0.5 ? 1 : 0;
-      
+
       let pathData = '';
       if (fraction >= 0.9999) {
         pathData = `M -1 0 A 1 1 0 1 1 1 0 A 1 1 0 1 1 -1 0 Z`;
@@ -370,7 +384,7 @@ export class Tab2Page {
           `Z`
         ].join(' ');
       }
-      
+
       svgPaths.push({
         path: pathData,
         color: color
@@ -379,20 +393,20 @@ export class Tab2Page {
       // Floating labels for slices >= 4%
       if (fraction >= 0.04) {
         const midAngle = currentAngle + angle / 2 - Math.PI / 2;
-        
+
         const lineStartX = Math.cos(midAngle) * 0.95;
         const lineStartY = Math.sin(midAngle) * 0.95;
-        
+
         let lineOuterX = Math.cos(midAngle) * 1.15;
         let lineOuterY = Math.sin(midAngle) * 1.15;
-        
+
         const isRight = Math.cos(midAngle) >= 0;
         const lineEndX = lineOuterX + (isRight ? 0.15 : -0.15);
-        
+
         const textX = lineEndX + (isRight ? 0.05 : -0.05);
-        const textY1 = lineOuterY - 0.02; 
+        const textY1 = lineOuterY - 0.02;
         const textY2 = lineOuterY + 0.11;
-        
+
         svgLabels.push({
           linePath: `M ${lineStartX} ${lineStartY} L ${lineOuterX} ${lineOuterY} L ${lineEndX} ${lineOuterY}`,
           color: color,
@@ -411,7 +425,7 @@ export class Tab2Page {
         amount: cat.amount,
         color: color
       });
-      
+
       currentAngle += angle;
     });
 
@@ -422,14 +436,14 @@ export class Tab2Page {
     };
   });
 
-  constructor(public dataService: DataService) {}
-  
+  constructor(public dataService: DataService) { }
+
   getHistoryChartHeight(total: number): number {
     const max = this.maxHistoryValue();
     if (max === 0) return 10;
     return Math.max((total / max) * 100, 10);
   }
-  
+
   formatChartLabel(label: string): string {
     const type = this.groupingType();
     if (type === 'week') {
@@ -463,26 +477,26 @@ export class Tab2Page {
     const subMap: { [sub: string]: number } = {};
 
     baseExpenses.forEach(e => {
-        total += e.amount;
-        const sub = e.subcategory || 'Uncategorized';
-        subMap[sub] = (subMap[sub] || 0) + e.amount;
+      total += e.amount;
+      const sub = e.subcategory || 'Uncategorized';
+      subMap[sub] = (subMap[sub] || 0) + e.amount;
     });
 
     const subcategories = Object.keys(subMap).map(sub => ({
-        name: sub,
-        amount: subMap[sub],
-        percent: total > 0 ? (subMap[sub] / total) * 100 : 0
+      name: sub,
+      amount: subMap[sub],
+      percent: total > 0 ? (subMap[sub] / total) * 100 : 0
     })).sort((a, b) => b.amount - a.amount);
 
     const filterSub = this.selectedSubcategoryFilter();
-    const filteredExpenses = filterSub 
-        ? baseExpenses.filter(e => (e.subcategory || 'Uncategorized') === filterSub)
-        : baseExpenses;
+    const filteredExpenses = filterSub
+      ? baseExpenses.filter(e => (e.subcategory || 'Uncategorized') === filterSub)
+      : baseExpenses;
 
     return {
-        total,
-        subcategories,
-        expenses: filteredExpenses
+      total,
+      subcategories,
+      expenses: filteredExpenses
     };
   });
 
@@ -498,9 +512,9 @@ export class Tab2Page {
 
   toggleSubcategoryFilter(sub: string) {
     if (this.selectedSubcategoryFilter() === sub) {
-        this.selectedSubcategoryFilter.set(null);
+      this.selectedSubcategoryFilter.set(null);
     } else {
-        this.selectedSubcategoryFilter.set(sub);
+      this.selectedSubcategoryFilter.set(sub);
     }
   }
 

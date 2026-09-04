@@ -84,6 +84,11 @@ export interface Category {
 
 5. **Context Maintenance**:
    - When creating new SQLite tables, data models, routes, or global services, always update `AGENTS.md` in the same commit/task.
+
+6. **Tab Navigation & Month Synchronization**:
+   - `DataService.selectedExpenseMonth` stores Tab 1's active month filter.
+   - When navigating from Tab 1 to Tab 2, Tab 2 synchronizes its view to Tab 1's active month via `ionViewWillEnter()`.
+   - This synchronization is strictly one-way: navigating between months or timeframes in Tab 2 does not affect Tab 1's selected month.
 ---
 
 ## 5. Helpful File References
