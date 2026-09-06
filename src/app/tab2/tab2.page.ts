@@ -345,6 +345,57 @@ export class Tab2Page {
     return i < 7 ? topColors[i] : palette[(i - 7) % palette.length];
   }
 
+  splitCategory(category: string): string[] {
+    if (!category) return ['Uncategorized'];
+    let trimmed = category.trim();
+
+    // If already short, keep on 1 line
+    if (trimmed.length <= 10) {
+      return [trimmed];
+    }
+
+    // Handle slashes or ampersands without spaces
+    if (trimmed.includes('/') && !trimmed.includes(' ')) {
+      trimmed = trimmed.replace('/', '/ ');
+    } else if (trimmed.includes('&') && !trimmed.includes(' ')) {
+      trimmed = trimmed.replace('&', ' & ');
+    }
+
+    // If multiple words, find optimal split point
+    const words = trimmed.split(/\s+/);
+    if (words.length > 1) {
+      let bestSplit = 1;
+      let minDiff = Infinity;
+
+      for (let i = 1; i < words.length; i++) {
+        const line1 = words.slice(0, i).join(' ');
+        const line2 = words.slice(i).join(' ');
+        const diff = Math.abs(line1.length - line2.length);
+        if (diff < minDiff) {
+          minDiff = diff;
+          bestSplit = i;
+        }
+      }
+
+      let l1 = words.slice(0, bestSplit).join(' ');
+      let l2 = words.slice(bestSplit).join(' ');
+
+      if (l1.length > 14) l1 = l1.substring(0, 13) + '…';
+      if (l2.length > 14) l2 = l2.substring(0, 13) + '…';
+
+      return [l1, l2];
+    }
+
+    // Single word: if up to 14 chars, keep on 1 line
+    if (trimmed.length <= 14) {
+      return [trimmed];
+    }
+
+    // Long single word: split with hyphen
+    const splitIdx = Math.ceil(trimmed.length / 2);
+    return [trimmed.substring(0, splitIdx) + '-', trimmed.substring(splitIdx)];
+  }
+
   pieChartData = computed(() => {
     const data = this.groupedData();
     if (data.length === 0 || data[0].total === 0) return { paths: [], labels: [], legend: [] };
@@ -357,6 +408,7 @@ export class Tab2Page {
     let svgLabels: any[] = [];
 
     let currentAngle = 0;
+    const R = 0.88;
 
     categories.forEach((cat, i) => {
       const fraction = cat.amount / total;
@@ -366,21 +418,21 @@ export class Tab2Page {
       const startAngle = currentAngle - Math.PI / 2;
       const endAngle = currentAngle + angle - Math.PI / 2;
 
-      const startX = Math.cos(startAngle);
-      const startY = Math.sin(startAngle);
-      const endX = Math.cos(endAngle);
-      const endY = Math.sin(endAngle);
+      const startX = Math.cos(startAngle) * R;
+      const startY = Math.sin(startAngle) * R;
+      const endX = Math.cos(endAngle) * R;
+      const endY = Math.sin(endAngle) * R;
 
       const largeArcFlag = fraction > 0.5 ? 1 : 0;
 
       let pathData = '';
       if (fraction >= 0.9999) {
-        pathData = `M -1 0 A 1 1 0 1 1 1 0 A 1 1 0 1 1 -1 0 Z`;
+        pathData = `M -${R} 0 A ${R} ${R} 0 1 1 ${R} 0 A ${R} ${R} 0 1 1 -${R} 0 Z`;
       } else {
         pathData = [
           `M 0 0`,
           `L ${startX} ${startY}`,
-          `A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}`,
+          `A ${R} ${R} 0 ${largeArcFlag} 1 ${endX} ${endY}`,
           `Z`
         ].join(' ');
       }
@@ -394,27 +446,27 @@ export class Tab2Page {
       if (fraction >= 0.04) {
         const midAngle = currentAngle + angle / 2 - Math.PI / 2;
 
-        const lineStartX = Math.cos(midAngle) * 0.95;
-        const lineStartY = Math.sin(midAngle) * 0.95;
+        const lineStartX = Math.cos(midAngle) * (R * 0.96);
+        const lineStartY = Math.sin(midAngle) * (R * 0.96);
 
-        let lineOuterX = Math.cos(midAngle) * 1.15;
-        let lineOuterY = Math.sin(midAngle) * 1.15;
+        let lineOuterX = Math.cos(midAngle) * (R * 1.18);
+        let lineOuterY = Math.sin(midAngle) * (R * 1.18);
 
         const isRight = Math.cos(midAngle) >= 0;
-        const lineEndX = lineOuterX + (isRight ? 0.15 : -0.15);
+        const lineEndX = lineOuterX + (isRight ? 0.12 : -0.12);
 
-        const textX = lineEndX + (isRight ? 0.05 : -0.05);
-        const textY1 = lineOuterY - 0.02;
-        const textY2 = lineOuterY + 0.11;
+        const textX = lineEndX + (isRight ? 0.04 : -0.04);
+        const lines = this.splitCategory(cat.category);
 
         svgLabels.push({
           linePath: `M ${lineStartX} ${lineStartY} L ${lineOuterX} ${lineOuterY} L ${lineEndX} ${lineOuterY}`,
           color: color,
           textX: textX,
-          textY1: textY1,
-          textY2: textY2,
+          categoryY1: lines.length === 2 ? lineOuterY - 0.15 : lineOuterY - 0.03,
+          categoryY2: lines.length === 2 ? lineOuterY - 0.03 : null,
+          percentY: lineOuterY + 0.13,
           anchor: isRight ? 'start' : 'end',
-          category: cat.category,
+          lines: lines,
           percent: (fraction * 100).toFixed(1) + ' %'
         });
       }

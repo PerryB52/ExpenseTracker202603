@@ -185,3 +185,47 @@
     font-weight: 500;
   }
 }
+
+.modal-toolbar {
+  position: relative;
+
+  ion-buttons {
+    position: relative;
+    z-index: 2;
+  }
+
+  .modal-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    letter-spacing: normal;
+    padding: 0 !important;
+    color: var(--ion-color-dark, #2f2f2f);
+  }
+
+  .modal-action-btn {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    letter-spacing: normal;
+
+    &.cancel-btn {
+      --color: var(--ion-color-danger, #c5000f) !important;
+      color: var(--ion-color-danger, #c5000f) !important;
+    }
+
+    &.save-btn {
+      --color: var(--ion-color-primary, #0054e9) !important;
+      color: var(--ion-color-primary, #0054e9) !important;
+    }
+  }
+}
