@@ -1,0 +1,42 @@
+<ion-modal #modal [initialBreakpoint]="0.6" [breakpoints]="[0, 0.6, 1]">
+  <ng-template>
+    <ion-header class="ion-no-border">
+      <ion-toolbar>
+        <ion-title>Date</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="selectThisMonth()" class="this-period-btn">THIS MONTH</ion-button>
+          <ion-button (click)="dismiss()" class="close-modal-btn">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div class="year-selector">
+        <ion-button fill="clear" color="medium" (click)="changePickerYear(-1)">
+          <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+        </ion-button>
+        <h2 class="year-text">{{ pickerYear() }}</h2>
+        <ion-button fill="clear" color="medium" (click)="changePickerYear(1)">
+          <ion-icon name="chevron-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="month-grid">
+        <div class="month-row" *ngFor="let row of [0, 1, 2, 3]">
+          <div class="month-col" *ngFor="let col of [0, 1, 2]">
+            <ion-button
+              fill="clear"
+              [color]="isMonthSelected(row * 3 + col) ? 'danger' : 'medium'"
+              (click)="selectMonth(row * 3 + col)"
+              class="month-btn"
+              [class.selected]="isMonthSelected(row * 3 + col)">
+              {{ monthNames[row * 3 + col] }}
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+

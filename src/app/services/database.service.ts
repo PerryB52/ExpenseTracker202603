@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
 import { Capacitor } from '@capacitor/core';
-import { Expense, Category } from './data.service';
+import { Expense, Category } from '../models/expense.model';
 
 const DB_NAME = 'expensetracker_db';
 

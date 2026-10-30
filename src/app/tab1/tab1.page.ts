@@ -1,6 +1,10 @@
-import { Component, ViewChild, computed, signal } from '@angular/core';
-import { DataService, Expense } from '../services/data.service';
+import { Component, ViewChild, computed } from '@angular/core';
 import { IonModal, ToastController } from '@ionic/angular';
+import { DataService } from '../services/data.service';
+import { Expense, ExpenseFormModel } from '../models/expense.model';
+import { MonthPickerModalComponent } from '../components/month-picker-modal/month-picker-modal.component';
+import { formatLocal, formatMonth, shiftMonth } from '../utils/date.utils';
+import { getCurrencySymbol } from '../utils/currency.utils';
 
 @Component({
   selector: 'app-tab1',
@@ -10,130 +14,81 @@ import { IonModal, ToastController } from '@ionic/angular';
 })
 export class Tab1Page {
   @ViewChild(IonModal) modal!: IonModal;
+  @ViewChild('customMonthPicker') customMonthPicker!: MonthPickerModalComponent;
 
   editingExpenseId: string | null = null;
   selectedMonth = this.dataService.selectedExpenseMonth;
 
-  ionViewWillLeave() {
-    this.dataService.lastActiveTab = 'tab1';
-  }
+  newExpense: ExpenseFormModel = this.createEmptyExpenseForm();
 
-  newExpense: any = {
-    amount: null,
-    category: '',
-    subcategory: '',
-    description: '',
-    date: new Date().toISOString(),
-    currency: ''
-  };
-
-  @ViewChild('customMonthPicker') customMonthPicker!: IonModal;
-  pickerYear = signal<number>(new Date().getFullYear());
-  monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-
-  openPicker() {
-    this.pickerYear.set(parseInt(this.selectedMonth().substring(0, 4)));
-    this.customMonthPicker.present();
-  }
-
-  changePickerYear(delta: number) {
-    this.pickerYear.update(y => y + delta);
-  }
-
-  prevMonth() {
-    const [year, month] = this.selectedMonth().split('-');
-    let y = parseInt(year);
-    let m = parseInt(month) - 1;
-    if (m === 0) {
-      m = 12;
-      y -= 1;
-    }
-    const monthStr = m.toString().padStart(2, '0');
-    this.selectedMonth.set(`${y}-${monthStr}`);
-  }
-
-  nextMonth() {
-    const [year, month] = this.selectedMonth().split('-');
-    let y = parseInt(year);
-    let m = parseInt(month) + 1;
-    if (m === 13) {
-      m = 1;
-      y += 1;
-    }
-    const monthStr = m.toString().padStart(2, '0');
-    this.selectedMonth.set(`${y}-${monthStr}`);
-  }
-
-  isMonthSelected(index: number): boolean {
-    const selYear = parseInt(this.selectedMonth().substring(0, 4));
-    const selMonth = parseInt(this.selectedMonth().substring(5, 7)) - 1;
-    return this.pickerYear() === selYear && index === selMonth;
-  }
-
-  selectMonth(index: number) {
-    const monthStr = (index + 1).toString().padStart(2, '0');
-    this.selectedMonth.set(`${this.pickerYear()}-${monthStr}`);
-    this.customMonthPicker.dismiss();
-  }
-
-  selectThisMonth() {
-    const now = new Date();
-    this.pickerYear.set(now.getFullYear());
-    const monthStr = (now.getMonth() + 1).toString().padStart(2, '0');
-    this.selectedMonth.set(`${this.pickerYear()}-${monthStr}`);
-    this.customMonthPicker.dismiss();
-  }
-
-  formatMonth(monthStr: string): string {
-    if (!monthStr) return '';
-    const [year, month] = monthStr.split('-');
-    const date = new Date(parseInt(year), parseInt(month) - 1, 1);
-    return date.toLocaleString('default', { month: 'short', year: 'numeric' }).toUpperCase();
-  }
+  readonly formatMonth = formatMonth;
+  readonly getCurrencySymbol = getCurrencySymbol;
 
   groupedExpenses = computed(() => {
     const monthFilter = this.selectedMonth();
     const expenses = this.dataService.expenses().filter(e => e.date && e.date.startsWith(monthFilter));
-    const groups: { [dateKey: string]: { date: string, expenses: Expense[], total: number } } = {};
+    const groups: Record<string, { date: string; expenses: Expense[]; total: number }> = {};
 
-    expenses.forEach(e => {
-      const dateObj = new Date(e.date);
-      const dateKey = `${dateObj.getFullYear()}-${(dateObj.getMonth() + 1).toString().padStart(2, '0')}-${dateObj.getDate().toString().padStart(2, '0')}`;
-
+    for (const e of expenses) {
+      const dateKey = formatLocal(new Date(e.date));
       if (!groups[dateKey]) {
         groups[dateKey] = { date: e.date, expenses: [], total: 0 };
       }
       groups[dateKey].expenses.push(e);
       groups[dateKey].total += e.amount;
-    });
+    }
 
-    const sortedDates = Object.keys(groups).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+    const sortedDates = Object.keys(groups).sort(
+      (a, b) => new Date(b).getTime() - new Date(a).getTime()
+    );
 
     return sortedDates.map(date => groups[date]);
   });
 
-  constructor(public dataService: DataService, private toastCtrl: ToastController) { }
+  constructor(public dataService: DataService, private toastCtrl: ToastController) {}
 
-  cancel() {
+  ionViewWillLeave(): void {
+    this.dataService.lastActiveTab = 'tab1';
+  }
+
+  openPicker(): void {
+    this.customMonthPicker.present();
+  }
+
+  prevMonth(): void {
+    this.selectedMonth.set(shiftMonth(this.selectedMonth(), -1));
+  }
+
+  nextMonth(): void {
+    this.selectedMonth.set(shiftMonth(this.selectedMonth(), 1));
+  }
+
+  onMonthSelected(monthStr: string): void {
+    this.selectedMonth.set(monthStr);
+  }
+
+  cancel(): void {
     this.modal.dismiss(null, 'cancel');
     this.resetForm();
   }
 
-  async confirm() {
+  async confirm(): Promise<void> {
     if (this.newExpense.amount && this.newExpense.category) {
-      const expenseData: any = {
+      const expenseData = {
         amount: Number(this.newExpense.amount),
         category: this.newExpense.category,
         subcategory: this.newExpense.subcategory,
         description: this.newExpense.description || '',
-        date: this.newExpense.date
+        date: this.newExpense.date,
       };
 
       if (this.editingExpenseId) {
-        expenseData.currency = this.newExpense.currency;
-        this.dataService.editExpense(this.editingExpenseId, expenseData as Omit<Expense, 'id'>);
+        this.dataService.editExpense(this.editingExpenseId, {
+          ...expenseData,
+          currency: this.newExpense.currency,
+        });
       } else {
-        this.dataService.addExpense(expenseData as Omit<Expense, 'id' | 'currency'>);
+        this.dataService.addExpense(expenseData);
       }
 
       this.modal.dismiss(this.newExpense, 'confirm');
@@ -143,22 +98,22 @@ export class Tab1Page {
         message: 'Please fill in all required fields.',
         duration: 2500,
         color: 'dark',
-        position: 'bottom'
+        position: 'bottom',
       });
       await toast.present();
     }
   }
 
-  resetForm() {
+  resetForm(): void {
     this.editingExpenseId = null;
-    this.newExpense = { amount: null, category: '', subcategory: '', description: '', date: new Date().toISOString(), currency: '' };
+    this.newExpense = this.createEmptyExpenseForm();
   }
 
-  onCategoryChange() {
+  onCategoryChange(): void {
     this.newExpense.subcategory = '';
   }
 
-  openEditModal(expense: Expense) {
+  openEditModal(expense: Expense): void {
     this.editingExpenseId = expense.id;
     this.newExpense = {
       amount: expense.amount,
@@ -166,7 +121,7 @@ export class Tab1Page {
       subcategory: expense.subcategory || '',
       description: expense.description || '',
       date: expense.date,
-      currency: expense.currency
+      currency: expense.currency,
     };
     this.modal.present();
   }
@@ -176,13 +131,18 @@ export class Tab1Page {
     return cat ? cat.subcategories : [];
   }
 
-  deleteExpense(id: string) {
+  deleteExpense(id: string): void {
     this.dataService.deleteExpense(id);
   }
 
-  getCurrencySymbol(code: string): string {
-    const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$', 'RON': 'lei' };
-    return map[code] || code;
+  private createEmptyExpenseForm(): ExpenseFormModel {
+    return {
+      amount: null,
+      category: '',
+      subcategory: '',
+      description: '',
+      date: new Date().toISOString(),
+      currency: '',
+    };
   }
 }
-

@@ -1,20 +1,9 @@
 import { Injectable, signal, computed } from '@angular/core';
 import { DatabaseService } from './database.service';
+import { Expense, Category } from '../models/expense.model';
+import { getCurrencySymbol } from '../utils/currency.utils';
 
-export interface Expense {
-  id: string;
-  amount: number;
-  category: string;
-  subcategory?: string;
-  description: string;
-  date: string;
-  currency: string;
-}
-
-export interface Category {
-  name: string;
-  subcategories: string[];
-}
+export { Expense, Category } from '../models/expense.model';
 
 @Injectable({
   providedIn: 'root',
@@ -32,27 +21,21 @@ export class DataService {
   public selectedExpenseMonth = signal<string>(new Date().toISOString().substring(0, 7));
   public lastActiveTab = 'tab1';
 
-  public activeCurrencySymbol = computed(() => {
-    const code = this.activeCurrencySignal();
-    const map: any = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': '$', 'RON': 'lei' };
-    return map[code] || code;
-  });
+  public activeCurrencySymbol = computed(() => getCurrencySymbol(this.activeCurrencySignal()));
 
   constructor(private dbService: DatabaseService) {
     this.loadInitialData();
   }
 
-  private async loadInitialData() {
+  public async loadInitialData(): Promise<void> {
     try {
       const db = this.dbService.getDb();
       if (!db) return;
 
-      // Load expenses
       const expensesRes = await db.query('SELECT * FROM expenses ORDER BY date DESC;');
       const expenses = expensesRes.values || [];
       this.expensesSignal.set(expenses as Expense[]);
 
-      // Load categories
       const categoriesRes = await db.query('SELECT name FROM categories;');
       const loadedCategories: Category[] = [];
       if (categoriesRes.values) {
@@ -73,7 +56,7 @@ export class DataService {
     }
   }
 
-  async setActiveCurrency(currency: string) {
+  async setActiveCurrency(currency: string): Promise<void> {
     try {
       const db = this.dbService.getDb();
       await db.run('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', ['active_currency', currency]);
@@ -84,8 +67,8 @@ export class DataService {
     }
   }
 
-  async addExpense(expense: Omit<Expense, 'id' | 'currency'>) {
-    const id = Math.random().toString(36).substr(2, 9);
+  async addExpense(expense: Omit<Expense, 'id' | 'currency'>): Promise<void> {
+    const id = Math.random().toString(36).substring(2, 11);
     const currency = this.activeCurrencySignal();
     const newExpense: Expense = { ...expense, id, currency };
 
@@ -93,7 +76,15 @@ export class DataService {
       const db = this.dbService.getDb();
       await db.run(
         'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [newExpense.id, newExpense.amount, newExpense.category, newExpense.subcategory || null, newExpense.description, newExpense.date, newExpense.currency]
+        [
+          newExpense.id,
+          newExpense.amount,
+          newExpense.category,
+          newExpense.subcategory || null,
+          newExpense.description,
+          newExpense.date,
+          newExpense.currency,
+        ]
       );
       this.dbService.saveStore();
       this.expensesSignal.update(expenses => [newExpense, ...expenses]);
@@ -102,12 +93,20 @@ export class DataService {
     }
   }
 
-  async editExpense(id: string, updatedExpense: Omit<Expense, 'id'>) {
+  async editExpense(id: string, updatedExpense: Omit<Expense, 'id'>): Promise<void> {
     try {
       const db = this.dbService.getDb();
       await db.run(
         'UPDATE expenses SET amount = ?, category = ?, subcategory = ?, description = ?, date = ?, currency = ? WHERE id = ?',
-        [updatedExpense.amount, updatedExpense.category, updatedExpense.subcategory || null, updatedExpense.description, updatedExpense.date, updatedExpense.currency, id]
+        [
+          updatedExpense.amount,
+          updatedExpense.category,
+          updatedExpense.subcategory || null,
+          updatedExpense.description,
+          updatedExpense.date,
+          updatedExpense.currency,
+          id,
+        ]
       );
       this.dbService.saveStore();
       this.expensesSignal.update(expenses =>
@@ -118,7 +117,7 @@ export class DataService {
     }
   }
 
-  async deleteExpense(id: string) {
+  async deleteExpense(id: string): Promise<void> {
     try {
       const db = this.dbService.getDb();
       await db.run('DELETE FROM expenses WHERE id = ?', [id]);
@@ -129,7 +128,7 @@ export class DataService {
     }
   }
 
-  async addCategory(category: string) {
+  async addCategory(category: string): Promise<void> {
     const trimmed = category.trim();
     if (trimmed && !this.categoriesSignal().some(c => c.name === trimmed)) {
       try {
@@ -143,7 +142,7 @@ export class DataService {
     }
   }
 
-  async deleteCategory(category: string) {
+  async deleteCategory(category: string): Promise<void> {
     try {
       const db = this.dbService.getDb();
       await db.run('DELETE FROM categories WHERE name = ?', [category]);
@@ -154,7 +153,7 @@ export class DataService {
     }
   }
 
-  async editCategory(oldCategory: string, newCategory: string) {
+  async editCategory(oldCategory: string, newCategory: string): Promise<void> {
     const trimmedNew = newCategory.trim();
     if (trimmedNew && oldCategory !== trimmedNew && !this.categoriesSignal().some(c => c.name === trimmedNew)) {
       try {
@@ -166,10 +165,10 @@ export class DataService {
         this.dbService.saveStore();
 
         this.categoriesSignal.update(cats =>
-          cats.map(c => c.name === oldCategory ? { ...c, name: trimmedNew } : c)
+          cats.map(c => (c.name === oldCategory ? { ...c, name: trimmedNew } : c))
         );
         this.expensesSignal.update(expenses =>
-          expenses.map(e => e.category === oldCategory ? { ...e, category: trimmedNew } : e)
+          expenses.map(e => (e.category === oldCategory ? { ...e, category: trimmedNew } : e))
         );
       } catch (e) {
         console.error(e);
@@ -177,7 +176,7 @@ export class DataService {
     }
   }
 
-  async addSubcategory(parentCategory: string, subcategory: string) {
+  async addSubcategory(parentCategory: string, subcategory: string): Promise<void> {
     const trimmed = subcategory.trim();
     if (trimmed) {
       try {
@@ -199,7 +198,7 @@ export class DataService {
     }
   }
 
-  async deleteSubcategory(parentCategory: string, subcategory: string) {
+  async deleteSubcategory(parentCategory: string, subcategory: string): Promise<void> {
     try {
       const db = this.dbService.getDb();
       await db.run('DELETE FROM subcategories WHERE parent_category = ? AND name = ?', [parentCategory, subcategory]);
@@ -218,7 +217,7 @@ export class DataService {
     }
   }
 
-  async editSubcategory(parentCategory: string, oldSub: string, newSub: string) {
+  async editSubcategory(parentCategory: string, oldSub: string, newSub: string): Promise<void> {
     const trimmedNew = newSub.trim();
     if (trimmedNew && oldSub !== trimmedNew) {
       try {
@@ -232,15 +231,18 @@ export class DataService {
             if (c.name === parentCategory && !c.subcategories.includes(trimmedNew)) {
               return {
                 ...c,
-                subcategories: c.subcategories.map(s => s === oldSub ? trimmedNew : s)
+                subcategories: c.subcategories.map(s => (s === oldSub ? trimmedNew : s)),
               };
             }
             return c;
           })
         );
         this.expensesSignal.update(expenses =>
-          expenses.map(e => (e.category === parentCategory && e.subcategory === oldSub)
-            ? { ...e, subcategory: trimmedNew } : e)
+          expenses.map(e =>
+            e.category === parentCategory && e.subcategory === oldSub
+              ? { ...e, subcategory: trimmedNew }
+              : e
+          )
         );
       } catch (e) {
         console.error(e);
@@ -248,7 +250,7 @@ export class DataService {
     }
   }
 
-  getStats() {
+  getStats(): { total: number; byCategory: Record<string, number> } {
     const currentExpenses = this.expensesSignal();
     const total = currentExpenses.reduce((sum, e) => sum + e.amount, 0);
     const byCategory = currentExpenses.reduce((acc, e) => {
@@ -259,229 +261,58 @@ export class DataService {
     return { total, byCategory };
   }
 
-  async exportToCSV() {
-    const expenses = this.expensesSignal();
-    let csvStr = "id,amount,category,subcategory,description,date,currency\n";
+  /**
+   * Replaces all categories, subcategories, and expenses in SQLite and reloads reactive state.
+   */
+  async replaceAllData(
+    expenses: Expense[],
+    distinctCategories: Set<string>,
+    distinctSubcategories: Set<string>
+  ): Promise<void> {
+    const db = this.dbService.getDb();
+    await db.run('DELETE FROM expenses');
+    await db.run('DELETE FROM subcategories');
+    await db.run('DELETE FROM categories');
 
-    for (const e of expenses) {
-      const id = e.id;
-      const amount = e.amount.toString();
-      const cat = `"${e.category.replace(/"/g, '""')}"`;
-      const sub = `"${(e.subcategory || '').replace(/"/g, '""')}"`;
-      const desc = `"${e.description.replace(/"/g, '""')}"`;
-      const date = e.date;
-      const curr = e.currency || 'USD';
-      csvStr += `${id},${amount},${cat},${sub},${desc},${date},${curr}\n`;
+    for (const cat of distinctCategories) {
+      await db.run('INSERT INTO categories (name) VALUES (?)', [cat]);
+    }
+    for (const parentSub of distinctSubcategories) {
+      const [parent, sub] = parentSub.split('|');
+      await db.run('INSERT INTO subcategories (parent_category, name) VALUES (?, ?)', [parent, sub]);
     }
 
-    const blob = new Blob([csvStr], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `expense_tracker_backup_${new Date().toISOString().substring(0, 10)}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-  }
+    const expenseValues = expenses.map(e => [
+      e.id,
+      e.amount,
+      e.category,
+      e.subcategory || null,
+      e.description,
+      e.date,
+      e.currency,
+    ]);
 
-  async importFromCSV(file: File) {
-    if (!file) return;
-    try {
-      const text = await file.text();
-      const lines = text.split('\n').filter(l => l.trim().length > 0);
-      if (lines.length <= 1) return;
-
-      const parsedExpenses: Expense[] = [];
-      const distinctCats = new Set<string>();
-      const distinctSubs = new Set<string>();
-
-      for (let i = 1; i < lines.length; i++) {
-        let line = lines[i];
-        let row = [];
-        let inQuotes = false;
-        let buf = '';
-        for (let j = 0; j < line.length; j++) {
-          const char = line[j];
-          if (char === '"' && line[j + 1] === '"') {
-            buf += '"'; j++;
-          } else if (char === '"') {
-            inQuotes = !inQuotes;
-          } else if (char === ',' && !inQuotes) {
-            row.push(buf); buf = '';
-          } else {
-            buf += char;
-          }
-        }
-        row.push(buf);
-
-        if (row.length >= 6) {
-          const id = row[0] || Math.random().toString(36).substr(2, 9);
-          const amount = parseFloat(row[1]) || 0;
-          const category = row[2];
-          const subcategory = row[3];
-          const description = row[4];
-          const date = row[5];
-          const currency = row[6] || this.activeCurrencySignal();
-
-          parsedExpenses.push({ id, amount, category, subcategory, description, date, currency });
-          if (category) distinctCats.add(category);
-          if (category && subcategory) distinctSubs.add(`${category}|${subcategory}`);
-        }
-      }
-
-      const db = this.dbService.getDb();
-      await db.run('DELETE FROM expenses');
-      await db.run('DELETE FROM subcategories');
-      await db.run('DELETE FROM categories');
-
-      for (const cat of distinctCats) {
-        await db.run('INSERT INTO categories (name) VALUES (?)', [cat]);
-      }
-      for (const parentSub of distinctSubs) {
-        const [p, s] = parentSub.split('|');
-        await db.run('INSERT INTO subcategories (parent_category, name) VALUES (?, ?)', [p, s]);
-      }
-
-      const expenseValues = parsedExpenses.map(e => [e.id, e.amount, e.category, e.subcategory || null, e.description, e.date, e.currency]);
-
-      if (expenseValues.length > 0) {
-        await db.executeSet([{
-          statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
-          values: expenseValues
-        }]);
-      }
-
-      this.dbService.saveStore();
-      await this.loadInitialData();
-
-    } catch (e) {
-      console.error('Failed to parse or import CSV', e);
+    if (expenseValues.length > 0) {
+      await db.executeSet([
+        {
+          statement:
+            'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
+          values: expenseValues,
+        },
+      ]);
     }
+
+    this.dbService.saveStore();
+    await this.loadInitialData();
   }
 
-  async importExternalCSV(file: File) {
-    if (!file) return;
-    try {
-      const text = await file.text();
-      const lines = text.split('\n').filter(l => l.trim().length > 0);
-      if (lines.length <= 1) return;
-
-      let headerLine = lines[0];
-      let headers: string[] = [];
-      let inQuotes = false;
-      let buf = '';
-      for (let j = 0; j < headerLine.length; j++) {
-        const char = headerLine[j];
-        if (char === '"' && headerLine[j + 1] === '"') {
-          buf += '"'; j++;
-        } else if (char === '"') {
-          inQuotes = !inQuotes;
-        } else if (char === ',' && !inQuotes) {
-          headers.push(buf.trim().toLowerCase()); buf = '';
-        } else {
-          buf += char;
-        }
-      }
-      headers.push(buf.trim().toLowerCase());
-
-      const indexMap = {
-        amount: headers.indexOf('amount'),
-        category: headers.indexOf('category'),
-        subcategory: headers.indexOf('subcategory'),
-        description: headers.indexOf('description'),
-        date: headers.indexOf('date'),
-        currency: headers.indexOf('currency')
-      };
-
-      const parsedExpenses: Expense[] = [];
-      const distinctCats = new Set<string>();
-      const distinctSubs = new Set<string>();
-
-      for (let i = 1; i < lines.length; i++) {
-        let line = lines[i];
-        let row: string[] = [];
-        inQuotes = false;
-        buf = '';
-        for (let j = 0; j < line.length; j++) {
-          const char = line[j];
-          if (char === '"' && line[j + 1] === '"') {
-            buf += '"'; j++;
-          } else if (char === '"') {
-            inQuotes = !inQuotes;
-          } else if (char === ',' && !inQuotes) {
-            row.push(buf); buf = '';
-          } else {
-            buf += char;
-          }
-        }
-        row.push(buf);
-
-        const id = Math.random().toString(36).substr(2, 9);
-        const amount = indexMap.amount >= 0 ? parseFloat(row[indexMap.amount]) || 0 : 0;
-        const category = indexMap.category >= 0 ? row[indexMap.category] : '';
-        const subcategory = indexMap.subcategory >= 0 ? row[indexMap.subcategory] : '';
-        const description = indexMap.description >= 0 ? row[indexMap.description] : '';
-        let rawDate = indexMap.date >= 0 && row[indexMap.date] ? row[indexMap.date].trim() : '';
-        let finalDateObj = new Date();
-        if (rawDate) {
-          const tryStandard = new Date(rawDate);
-          if (!isNaN(tryStandard.getTime())) {
-            finalDateObj = tryStandard;
-          } else {
-            const parts = rawDate.split(/[-/.]/);
-            if (parts.length === 3) {
-              const tryEuro = new Date(`${parts[2]}-${parts[1]}-${parts[0]}T12:00:00Z`);
-              if (!isNaN(tryEuro.getTime())) finalDateObj = tryEuro;
-            }
-          }
-        }
-        const date = finalDateObj.toISOString();
-        const currency = indexMap.currency >= 0 && row[indexMap.currency] ? row[indexMap.currency] : this.activeCurrencySignal();
-
-        parsedExpenses.push({ id, amount, category, subcategory, description, date, currency });
-        if (category) distinctCats.add(category);
-        if (category && subcategory) distinctSubs.add(`${category}|${subcategory}`);
-      }
-
-      const db = this.dbService.getDb();
-      await db.run('DELETE FROM expenses');
-      await db.run('DELETE FROM subcategories');
-      await db.run('DELETE FROM categories');
-
-      for (const cat of distinctCats) {
-        await db.run('INSERT INTO categories (name) VALUES (?)', [cat]);
-      }
-      for (const parentSub of distinctSubs) {
-        const [p, s] = parentSub.split('|');
-        await db.run('INSERT INTO subcategories (parent_category, name) VALUES (?, ?)', [p, s]);
-      }
-
-      const expenseValues = parsedExpenses.map(e => [e.id, e.amount, e.category, e.subcategory || null, e.description, e.date, e.currency]);
-
-      if (expenseValues.length > 0) {
-        await db.executeSet([{
-          statement: 'INSERT INTO expenses (id, amount, category, subcategory, description, date, currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
-          values: expenseValues
-        }]);
-      }
-
-      this.dbService.saveStore();
-      await this.loadInitialData();
-
-    } catch (e) {
-      console.error('Failed to parse or import External CSV', e);
-    }
-  }
-
-  async clearAllData() {
+  async clearAllData(): Promise<void> {
     try {
       const db = this.dbService.getDb();
       await db.run('DELETE FROM expenses');
       await db.run('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', ['seed_version', 'cleared']);
 
       this.dbService.saveStore();
-
       this.expensesSignal.set([]);
     } catch (e) {
       console.error(e);

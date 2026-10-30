@@ -1,27 +1,3 @@
-.gradient-text {
-  background: -webkit-linear-gradient(45deg, #ff4c4c, #4a90e2);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
-}
-
-.glass-list {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  margin-top: 8px;
-  margin-bottom: 80px;
-  /* Leave space for FAB */
-  margin-inline: 8px !important;
-
-  ion-item {
-    --background: transparent;
-  }
-}
-
 /* Day Header Resizing Classes */
 .day-header-date b {
   font-size: 0.8rem;
@@ -29,49 +5,6 @@
 
 .day-header-total b {
   font-size: 0.8rem;
-}
-
-.year-selector {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-
-  .year-text {
-    margin: 0;
-    font-size: 1.4rem;
-    font-weight: 600;
-  }
-}
-
-.month-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  .month-row {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .month-col {
-    width: 30%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .month-btn {
-    font-weight: 600;
-    font-size: 1.1rem;
-    width: 100%;
-    margin: 0;
-    --border-radius: 8px;
-
-    &.selected {
-      font-weight: 800;
-      color: var(--ion-color-danger);
-    }
-  }
 }
 
 .category-section {

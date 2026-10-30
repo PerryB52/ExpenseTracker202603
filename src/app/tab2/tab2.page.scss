@@ -1,9 +1,9 @@
-.gradient-text {
-  background: -webkit-linear-gradient(45deg, #ff4c4c, #4a90e2);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
+.toolbar-grouping-select {
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  --placeholder-color: white;
+  --icon-color: white;
 }
 
 .chart-card {
@@ -14,6 +14,23 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-bottom: 24px;
   margin-inline: 2px !important;
+}
+
+.chart-card-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-type-select {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 4px 12px;
+  color: #333;
+  min-height: auto;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .bars-container {
@@ -94,23 +111,13 @@
   filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.08));
 }
 
-
 .glass-list {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(6px);
-  border-radius: 20px;
-  box-shadow: 0 8px 16px 0 rgba(31, 38, 135, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
   margin-top: 0;
   margin-bottom: 12px;
   margin-inline: 2px !important;
-
-  ion-item {
-    --background: transparent;
-  }
 }
 
-/* Custom Month Picker Styles */
+/* Custom Year Picker Styles */
 .year-selector {
   display: flex;
   align-items: center;

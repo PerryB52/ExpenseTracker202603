@@ -35,3 +35,56 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Shared App Utility Classes */
+.gradient-text {
+  background: -webkit-linear-gradient(45deg, #ff4c4c, #4a90e2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.glass-list {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin-top: 8px;
+  margin-bottom: 80px;
+  margin-inline: 8px !important;
+
+  ion-item {
+    --background: transparent;
+  }
+}
+
+.toolbar-nav-arrow {
+  --color: white;
+  margin: 0;
+
+  &.prev {
+    --padding-start: 8px;
+    --padding-end: 2px;
+  }
+
+  &.next {
+    --padding-start: 2px;
+    --padding-end: 8px;
+  }
+}
+
+.toolbar-date-btn {
+  --color: white;
+  font-weight: 700;
+  font-size: 1.05rem;
+  --padding-start: 4px;
+  --padding-end: 4px;
+  margin: 0;
+}
+
+.toolbar-spacer {
+  visibility: hidden;
+  pointer-events: none;
+}

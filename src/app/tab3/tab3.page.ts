@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonModal, AlertController } from '@ionic/angular';
-import { DataService, Category } from '../services/data.service';
+import { DataService } from '../services/data.service';
+import { CsvService } from '../services/csv.service';
 
 @Component({
   selector: 'app-tab3',
@@ -11,37 +12,41 @@ import { DataService, Category } from '../services/data.service';
 export class Tab3Page {
   @ViewChild('categoriesModal') categoriesModal!: IonModal;
 
-  newCategory: string = '';
+  newCategory = '';
   editingCategory: string | null = null;
-  editCategoryValue: string = '';
+  editCategoryValue = '';
 
-  newSubcategory: { [parentName: string]: string } = {};
-  editingSubcategory: { parent: string, oldSub: string } | null = null;
-  editSubcategoryValue: string = '';
+  newSubcategory: Record<string, string> = {};
+  editingSubcategory: { parent: string; oldSub: string } | null = null;
+  editSubcategoryValue = '';
 
-  constructor(public dataService: DataService, private alertCtrl: AlertController) { }
+  constructor(
+    public dataService: DataService,
+    private csvService: CsvService,
+    private alertCtrl: AlertController
+  ) {}
 
-  ionViewWillLeave() {
+  ionViewWillLeave(): void {
     this.dataService.lastActiveTab = 'tab3';
   }
 
-  closeCategoriesModal() {
+  closeCategoriesModal(): void {
     this.categoriesModal.dismiss();
   }
 
-  addCategory() {
+  addCategory(): void {
     if (this.newCategory.trim()) {
       this.dataService.addCategory(this.newCategory);
-      this.newCategory = ''; // Reset input
+      this.newCategory = '';
     }
   }
 
-  startEdit(catName: string) {
+  startEdit(catName: string): void {
     this.editingCategory = catName;
     this.editCategoryValue = catName;
   }
 
-  saveEdit() {
+  saveEdit(): void {
     if (this.editingCategory && this.editCategoryValue.trim()) {
       this.dataService.editCategory(this.editingCategory, this.editCategoryValue);
     }
@@ -49,17 +54,16 @@ export class Tab3Page {
     this.editCategoryValue = '';
   }
 
-  cancelEdit() {
+  cancelEdit(): void {
     this.editingCategory = null;
     this.editCategoryValue = '';
   }
 
-  deleteCategory(catName: string) {
+  deleteCategory(catName: string): void {
     this.dataService.deleteCategory(catName);
   }
 
-  // --- Subcategories ---
-  addSubcategory(parentName: string) {
+  addSubcategory(parentName: string): void {
     const sub = this.newSubcategory[parentName];
     if (sub && sub.trim()) {
       this.dataService.addSubcategory(parentName, sub);
@@ -67,49 +71,53 @@ export class Tab3Page {
     }
   }
 
-  startEditSub(parentName: string, subName: string) {
+  startEditSub(parentName: string, subName: string): void {
     this.editingSubcategory = { parent: parentName, oldSub: subName };
     this.editSubcategoryValue = subName;
   }
 
-  saveEditSub() {
+  saveEditSub(): void {
     if (this.editingSubcategory && this.editSubcategoryValue.trim()) {
-      this.dataService.editSubcategory(this.editingSubcategory.parent, this.editingSubcategory.oldSub, this.editSubcategoryValue);
+      this.dataService.editSubcategory(
+        this.editingSubcategory.parent,
+        this.editingSubcategory.oldSub,
+        this.editSubcategoryValue
+      );
     }
     this.editingSubcategory = null;
     this.editSubcategoryValue = '';
   }
 
-  cancelEditSub() {
+  cancelEditSub(): void {
     this.editingSubcategory = null;
     this.editSubcategoryValue = '';
   }
 
-  deleteSubcategory(parentName: string, subName: string) {
+  deleteSubcategory(parentName: string, subName: string): void {
     this.dataService.deleteSubcategory(parentName, subName);
   }
 
-  exportCSV() {
-    this.dataService.exportToCSV();
+  exportCSV(): void {
+    this.csvService.exportToCSV();
   }
 
-  async importCSV(event: any) {
+  async importCSV(event: any): Promise<void> {
     const file = event.target.files?.[0];
     if (file) {
-      await this.dataService.importFromCSV(file);
+      await this.csvService.importFromCSV(file);
       event.target.value = '';
     }
   }
 
-  async importExternalCSV(event: any) {
+  async importExternalCSV(event: any): Promise<void> {
     const file = event.target.files?.[0];
     if (file) {
-      await this.dataService.importExternalCSV(file);
+      await this.csvService.importExternalCSV(file);
       event.target.value = '';
     }
   }
 
-  async clearData() {
+  async clearData(): Promise<void> {
     const alert = await this.alertCtrl.create({
       header: 'Delete Expenses?',
       message: 'Are you sure you want to completely erase all expense history? This action cannot be undone!',
@@ -120,9 +128,9 @@ export class Tab3Page {
           role: 'destructive',
           handler: () => {
             this.dataService.clearAllData();
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
     await alert.present();
   }

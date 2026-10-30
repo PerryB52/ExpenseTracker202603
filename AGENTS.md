@@ -23,9 +23,18 @@ This document serves as context and guidelines for AI agents working in this cod
 src/app/
 ├── app-routing.module.ts       # Root router (redirects to /tabs)
 ├── app.module.ts               # App root module with APP_INITIALIZER database hook
+├── components/
+│   └── month-picker-modal/     # Shared Month/Year grid modal picker used across Tab 1 & Tab 2
+├── models/
+│   └── expense.model.ts        # Shared TypeScript interfaces (Expense, Category, chart & form models)
 ├── services/
 │   ├── database.service.ts     # SQLite lifecycle, schema creation, migrations, seeding
-│   └── data.service.ts         # Central data store (Signals) & SQLite CRUD logic
+│   ├── data.service.ts         # Central data store (Signals) & SQLite CRUD logic
+│   └── csv.service.ts          # RFC-4180 CSV export, backup restore, and external statement import
+├── utils/
+│   ├── chart.utils.ts          # Pure analytics grouping, history bar calculation, & SVG pie chart math
+│   ├── currency.utils.ts       # Currency code to symbol mapping
+│   └── date.utils.ts           # Local date parsing/formatting, week Monday math, month shifting
 ├── tab1/                       # Tab 1: Expense feed, date grouping, add/edit modal
 ├── tab2/                       # Tab 2: Analytics, dynamic SVG Pie chart, Bar chart history, category drill-down
 ├── tab3/                       # Tab 3: Category/Subcategory editor, CSV Import/Export, settings
@@ -36,7 +45,7 @@ src/app/
 
 ## 3. Data Models & Schemas
 
-### TypeScript Interfaces (`src/app/services/data.service.ts`)
+### TypeScript Interfaces (`src/app/models/expense.model.ts`)
 
 ```typescript
 export interface Expense {
@@ -75,11 +84,12 @@ export interface Category {
    - Never mutate state signals directly without updating SQLite persistence.
 
 3. **Modals & UI Controls**:
-   - Use `@ViewChild` to control `IonModal` instances (e.g. month picker, add/edit expense modal).
+   - Use `@ViewChild` to control `IonModal` and `MonthPickerModalComponent` instances.
    - Use `ToastController` for light notifications and validation feedback.
    - Use `AlertController` for destructive operations (e.g. data wipe).
 
 4. **CSV Handling**:
+   - All CSV parsing and export logic lives in `CsvService` (`src/app/services/csv.service.ts`), which delegates bulk database replacement to `DataService.replaceAllData()`.
    - Maintain support for both native backup CSV format and external statement CSV imports with header parsing.
 
 5. **Context Maintenance**:
@@ -89,12 +99,16 @@ export interface Category {
    - `DataService.selectedExpenseMonth` stores Tab 1's active month filter.
    - When navigating from Tab 1 to Tab 2, Tab 2 synchronizes its view to Tab 1's active month via `ionViewWillEnter()`.
    - This synchronization is strictly one-way: navigating between months or timeframes in Tab 2 does not affect Tab 1's selected month.
+
 ---
 
 ## 5. Helpful File References
 
-- Database Lifecycle: [`database.service.ts`](file:///d:/Projects/Expense%20Tracker/ExpenseTracker202603/src/app/services/database.service.ts)
-- Data Store & Signals: [`data.service.ts`](file:///d:/Projects/Expense%20Tracker/ExpenseTracker202603/src/app/services/data.service.ts)
-- Main Expense List: [`tab1.page.ts`](file:///d:/Projects/Expense%20Tracker/ExpenseTracker202603/src/app/tab1/tab1.page.ts)
-- Analytics & Charts: [`tab2.page.ts`](file:///d:/Projects/Expense%20Tracker/ExpenseTracker202603/src/app/tab2/tab2.page.ts)
-- Settings & Categories: [`tab3.page.ts`](file:///d:/Projects/Expense%20Tracker/ExpenseTracker202603/src/app/tab3/tab3.page.ts)
+- Domain Models: [`expense.model.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/models/expense.model.ts)
+- Database Lifecycle: [`database.service.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/services/database.service.ts)
+- Data Store & Signals: [`data.service.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/services/data.service.ts)
+- CSV Import/Export: [`csv.service.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/services/csv.service.ts)
+- Chart & Analytics Math: [`chart.utils.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/utils/chart.utils.ts)
+- Main Expense List: [`tab1.page.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/tab1/tab1.page.ts)
+- Analytics & Charts: [`tab2.page.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/tab2/tab2.page.ts)
+- Settings & Categories: [`tab3.page.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/tab3/tab3.page.ts)
