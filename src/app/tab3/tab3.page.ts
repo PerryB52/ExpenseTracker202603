@@ -5,6 +5,7 @@ import { CsvService } from '../services/csv.service';
 import { ThemeService } from '../services/theme.service';
 import { SecurityService } from '../services/security.service';
 import { ThemeId } from '../models/expense.model';
+import { SUPPORTED_CURRENCIES } from '../utils/currency.utils';
 
 @Component({
   selector: 'app-tab3',
@@ -16,6 +17,9 @@ export class Tab3Page {
   @ViewChild('categoriesModal') categoriesModal!: IonModal;
   @ViewChild('themesModal') themesModal!: IonModal;
   @ViewChild('securityModal') securityModal!: IonModal;
+  @ViewChild('currencyModal') currencyModal!: IonModal;
+
+  readonly currencies = SUPPORTED_CURRENCIES;
 
   newCategory = '';
   editingCategory: string | null = null;
@@ -50,8 +54,17 @@ export class Tab3Page {
     this.securityModal.dismiss();
   }
 
+  closeCurrencyModal(): void {
+    this.currencyModal.dismiss();
+  }
+
   selectTheme(themeId: ThemeId): void {
     this.themeService.setTheme(themeId);
+  }
+
+  selectCurrency(code: string): void {
+    this.dataService.setActiveCurrency(code);
+    this.currencyModal.dismiss();
   }
 
   async onAppLockToggle(event: any): Promise<void> {

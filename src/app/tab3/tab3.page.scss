@@ -16,6 +16,44 @@
   overflow: hidden;
 }
 
+.subcategory-accordion-content {
+  background: var(--app-divider-bg);
+  padding: 4px 0 4px 16px;
+  border-bottom: 1px solid var(--app-item-border-color);
+
+  ion-list {
+    background: transparent;
+    padding: 0;
+
+    ion-item {
+      --background: transparent;
+    }
+  }
+}
+
+.currency-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--app-select-pill-bg);
+  color: var(--app-text-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+
+  &.active {
+    background: rgba(var(--ion-color-primary-rgb), 0.15);
+    color: var(--ion-color-primary);
+  }
+}
+
+.active-check {
+  font-size: 1.3rem;
+}
+
 .themes-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -95,10 +133,6 @@
     font-weight: 700;
     font-size: 0.95rem;
     color: var(--app-text-primary);
-  }
-
-  .active-check {
-    font-size: 1.2rem;
   }
 
   .theme-desc {
