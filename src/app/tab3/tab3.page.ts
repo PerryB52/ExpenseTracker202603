@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { IonModal, AlertController } from '@ionic/angular';
 import { DataService } from '../services/data.service';
 import { CsvService } from '../services/csv.service';
+import { ThemeService } from '../services/theme.service';
+import { ThemeId } from '../models/expense.model';
 
 @Component({
   selector: 'app-tab3',
@@ -11,6 +13,7 @@ import { CsvService } from '../services/csv.service';
 })
 export class Tab3Page {
   @ViewChild('categoriesModal') categoriesModal!: IonModal;
+  @ViewChild('themesModal') themesModal!: IonModal;
 
   newCategory = '';
   editingCategory: string | null = null;
@@ -22,6 +25,7 @@ export class Tab3Page {
 
   constructor(
     public dataService: DataService,
+    public themeService: ThemeService,
     private csvService: CsvService,
     private alertCtrl: AlertController
   ) {}
@@ -32,6 +36,14 @@ export class Tab3Page {
 
   closeCategoriesModal(): void {
     this.categoriesModal.dismiss();
+  }
+
+  closeThemesModal(): void {
+    this.themesModal.dismiss();
+  }
+
+  selectTheme(themeId: ThemeId): void {
+    this.themeService.setTheme(themeId);
   }
 
   addCategory(): void {

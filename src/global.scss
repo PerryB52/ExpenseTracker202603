@@ -26,19 +26,14 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 /**
- * Ionic Dark Mode
+ * Ionic Dark Mode (Class-based, controlled by ThemeService)
  * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
  */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
 
 /* Shared App Utility Classes */
 .gradient-text {
-  background: -webkit-linear-gradient(45deg, #ff4c4c, #4a90e2);
+  background: -webkit-linear-gradient(45deg, var(--app-gradient-start, #ff4c4c), var(--app-gradient-end, #4a90e2));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -46,17 +41,25 @@
 }
 
 .glass-list {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--app-glass-bg);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--app-glass-shadow);
+  border: 1px solid var(--app-glass-border);
   margin-top: 8px;
   margin-bottom: 80px;
   margin-inline: 8px !important;
 
+  ion-item-divider {
+    --background: var(--app-divider-bg);
+    --color: var(--app-text-primary);
+    border-bottom: 1px solid var(--app-item-border-color);
+  }
+
   ion-item {
     --background: transparent;
+    --color: var(--app-text-primary);
+    --border-color: var(--app-item-border-color);
   }
 }
 

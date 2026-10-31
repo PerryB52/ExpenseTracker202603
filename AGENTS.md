@@ -30,7 +30,8 @@ src/app/
 ├── services/
 │   ├── database.service.ts     # SQLite lifecycle, schema creation, migrations, seeding
 │   ├── data.service.ts         # Central data store (Signals) & SQLite CRUD logic
-│   └── csv.service.ts          # RFC-4180 CSV export, backup restore, and external statement import
+│   ├── csv.service.ts          # RFC-4180 CSV export, backup restore, and external statement import
+│   └── theme.service.ts        # Multi-theme manager (Light, Dark, Ocean Dark, Emerald Light) persisted in SQLite settings
 ├── utils/
 │   ├── chart.utils.ts          # Pure analytics grouping, history bar calculation, & SVG pie chart math
 │   ├── currency.utils.ts       # Currency code to symbol mapping
@@ -108,6 +109,7 @@ export interface Category {
 - Database Lifecycle: [`database.service.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/services/database.service.ts)
 - Data Store & Signals: [`data.service.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/services/data.service.ts)
 - CSV Import/Export: [`csv.service.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/services/csv.service.ts)
+- Theme Management: [`theme.service.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/services/theme.service.ts)
 - Chart & Analytics Math: [`chart.utils.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/utils/chart.utils.ts)
 - Main Expense List: [`tab1.page.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/tab1/tab1.page.ts)
 - Analytics & Charts: [`tab2.page.ts`](file:///d:/01%20Projects%20Coding/ExpenseTracker202603/expense-tracker/src/app/tab2/tab2.page.ts)

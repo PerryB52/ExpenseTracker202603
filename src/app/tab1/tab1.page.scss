@@ -25,23 +25,23 @@
   min-height: 200px;
   max-height: calc(100vh - 320px);
   max-height: max(240px, calc(100dvh - 320px));
-  background: white;
+  background: var(--app-pane-detail-bg);
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--app-item-border-color);
   overflow: hidden;
 
   .master-pane {
     flex: 1;
     min-height: 0;
-    background: #f8f9fa;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    background: var(--app-pane-master-bg);
+    border-right: 1px solid var(--app-item-border-color);
     overflow-y: auto;
   }
 
   .detail-pane {
     flex: 1;
     min-height: 0;
-    background: white;
+    background: var(--app-pane-detail-bg);
     overflow-y: auto;
   }
 
@@ -49,12 +49,12 @@
     padding: 14px 16px;
     font-size: 0.95rem;
     font-weight: 500;
-    color: #444;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--app-text-primary);
+    border-bottom: 1px solid var(--app-item-border-color);
     cursor: pointer;
 
     &.selected {
-      background: rgba(var(--ion-color-primary-rgb, 56, 128, 255), 0.1);
+      background: rgba(var(--ion-color-primary-rgb, 56, 128, 255), 0.14);
       color: var(--ion-color-primary);
       font-weight: 700;
       border-left: 3px solid var(--ion-color-primary);
@@ -64,7 +64,7 @@
   .pane-placeholder {
     padding: 20px;
     text-align: center;
-    color: #999;
+    color: var(--app-text-secondary);
     font-size: 0.85rem;
     font-style: italic;
   }
@@ -88,7 +88,7 @@
 
   .cat-text,
   .subcat-text {
-    color: var(--ion-color-medium, #92949c);
+    color: var(--app-text-secondary, #92949c);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -98,7 +98,7 @@
   .col-description {
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--ion-color-dark, #222428);
+    color: var(--app-text-primary, #222428);
     line-height: 1.3;
     white-space: normal;
     word-break: break-word;
@@ -142,7 +142,7 @@
     font-weight: 600 !important;
     letter-spacing: normal;
     padding: 0 !important;
-    color: var(--ion-color-dark, #2f2f2f);
+    color: var(--app-text-primary, #2f2f2f);
   }
 
   .modal-action-btn {

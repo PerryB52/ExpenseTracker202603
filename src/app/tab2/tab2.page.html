@@ -58,20 +58,20 @@
       <div class="pie-wrapper" *ngIf="pieChartData().legend.length > 0">
         <svg viewBox="-2.1 -1.45 4.2 2.9" class="svg-pie">
           <!-- Pie Slices -->
-          <path *ngFor="let item of pieChartData().paths" [attr.d]="item.path" [attr.fill]="item.color" stroke="#ffffff"
-            stroke-width="0.015" stroke-linejoin="round" />
+          <path *ngFor="let item of pieChartData().paths" [attr.d]="item.path" [attr.fill]="item.color"
+            class="pie-slice-path" stroke-width="0.015" stroke-linejoin="round" />
 
           <!-- Hovering Labels -->
           <g *ngFor="let lbl of pieChartData().labels">
             <path [attr.d]="lbl.linePath" fill="none" [attr.stroke]="lbl.color" stroke-width="0.015"
               stroke-linecap="round" />
-            <text [attr.x]="lbl.textX" [attr.y]="lbl.categoryY1" [attr.text-anchor]="lbl.anchor" fill="#333333"
-              font-size="0.14" font-weight="bold">{{ lbl.lines[0] }}</text>
+            <text [attr.x]="lbl.textX" [attr.y]="lbl.categoryY1" [attr.text-anchor]="lbl.anchor"
+              class="pie-label-text" font-size="0.14" font-weight="bold">{{ lbl.lines[0] }}</text>
             <text *ngIf="lbl.lines.length > 1" [attr.x]="lbl.textX" [attr.y]="lbl.categoryY2"
-              [attr.text-anchor]="lbl.anchor" fill="#333333" font-size="0.14" font-weight="bold">{{ lbl.lines[1]
+              [attr.text-anchor]="lbl.anchor" class="pie-label-text" font-size="0.14" font-weight="bold">{{ lbl.lines[1]
               }}</text>
-            <text [attr.x]="lbl.textX" [attr.y]="lbl.percentY" [attr.text-anchor]="lbl.anchor" fill="#1f1f1f"
-              font-size="0.14" font-weight="bold">{{ lbl.percent }}</text>
+            <text [attr.x]="lbl.textX" [attr.y]="lbl.percentY" [attr.text-anchor]="lbl.anchor"
+              class="pie-percent-text" font-size="0.14" font-weight="bold">{{ lbl.percent }}</text>
           </g>
         </svg>
       </div>

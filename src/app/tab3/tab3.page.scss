@@ -1,7 +1,110 @@
+.settings-section-title {
+  color: var(--app-text-secondary);
+  font-weight: 600;
+}
+
+.app-version-footer {
+  color: var(--app-text-secondary);
+  font-size: 0.9rem;
+}
+
 .glass-list {
   border-radius: 16px;
   margin-top: 6px;
   margin-bottom: 12px;
   margin-inline: 2px !important;
   overflow: hidden;
+}
+
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  padding-bottom: 16px;
+}
+
+.theme-card {
+  background: var(--app-card-bg);
+  border: 2px solid var(--app-item-border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: var(--app-glass-shadow);
+
+  &.active {
+    border-color: var(--ion-color-primary);
+    box-shadow: 0 0 0 2px rgba(var(--ion-color-primary-rgb), 0.25);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.theme-swatch {
+  height: 78px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-bottom: 1px solid var(--app-item-border-color);
+
+  .swatch-header {
+    height: 12px;
+    width: 45%;
+    border-radius: 4px;
+  }
+
+  .swatch-card {
+    flex: 1;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+
+    .swatch-line {
+      height: 6px;
+      border-radius: 3px;
+
+      &.primary {
+        width: 70%;
+      }
+
+      &.accent {
+        width: 45%;
+      }
+    }
+  }
+}
+
+.theme-info {
+  padding: 12px;
+
+  .theme-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .theme-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--app-text-primary);
+  }
+
+  .active-check {
+    font-size: 1.2rem;
+  }
+
+  .theme-desc {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    color: var(--app-text-secondary);
+  }
 }

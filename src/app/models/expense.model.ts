@@ -13,6 +13,21 @@ export interface Category {
   subcategories: string[];
 }
 
+export type ThemeId = 'light' | 'dark' | 'ocean-dark' | 'emerald-light';
+
+export interface ThemeDefinition {
+  id: ThemeId;
+  name: string;
+  description: string;
+  isDark: boolean;
+  preview: {
+    background: string;
+    surface: string;
+    primary: string;
+    accent: string;
+  };
+}
+
 export interface ExpenseFormModel {
   amount: number | null;
   category: string;
@@ -71,4 +86,3 @@ export interface PieChartData {
   labels: PieSliceLabel[];
   legend: PieLegendItem[];
 }
-

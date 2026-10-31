@@ -13,7 +13,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <h3 class="ion-padding-start" style="color: #666; font-weight: 600;">General</h3>
+  <h3 class="ion-padding-start settings-section-title">General</h3>
   <ion-list inset="true" class="glass-list">
     <ion-item button lines="full">
       <ion-icon name="person-circle-outline" slot="start" color="primary"></ion-icon>
@@ -31,12 +31,15 @@
       </ion-label>
     </ion-item>
 
-    <ion-item button lines="full">
+    <ion-item button lines="full" id="open-themes-modal">
       <ion-icon name="color-palette-outline" slot="start" color="secondary"></ion-icon>
       <ion-label>
         <h2>Appearance</h2>
-        <p>Dark mode, Themes</p>
+        <p>{{ themeService.activeTheme().name }}</p>
       </ion-label>
+      <ion-note slot="end" color="medium">
+        {{ themeService.activeTheme().isDark ? 'Dark' : 'Light' }}
+      </ion-note>
     </ion-item>
 
     <ion-item lines="none">
@@ -53,7 +56,7 @@
     </ion-item>
   </ion-list>
 
-  <h3 class="ion-padding-start" style="color: #666; font-weight: 600;">Data Management</h3>
+  <h3 class="ion-padding-start settings-section-title">Data Management</h3>
   <ion-list class="glass-list" inset="true">
 
     <ion-item button lines="full" (click)="exportCSV()">
@@ -90,10 +93,53 @@
     </ion-item>
   </ion-list>
 
-  <p class="ion-text-center ion-margin-top" style="color: #888; font-size: 0.9rem;">
+  <p class="ion-text-center ion-margin-top app-version-footer">
     ExpenseTracker v1.0.0<br>
     Angular 2026
   </p>
+
+  <!-- Appearance / Themes Modal -->
+  <ion-modal trigger="open-themes-modal" #themesModal [initialBreakpoint]="0.65" [breakpoints]="[0, 0.65, 1]">
+    <ng-template>
+      <ion-header class="ion-no-border">
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <ion-button (click)="closeThemesModal()">Close</ion-button>
+          </ion-buttons>
+          <ion-title>Appearance & Themes</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding" color="light">
+        <div class="themes-grid">
+          <div
+            *ngFor="let theme of themeService.themes"
+            class="theme-card"
+            [class.active]="themeService.activeThemeId() === theme.id"
+            (click)="selectTheme(theme.id)">
+            <div class="theme-swatch" [style.background]="theme.preview.background">
+              <div class="swatch-header" [style.background]="theme.preview.primary"></div>
+              <div class="swatch-card" [style.background]="theme.preview.surface">
+                <div class="swatch-line primary" [style.background]="theme.preview.primary"></div>
+                <div class="swatch-line accent" [style.background]="theme.preview.accent"></div>
+              </div>
+            </div>
+            <div class="theme-info">
+              <div class="theme-title-row">
+                <span class="theme-name">{{ theme.name }}</span>
+                <ion-icon
+                  *ngIf="themeService.activeThemeId() === theme.id"
+                  name="checkmark-circle"
+                  color="primary"
+                  class="active-check">
+                </ion-icon>
+              </div>
+              <p class="theme-desc">{{ theme.description }}</p>
+            </div>
+          </div>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
   <!-- Categories Modal -->
   <ion-modal trigger="open-categories-modal" #categoriesModal>
