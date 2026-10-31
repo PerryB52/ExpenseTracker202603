@@ -42,13 +42,13 @@
 
 .glass-list {
   background: var(--app-glass-bg);
-  backdrop-filter: blur(10px);
   border-radius: 20px;
   box-shadow: var(--app-glass-shadow);
   border: 1px solid var(--app-glass-border);
   margin-top: 8px;
   margin-bottom: 80px;
   margin-inline: 8px !important;
+  overflow: hidden;
 
   ion-item-divider {
     --background: var(--app-divider-bg);
@@ -57,9 +57,18 @@
   }
 
   ion-item {
-    --background: transparent;
+    --background: var(--app-card-bg);
     --color: var(--app-text-primary);
     --border-color: var(--app-item-border-color);
+  }
+
+  ion-item-sliding {
+    background: var(--app-swipe-tray-bg);
+
+    > ion-item {
+      will-change: transform;
+      transform: translateZ(0);
+    }
   }
 }
 

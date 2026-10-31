@@ -1,5 +1,5 @@
 import { Component, ViewChild, computed } from '@angular/core';
-import { IonModal, ToastController } from '@ionic/angular';
+import { IonItemSliding, IonModal, ToastController } from '@ionic/angular';
 import { DataService } from '../services/data.service';
 import { Expense, ExpenseFormModel } from '../models/expense.model';
 import { MonthPickerModalComponent } from '../components/month-picker-modal/month-picker-modal.component';
@@ -113,7 +113,8 @@ export class Tab1Page {
     this.newExpense.subcategory = '';
   }
 
-  openEditModal(expense: Expense): void {
+  openEditModal(expense: Expense, slidingItem?: IonItemSliding): void {
+    slidingItem?.close();
     this.editingExpenseId = expense.id;
     this.newExpense = {
       amount: expense.amount,
@@ -131,7 +132,8 @@ export class Tab1Page {
     return cat ? cat.subcategories : [];
   }
 
-  deleteExpense(id: string): void {
+  deleteExpense(id: string, slidingItem?: IonItemSliding): void {
+    slidingItem?.close();
     this.dataService.deleteExpense(id);
   }
 

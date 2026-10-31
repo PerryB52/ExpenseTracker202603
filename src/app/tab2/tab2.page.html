@@ -216,18 +216,16 @@
 
         <ion-list inset="true" class="glass-list expense-feed">
           <ion-item-group *ngIf="details.expenses.length > 0">
-            <ion-item-sliding *ngFor="let expense of details.expenses">
-              <ion-item lines="full" detail="false">
-                <ion-label>
-                  <h2><b>{{ expense.description || (expense.subcategory ? expense.category + ' > ' + expense.subcategory
-                      : expense.category) }}</b></h2>
-                  <p>{{ expense.date | date:'mediumDate' }} • {{ expense.date | date:'shortTime' }}</p>
-                </ion-label>
-                <ion-note slot="end" color="danger">
-                  <b>-{{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}</b>
-                </ion-note>
-              </ion-item>
-            </ion-item-sliding>
+            <ion-item *ngFor="let expense of details.expenses" lines="full" detail="false">
+              <ion-label>
+                <h2><b>{{ expense.description || (expense.subcategory ? expense.category + ' > ' + expense.subcategory
+                    : expense.category) }}</b></h2>
+                <p>{{ expense.date | date:'mediumDate' }} • {{ expense.date | date:'shortTime' }}</p>
+              </ion-label>
+              <ion-note slot="end" color="danger">
+                <b>-{{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}</b>
+              </ion-note>
+            </ion-item>
           </ion-item-group>
 
           <ion-item *ngIf="details.expenses.length === 0" lines="none" class="ion-text-center">

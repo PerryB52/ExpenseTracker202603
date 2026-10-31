@@ -119,6 +119,41 @@
   }
 }
 
+.swipe-action-options {
+  background: var(--app-swipe-tray-bg);
+  border-bottom: 1px solid var(--app-item-border-color);
+  padding: 6px 8px;
+  gap: 6px;
+  align-items: center;
+
+  .swipe-option {
+    border-radius: 10px;
+    height: calc(100% - 12px);
+    min-width: 46px;
+    margin: 0;
+    --padding-start: 12px;
+    --padding-end: 12px;
+
+    ion-icon {
+      font-size: 1.2rem;
+    }
+
+    &.edit-option {
+      --background: var(--app-swipe-edit-bg);
+      --color: var(--app-swipe-edit-color);
+      background: var(--app-swipe-edit-bg);
+      color: var(--app-swipe-edit-color);
+    }
+
+    &.delete-option {
+      --background: var(--app-swipe-delete-bg);
+      --color: var(--app-swipe-delete-color);
+      background: var(--app-swipe-delete-bg);
+      color: var(--app-swipe-delete-color);
+    }
+  }
+}
+
 .modal-toolbar {
   position: relative;
 
