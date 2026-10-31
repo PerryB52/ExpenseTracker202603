@@ -15,12 +15,15 @@
 
   <h3 class="ion-padding-start settings-section-title">General</h3>
   <ion-list inset="true" class="glass-list">
-    <ion-item button lines="full">
-      <ion-icon name="person-circle-outline" slot="start" color="primary"></ion-icon>
+    <ion-item button lines="full" id="open-security-modal">
+      <ion-icon name="shield-checkmark-outline" slot="start" color="primary"></ion-icon>
       <ion-label>
-        <h2>Account</h2>
-        <p>Manage your profile</p>
+        <h2>Security & Privacy</h2>
+        <p>PIN lock, Biometrics, Privacy screen</p>
       </ion-label>
+      <ion-note slot="end" [color]="securityService.isAppLockEnabled() ? 'success' : 'medium'">
+        {{ securityService.isAppLockEnabled() ? 'Protected' : 'Off' }}
+      </ion-note>
     </ion-item>
 
     <ion-item button lines="full" id="open-categories-modal">
@@ -97,6 +100,82 @@
     ExpenseTracker v1.0.0<br>
     Angular 2026
   </p>
+
+  <!-- Security & Privacy Modal -->
+  <ion-modal trigger="open-security-modal" #securityModal [initialBreakpoint]="0.7" [breakpoints]="[0, 0.7, 1]">
+    <ng-template>
+      <ion-header class="ion-no-border">
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <ion-button (click)="closeSecurityModal()">Close</ion-button>
+          </ion-buttons>
+          <ion-title>Security & Privacy</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding" color="light">
+        <ion-list inset="true" class="glass-list">
+          <ion-item lines="full">
+            <ion-icon name="keypad-outline" slot="start" color="primary"></ion-icon>
+            <ion-toggle
+              [checked]="securityService.isAppLockEnabled()"
+              (ionChange)="onAppLockToggle($event)">
+              <ion-label>
+                <h2>Require 4-Digit PIN</h2>
+                <p>Lock app on startup and after backgrounding</p>
+              </ion-label>
+            </ion-toggle>
+          </ion-item>
+
+          <ion-item
+            button
+            lines="full"
+            *ngIf="securityService.isAppLockEnabled()"
+            (click)="promptSetNewPin(false)">
+            <ion-icon name="key-outline" slot="start" color="secondary"></ion-icon>
+            <ion-label>
+              <h2>Change Security PIN</h2>
+              <p>Update your 4-digit unlock code</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item lines="full" *ngIf="securityService.isAppLockEnabled()">
+            <ion-icon name="finger-print-outline" slot="start" color="tertiary"></ion-icon>
+            <ion-toggle
+              [checked]="securityService.isBiometricEnabled()"
+              (ionChange)="onBiometricToggle($event)">
+              <ion-label>
+                <h2>Biometric / Device Unlock</h2>
+                <p>Use fingerprint, face, or device credential</p>
+              </ion-label>
+            </ion-toggle>
+          </ion-item>
+
+          <ion-item [lines]="securityService.isAppLockEnabled() ? 'full' : 'none'">
+            <ion-icon name="eye-off-outline" slot="start" color="secondary"></ion-icon>
+            <ion-toggle
+              [checked]="securityService.isPrivacyScreenEnabled()"
+              (ionChange)="onPrivacyScreenToggle($event)">
+              <ion-label>
+                <h2>Privacy Screen</h2>
+                <p>Hide screen in Recent Apps switcher & block screenshots</p>
+              </ion-label>
+            </ion-toggle>
+          </ion-item>
+
+          <ion-item
+            button
+            lines="none"
+            *ngIf="securityService.isAppLockEnabled()"
+            (click)="lockAppNow()">
+            <ion-icon name="lock-closed-outline" slot="start" color="danger"></ion-icon>
+            <ion-label color="danger">
+              <h2>Lock App Now</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
   <!-- Appearance / Themes Modal -->
   <ion-modal trigger="open-themes-modal" #themesModal [initialBreakpoint]="0.65" [breakpoints]="[0, 0.65, 1]">

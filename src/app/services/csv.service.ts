@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Expense } from '../models/expense.model';
 import { DataService } from './data.service';
+import { generateSecureId } from '../utils/id.utils';
 
 @Injectable({
   providedIn: 'root',
@@ -103,7 +104,7 @@ export class CsvService {
       for (let i = 1; i < lines.length; i++) {
         const row = this.parseCsvLine(lines[i]);
         if (row.length >= 6) {
-          const id = row[0] || Math.random().toString(36).substring(2, 11);
+          const id = row[0] || generateSecureId();
           const amount = parseFloat(row[1]) || 0;
           const category = row[2];
           const subcategory = row[3];
@@ -146,7 +147,7 @@ export class CsvService {
 
       for (let i = 1; i < lines.length; i++) {
         const row = this.parseCsvLine(lines[i]);
-        const id = Math.random().toString(36).substring(2, 11);
+        const id = generateSecureId();
         const amount = indexMap.amount >= 0 ? parseFloat(row[indexMap.amount]) || 0 : 0;
         const category = indexMap.category >= 0 ? row[indexMap.category] : '';
         const subcategory = indexMap.subcategory >= 0 ? row[indexMap.subcategory] : '';

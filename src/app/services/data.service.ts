@@ -2,6 +2,7 @@ import { Injectable, signal, computed } from '@angular/core';
 import { DatabaseService } from './database.service';
 import { Expense, Category } from '../models/expense.model';
 import { getCurrencySymbol } from '../utils/currency.utils';
+import { generateSecureId } from '../utils/id.utils';
 
 export { Expense, Category } from '../models/expense.model';
 
@@ -68,7 +69,7 @@ export class DataService {
   }
 
   async addExpense(expense: Omit<Expense, 'id' | 'currency'>): Promise<void> {
-    const id = Math.random().toString(36).substring(2, 11);
+    const id = generateSecureId();
     const currency = this.activeCurrencySignal();
     const newExpense: Expense = { ...expense, id, currency };
 

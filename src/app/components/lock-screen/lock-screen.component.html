@@ -1,0 +1,70 @@
+<!-- Privacy Shield when app is backgrounded -->
+<div
+  class="privacy-shield-overlay"
+  *ngIf="securityService.isBackgrounded() && securityService.isPrivacyScreenEnabled() && !securityService.isLocked()">
+  <div class="shield-content">
+    <ion-icon name="shield-checkmark" color="primary" class="shield-icon"></ion-icon>
+    <h2 class="gradient-text">Expense Tracker</h2>
+  </div>
+</div>
+
+<!-- Full App Lock Screen -->
+<div class="lock-screen-overlay" *ngIf="securityService.isLocked()">
+  <div class="lock-card">
+    <div class="lock-header">
+      <div class="lock-icon-badge">
+        <ion-icon name="lock-closed" color="primary"></ion-icon>
+      </div>
+      <h2 class="lock-title">Unlock Expenses</h2>
+      <p class="lock-subtitle">
+        {{ hasError() ? 'Incorrect PIN. Please try again.' : 'Enter your 4-digit security PIN' }}
+      </p>
+    </div>
+
+    <div class="pin-dots" [class.shake]="hasError()">
+      <div
+        *ngFor="let idx of pinDots"
+        class="pin-dot"
+        [class.filled]="enteredPin().length > idx"
+        [class.error]="hasError()">
+      </div>
+    </div>
+
+    <div class="keypad">
+      <div class="keypad-row" *ngFor="let row of keypadRows">
+        <button
+          type="button"
+          class="keypad-btn"
+          *ngFor="let digit of row"
+          (click)="onDigitPress(digit)">
+          {{ digit }}
+        </button>
+      </div>
+
+      <div class="keypad-row">
+        <button
+          type="button"
+          class="keypad-btn action-btn"
+          [class.hidden-btn]="!securityService.isBiometricEnabled()"
+          (click)="triggerBiometric()"
+          aria-label="Unlock with Biometrics">
+          <ion-icon name="finger-print-outline"></ion-icon>
+        </button>
+
+        <button type="button" class="keypad-btn" (click)="onDigitPress('0')">
+          0
+        </button>
+
+        <button
+          type="button"
+          class="keypad-btn action-btn"
+          [class.hidden-btn]="enteredPin().length === 0"
+          (click)="onBackspace()"
+          aria-label="Backspace">
+          <ion-icon name="backspace-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
