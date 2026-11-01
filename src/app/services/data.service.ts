@@ -119,13 +119,20 @@ export class DataService {
   }
 
   async deleteExpense(id: string): Promise<void> {
+    return this.deleteExpenses([id]);
+  }
+
+  async deleteExpenses(ids: string[]): Promise<void> {
+    if (!ids || ids.length === 0) return;
     try {
       const db = this.dbService.getDb();
-      await db.run('DELETE FROM expenses WHERE id = ?', [id]);
-      this.dbService.saveStore();
-      this.expensesSignal.update(expenses => expenses.filter(e => e.id !== id));
+      const placeholders = ids.map(() => '?').join(',');
+      await db.run(`DELETE FROM expenses WHERE id IN (${placeholders})`, ids);
+      await this.dbService.saveStore();
+      const idSet = new Set(ids);
+      this.expensesSignal.update(expenses => expenses.filter(e => !idSet.has(e.id)));
     } catch (e) {
-      console.error(e);
+      console.error('Failed to delete expenses', e);
     }
   }
 

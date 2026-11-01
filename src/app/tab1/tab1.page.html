@@ -13,13 +13,25 @@
     </ion-buttons>
 
     <ion-title class="ion-text-center">
-      Expenses
+      {{ isSelectionMode() ? (selectedCount() + ' selected') : 'Expenses' }}
     </ion-title>
 
-    <ion-buttons slot="end" class="toolbar-spacer" aria-hidden="true">
-      <ion-button class="toolbar-nav-arrow prev"><ion-icon name="chevron-back" slot="icon-only"></ion-icon></ion-button>
-      <ion-button class="toolbar-date-btn">XXX 2000</ion-button>
-      <ion-button class="toolbar-nav-arrow next"><ion-icon name="chevron-forward" slot="icon-only"></ion-icon></ion-button>
+    <ion-buttons slot="end">
+      <ng-container *ngIf="isSelectionMode(); else defaultSpacer">
+        <ion-button (click)="confirmDeleteSelected()" class="toolbar-trash-btn" title="Delete selected">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button (click)="exitSelectionMode()" class="toolbar-cancel-btn" title="Cancel selection">
+          <ion-icon name="close" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ng-container>
+      <ng-template #defaultSpacer>
+        <div class="toolbar-spacer" aria-hidden="true">
+          <ion-button class="toolbar-nav-arrow prev"><ion-icon name="chevron-back" slot="icon-only"></ion-icon></ion-button>
+          <ion-button class="toolbar-date-btn">XXX 2000</ion-button>
+          <ion-button class="toolbar-nav-arrow next"><ion-icon name="chevron-forward" slot="icon-only"></ion-icon></ion-button>
+        </div>
+      </ng-template>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -40,31 +52,32 @@
         </ion-note>
       </ion-item-divider>
 
-      <ion-item-sliding *ngFor="let expense of group.expenses" #slidingItem>
-        <ion-item lines="full" detail="false" button="true" (click)="openEditModal(expense, slidingItem)">
-          <div class="expense-item-grid">
-            <div class="col-category">
-              <span class="cat-text">{{ expense.category }}</span>
-              <span class="subcat-text" *ngIf="expense.subcategory">{{ expense.subcategory }}</span>
-            </div>
-            <div class="col-description">
-              {{ expense.description }}
-            </div>
-            <div class="col-amount">
-              {{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}
-            </div>
+      <ion-item 
+        *ngFor="let expense of group.expenses" 
+        lines="full" 
+        detail="false" 
+        button="true"
+        class="expense-row-item"
+        [class.selected-for-delete]="isSelected(expense.id)"
+        (pointerdown)="onItemPointerDown(expense, $event)"
+        (pointermove)="onItemPointerMove($event)"
+        (pointerup)="onItemPointerUp($event)"
+        (pointercancel)="onItemPointerCancel($event)"
+        (contextmenu)="onItemContextMenu(expense, $event)"
+        (click)="onItemClick(expense, $event)">
+        <div class="expense-item-grid">
+          <div class="col-category">
+            <span class="cat-text">{{ expense.category }}</span>
+            <span class="subcat-text" *ngIf="expense.subcategory">{{ expense.subcategory }}</span>
           </div>
-        </ion-item>
-
-        <ion-item-options side="end" class="swipe-action-options">
-          <ion-item-option class="swipe-option edit-option" (click)="openEditModal(expense, slidingItem)">
-            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-          </ion-item-option>
-          <ion-item-option class="swipe-option delete-option" (click)="deleteExpense(expense.id, slidingItem)">
-            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
+          <div class="col-description">
+            {{ expense.description }}
+          </div>
+          <div class="col-amount">
+            {{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}
+          </div>
+        </div>
+      </ion-item>
     </ion-item-group>
 
     <ion-item *ngIf="groupedExpenses().length === 0" lines="none" class="ion-text-center">
@@ -74,8 +87,8 @@
     </ion-item>
   </ion-list>
 
-  <!-- Add Expense FAB -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <!-- Add Expense FAB (hidden when selecting items to delete) -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isSelectionMode()">
     <ion-fab-button id="open-modal" color="tertiary">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

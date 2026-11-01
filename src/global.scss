@@ -62,14 +62,6 @@
     --border-color: var(--app-item-border-color);
   }
 
-  ion-item-sliding {
-    background: var(--app-swipe-tray-bg);
-
-    > ion-item {
-      will-change: transform;
-      transform: translateZ(0);
-    }
-  }
 }
 
 .toolbar-nav-arrow {

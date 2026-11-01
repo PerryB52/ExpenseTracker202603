@@ -70,6 +70,25 @@
   }
 }
 
+.expense-row-item {
+  --transition: background-color 0.18s ease, border-color 0.18s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  cursor: pointer;
+
+  &.selected-for-delete {
+    --background: rgba(var(--ion-color-danger-rgb, 235, 68, 90), 0.18) !important;
+    background: rgba(var(--ion-color-danger-rgb, 235, 68, 90), 0.18) !important;
+    border-left: 4px solid var(--ion-color-danger, #eb445a) !important;
+
+    .cat-text,
+    .subcat-text {
+      color: var(--app-text-secondary);
+    }
+  }
+}
+
 .expense-item-grid {
   display: grid;
   grid-template-columns: 30% 1fr 100px;
@@ -119,38 +138,29 @@
   }
 }
 
-.swipe-action-options {
-  background: var(--app-swipe-tray-bg);
-  border-bottom: 1px solid var(--app-item-border-color);
-  padding: 6px 8px;
-  gap: 6px;
-  align-items: center;
+.toolbar-trash-btn {
+  --color: #ffffff;
+  color: #ffffff;
+  --padding-start: 6px;
+  --padding-end: 6px;
+  margin: 0;
 
-  .swipe-option {
-    border-radius: 10px;
-    height: calc(100% - 12px);
-    min-width: 46px;
-    margin: 0;
-    --padding-start: 12px;
-    --padding-end: 12px;
+  ion-icon {
+    font-size: 1.35rem;
+    color: #ffffff;
+  }
+}
 
-    ion-icon {
-      font-size: 1.2rem;
-    }
+.toolbar-cancel-btn {
+  --color: #ffffff;
+  color: #ffffff;
+  --padding-start: 4px;
+  --padding-end: 8px;
+  margin: 0;
 
-    &.edit-option {
-      --background: var(--app-swipe-edit-bg);
-      --color: var(--app-swipe-edit-color);
-      background: var(--app-swipe-edit-bg);
-      color: var(--app-swipe-edit-color);
-    }
-
-    &.delete-option {
-      --background: var(--app-swipe-delete-bg);
-      --color: var(--app-swipe-delete-color);
-      background: var(--app-swipe-delete-bg);
-      color: var(--app-swipe-delete-color);
-    }
+  ion-icon {
+    font-size: 1.35rem;
+    color: #ffffff;
   }
 }
 
