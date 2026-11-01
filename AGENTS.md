@@ -26,6 +26,8 @@ src/app/
 ├── components/
 │   ├── lock-screen/            # App-wide PIN & Biometric lock screen + background privacy shield
 │   └── month-picker-modal/     # Shared Month/Year grid modal picker used across Tab 1 & Tab 2
+├── directives/
+│   └── swipe-navigation.directive.ts # Standalone swipe gesture directive for horizontal tab navigation
 ├── models/
 │   └── expense.model.ts        # Shared TypeScript interfaces (Expense, Category, Theme, chart & form models)
 ├── services/

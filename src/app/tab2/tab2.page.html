@@ -24,7 +24,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="light" class="ion-padding">
+<ion-content [fullscreen]="true" color="light" class="ion-padding"
+  appSwipeNavigation
+  (swipeLeft)="nextDate()"
+  (swipeRight)="prevDate()"
+  [swipeDisabled]="isCategoryModalOpen()">
   <ion-header collapse="condense" class="ion-no-border">
     <ion-toolbar color="light">
       <ion-title size="large" class="gradient-text ion-text-center" style="width: 100%;">Statistics</ion-title>

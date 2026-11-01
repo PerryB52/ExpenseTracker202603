@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { MonthPickerModalModule } from '../components/month-picker-modal/month-picker-modal.module';
+import { SwipeNavigationDirective } from '../directives/swipe-navigation.directive';
 
 @NgModule({
   imports: [
@@ -12,8 +13,9 @@ import { MonthPickerModalModule } from '../components/month-picker-modal/month-p
     CommonModule,
     FormsModule,
     MonthPickerModalModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    SwipeNavigationDirective,
   ],
-  declarations: [Tab1Page]
+  declarations: [Tab1Page],
 })
 export class Tab1PageModule {}
