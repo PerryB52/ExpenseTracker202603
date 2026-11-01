@@ -2,13 +2,15 @@
 // Supports: 'light' (default), 'dark', 'ocean-dark', 'emerald-light'
 
 :root,
-:root[data-theme="light"] {
-  --ion-color-primary: #0054e9;
-  --ion-color-primary-rgb: 0, 84, 233;
+:root[data-theme="light"],
+:root.ion-palette-dark[data-theme="light"],
+.ion-palette-dark[data-theme="light"] {
+  --ion-color-primary: #4a90e2;
+  --ion-color-primary-rgb: 74, 144, 226;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #004acd;
-  --ion-color-primary-tint: #1a65eb;
+  --ion-color-primary-shade: #417fc7;
+  --ion-color-primary-tint: #5c9be5;
 
   --ion-color-secondary: #0163aa;
   --ion-color-secondary-rgb: 1, 99, 170;
@@ -85,7 +87,7 @@
   /* Swipe Action Colors */
   --app-swipe-tray-bg: #eef2f9;
   --app-swipe-edit-bg: #e0ecff;
-  --app-swipe-edit-color: #0054e9;
+  --app-swipe-edit-color: #4a90e2;
   --app-swipe-delete-bg: #ffe3e6;
   --app-swipe-delete-color: #c5000f;
 
@@ -96,13 +98,15 @@
 /* ==========================================================================
    Theme: Midnight Dark ('dark')
    ========================================================================== */
-:root[data-theme="dark"] {
-  --ion-color-primary: #3b82f6;
-  --ion-color-primary-rgb: 59, 130, 246;
+:root[data-theme="dark"],
+:root.ion-palette-dark[data-theme="dark"],
+.ion-palette-dark[data-theme="dark"] {
+  --ion-color-primary: #014f75;
+  --ion-color-primary-rgb: 1, 79, 117;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #2563eb;
-  --ion-color-primary-tint: #60a5fa;
+  --ion-color-primary-shade: #014567;
+  --ion-color-primary-tint: #1a6083;
 
   --ion-color-secondary: #38bdf8;
   --ion-color-secondary-rgb: 56, 189, 248;
@@ -185,7 +189,9 @@
 /* ==========================================================================
    Theme: Ocean Dark ('ocean-dark')
    ========================================================================== */
-:root[data-theme="ocean-dark"] {
+:root[data-theme="ocean-dark"],
+:root.ion-palette-dark[data-theme="ocean-dark"],
+.ion-palette-dark[data-theme="ocean-dark"] {
   --ion-color-primary: #00b4d8;
   --ion-color-primary-rgb: 0, 180, 216;
   --ion-color-primary-contrast: #ffffff;
@@ -274,7 +280,9 @@
 /* ==========================================================================
    Theme: Emerald Light ('emerald-light')
    ========================================================================== */
-:root[data-theme="emerald-light"] {
+:root[data-theme="emerald-light"],
+:root.ion-palette-dark[data-theme="emerald-light"],
+.ion-palette-dark[data-theme="emerald-light"] {
   --ion-color-primary: #0d9488;
   --ion-color-primary-rgb: 13, 148, 136;
   --ion-color-primary-contrast: #ffffff;

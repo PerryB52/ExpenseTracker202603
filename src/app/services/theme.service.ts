@@ -13,7 +13,7 @@ export const AVAILABLE_THEMES: readonly ThemeDefinition[] = [
     preview: {
       background: '#f6f8fc',
       surface: '#ffffff',
-      primary: '#0054e9',
+      primary: '#4a90e2',
       accent: '#fa048b',
     },
   },
@@ -25,7 +25,7 @@ export const AVAILABLE_THEMES: readonly ThemeDefinition[] = [
     preview: {
       background: '#121418',
       surface: '#1e2229',
-      primary: '#4a90e2',
+      primary: '#014f75',
       accent: '#ff4c8b',
     },
   },
