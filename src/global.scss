@@ -72,26 +72,40 @@
 
 .toolbar-nav-arrow {
   --color: white;
-  margin: 0;
+  margin: 0 !important;
+  width: 24px !important;
+  min-width: 24px !important;
+  height: 32px;
+  --padding-start: 0 !important;
+  --padding-end: 0 !important;
+  --padding-top: 0 !important;
+  --padding-bottom: 0 !important;
+
+  ion-icon {
+    font-size: 1.15rem;
+  }
 
   &.prev {
-    --padding-start: 8px;
-    --padding-end: 2px;
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
   }
 
   &.next {
-    --padding-start: 2px;
-    --padding-end: 8px;
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
   }
 }
 
 .toolbar-date-btn {
   --color: white;
   font-weight: 700;
-  font-size: 1.05rem;
-  --padding-start: 4px;
-  --padding-end: 4px;
-  margin: 0;
+  font-size: 0.92rem;
+  white-space: nowrap !important;
+  --padding-start: 4px !important;
+  --padding-end: 4px !important;
+  margin: 0 !important;
+  height: 32px;
+  letter-spacing: 0.02em;
 }
 
 .toolbar-spacer {
