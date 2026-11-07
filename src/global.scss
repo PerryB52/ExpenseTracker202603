@@ -54,6 +54,12 @@
     --background: var(--app-divider-bg);
     --color: var(--app-text-primary);
     border-bottom: 1px solid var(--app-item-border-color);
+
+    ion-note[color="danger"],
+    .day-header-total {
+      --color: var(--ion-color-danger, #eb445a) !important;
+      color: var(--ion-color-danger, #eb445a) !important;
+    }
   }
 
   ion-item {

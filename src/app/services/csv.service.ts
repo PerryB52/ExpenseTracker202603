@@ -7,7 +7,7 @@ import { generateSecureId } from '../utils/id.utils';
   providedIn: 'root',
 })
 export class CsvService {
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) { }
 
   /**
    * Parses a single RFC-4180 CSV line, handling quoted fields and escaped double-quotes ("").
