@@ -12,8 +12,8 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title class="ion-text-center">
-      {{ isSelectionMode() ? (selectedCount() + ' selected') : 'Expenses' }}
+    <ion-title class="ion-text-center" *ngIf="isSelectionMode()">
+      {{ selectedCount() + ' selected' }}
     </ion-title>
 
     <ion-buttons slot="end" *ngIf="isSelectionMode()">
@@ -23,12 +23,6 @@
       <ion-button (click)="exitSelectionMode()" class="toolbar-cancel-btn" title="Cancel selection">
         <ion-icon name="close" slot="icon-only"></ion-icon>
       </ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end" *ngIf="!isSelectionMode()" class="toolbar-spacer" aria-hidden="true">
-      <ion-button class="toolbar-nav-arrow prev"><ion-icon name="chevron-back" slot="icon-only"></ion-icon></ion-button>
-      <ion-button class="toolbar-date-btn">XXX 2000</ion-button>
-      <ion-button class="toolbar-nav-arrow next"><ion-icon name="chevron-forward" slot="icon-only"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -49,7 +43,7 @@
       <ion-item-divider color="light">
         <ion-label class="day-header-date"><b>{{ group.date | date:'mediumDate' }}</b></ion-label>
         <ion-note slot="end" color="danger" class="day-header-total">
-          {{ dataService.activeCurrencySymbol() }}{{ group.total | number:'1.2-2' }}
+          {{ dataService.activeCurrencySymbol() }} {{ group.total | number:'1.2-2' }}
         </ion-note>
       </ion-item-divider>
 
@@ -75,7 +69,7 @@
             {{ expense.description }}
           </div>
           <div class="col-amount">
-            {{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}
+            {{ getCurrencySymbol(expense.currency) }} {{ expense.amount | number:'1.2-2' }}
           </div>
         </div>
       </ion-item>

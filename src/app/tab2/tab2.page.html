@@ -46,7 +46,7 @@
 
     <div class="bars-container" *ngIf="chartType() === 'bar'">
       <div class="chart-bar" *ngFor="let item of historyChartData()">
-        <span class="bar-value">{{ dataService.activeCurrencySymbol() }}{{ item.total >= 1000 ? (item.total/1000 |
+        <span class="bar-value">{{ dataService.activeCurrencySymbol() }} {{ item.total >= 1000 ? (item.total/1000 |
           number:'1.0-1') + 'k' : (item.total | number:'1.0-0') }}</span>
         <div class="bar-fill" [style.height.%]="getHistoryChartHeight(item.total)"></div>
         <span class="bar-label">{{ formatChartLabel(item.label) }}</span>
@@ -91,7 +91,7 @@
     <ion-item-group *ngFor="let group of groupedData()">
       <ion-item-divider color="light">
         <ion-label><b>{{ group.label }}</b></ion-label>
-        <ion-note slot="end" color="danger"><b>{{ dataService.activeCurrencySymbol() }}{{ group.total | number:'1.2-2'
+        <ion-note slot="end" color="danger"><b>{{ dataService.activeCurrencySymbol() }} {{ group.total | number:'1.2-2'
             }}</b></ion-note>
       </ion-item-divider>
 
@@ -101,7 +101,7 @@
           {{ cat.percent }}%
         </div>
         <ion-label>{{ cat.category }}</ion-label>
-        <ion-note slot="end" color="danger">{{ dataService.activeCurrencySymbol() }}{{ cat.amount | number:'1.2-2'
+        <ion-note slot="end" color="danger">{{ dataService.activeCurrencySymbol() }} {{ cat.amount | number:'1.2-2'
           }}</ion-note>
       </ion-item>
     </ion-item-group>
@@ -194,7 +194,7 @@
       <ion-content class="ion-padding" color="light" *ngIf="categoryDetailsData() as details">
         <div class="category-total-card">
           <h4>Total Spent</h4>
-          <h1 class="gradient-text">{{ dataService.activeCurrencySymbol() }}{{ details.total | number:'1.2-2' }}</h1>
+          <h1 class="gradient-text">{{ dataService.activeCurrencySymbol() }} {{ details.total | number:'1.2-2' }}</h1>
         </div>
 
         <h3 class="ion-padding-start section-headline">Subcategory Breakdown</h3>
@@ -206,7 +206,7 @@
               <p>{{ sub.percent | number:'1.1-1' }}%</p>
             </ion-label>
             <ion-note slot="end" color="danger">
-              <b>{{ dataService.activeCurrencySymbol() }}{{ sub.amount | number:'1.2-2' }}</b>
+              <b>{{ dataService.activeCurrencySymbol() }} {{ sub.amount | number:'1.2-2' }}</b>
             </ion-note>
           </ion-item>
           <ion-item *ngIf="details.subcategories.length === 0" lines="none">
@@ -227,7 +227,7 @@
                 <p>{{ expense.date | date:'mediumDate' }} • {{ expense.date | date:'shortTime' }}</p>
               </ion-label>
               <ion-note slot="end" color="danger">
-                <b>-{{ getCurrencySymbol(expense.currency) }}{{ expense.amount | number:'1.2-2' }}</b>
+                <b>-{{ getCurrencySymbol(expense.currency) }} {{ expense.amount | number:'1.2-2' }}</b>
               </ion-note>
             </ion-item>
           </ion-item-group>

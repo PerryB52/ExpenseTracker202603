@@ -193,11 +193,17 @@ export class Tab3Page {
     await toast.present();
   }
 
-  addCategory(): void {
-    if (this.newCategory.trim()) {
-      this.dataService.addCategory(this.newCategory);
-      this.newCategory = '';
+  async addCategory(): Promise<void> {
+    const trimmed = this.newCategory.trim();
+    if (!trimmed) return;
+
+    if (this.dataService.categories().some(c => c.name.toLowerCase() === trimmed.toLowerCase())) {
+      await this.showToast(`Category "${trimmed}" already exists.`);
+      return;
     }
+
+    await this.dataService.addCategory(trimmed);
+    this.newCategory = '';
   }
 
   startEdit(catName: string): void {
@@ -205,9 +211,17 @@ export class Tab3Page {
     this.editCategoryValue = catName;
   }
 
-  saveEdit(): void {
+  async saveEdit(): Promise<void> {
     if (this.editingCategory && this.editCategoryValue.trim()) {
-      this.dataService.editCategory(this.editingCategory, this.editCategoryValue);
+      const trimmed = this.editCategoryValue.trim();
+      if (
+        trimmed.toLowerCase() !== this.editingCategory.toLowerCase() &&
+        this.dataService.categories().some(c => c.name.toLowerCase() === trimmed.toLowerCase())
+      ) {
+        await this.showToast(`Category "${trimmed}" already exists.`);
+        return;
+      }
+      await this.dataService.editCategory(this.editingCategory, trimmed);
     }
     this.editingCategory = null;
     this.editCategoryValue = '';
@@ -222,12 +236,18 @@ export class Tab3Page {
     this.dataService.deleteCategory(catName);
   }
 
-  addSubcategory(parentName: string): void {
-    const sub = this.newSubcategory[parentName];
-    if (sub && sub.trim()) {
-      this.dataService.addSubcategory(parentName, sub);
-      this.newSubcategory[parentName] = '';
+  async addSubcategory(parentName: string): Promise<void> {
+    const sub = this.newSubcategory[parentName]?.trim();
+    if (!sub) return;
+
+    const parent = this.dataService.categories().find(c => c.name === parentName);
+    if (parent && parent.subcategories.some(s => s.toLowerCase() === sub.toLowerCase())) {
+      await this.showToast(`Subcategory "${sub}" already exists in ${parentName}.`);
+      return;
     }
+
+    await this.dataService.addSubcategory(parentName, sub);
+    this.newSubcategory[parentName] = '';
   }
 
   startEditSub(parentName: string, subName: string): void {
@@ -235,12 +255,22 @@ export class Tab3Page {
     this.editSubcategoryValue = subName;
   }
 
-  saveEditSub(): void {
+  async saveEditSub(): Promise<void> {
     if (this.editingSubcategory && this.editSubcategoryValue.trim()) {
-      this.dataService.editSubcategory(
+      const trimmed = this.editSubcategoryValue.trim();
+      const parent = this.dataService.categories().find(c => c.name === this.editingSubcategory!.parent);
+      if (
+        parent &&
+        trimmed.toLowerCase() !== this.editingSubcategory.oldSub.toLowerCase() &&
+        parent.subcategories.some(s => s.toLowerCase() === trimmed.toLowerCase())
+      ) {
+        await this.showToast(`Subcategory "${trimmed}" already exists in ${parent.name}.`);
+        return;
+      }
+      await this.dataService.editSubcategory(
         this.editingSubcategory.parent,
         this.editingSubcategory.oldSub,
-        this.editSubcategoryValue
+        trimmed
       );
     }
     this.editingSubcategory = null;
@@ -256,23 +286,38 @@ export class Tab3Page {
     this.dataService.deleteSubcategory(parentName, subName);
   }
 
-  exportCSV(): void {
-    this.csvService.exportToCSV();
+  async exportCSV(): Promise<void> {
+    const success = await this.csvService.exportToCSV();
+    if (success) {
+      await this.showToast('Export Successful');
+    } else {
+      await this.showToast('Export Failed');
+    }
   }
 
   async importCSV(event: any): Promise<void> {
     const file = event.target.files?.[0];
     if (file) {
-      await this.csvService.importFromCSV(file);
+      const success = await this.csvService.importFromCSV(file);
       event.target.value = '';
+      if (success) {
+        await this.showToast('Import Successful');
+      } else {
+        await this.showToast('Import Failed');
+      }
     }
   }
 
   async importExternalCSV(event: any): Promise<void> {
     const file = event.target.files?.[0];
     if (file) {
-      await this.csvService.importExternalCSV(file);
+      const success = await this.csvService.importExternalCSV(file);
       event.target.value = '';
+      if (success) {
+        await this.showToast('Import Successful');
+      } else {
+        await this.showToast('Import Failed');
+      }
     }
   }
 

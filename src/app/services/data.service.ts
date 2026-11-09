@@ -136,17 +136,21 @@ export class DataService {
     }
   }
 
-  async addCategory(category: string): Promise<void> {
+  async addCategory(category: string): Promise<boolean> {
     const trimmed = category.trim();
-    if (trimmed && !this.categoriesSignal().some(c => c.name === trimmed)) {
-      try {
-        const db = this.dbService.getDb();
-        await db.run('INSERT INTO categories (name) VALUES (?)', [trimmed]);
-        this.dbService.saveStore();
-        this.categoriesSignal.update(cats => [...cats, { name: trimmed, subcategories: [] }]);
-      } catch (e) {
-        console.error(e);
-      }
+    if (!trimmed) return false;
+    if (this.categoriesSignal().some(c => c.name.toLowerCase() === trimmed.toLowerCase())) {
+      return false;
+    }
+    try {
+      const db = this.dbService.getDb();
+      await db.run('INSERT INTO categories (name) VALUES (?)', [trimmed]);
+      this.dbService.saveStore();
+      this.categoriesSignal.update(cats => [...cats, { name: trimmed, subcategories: [] }]);
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
     }
   }
 
@@ -161,9 +165,12 @@ export class DataService {
     }
   }
 
-  async editCategory(oldCategory: string, newCategory: string): Promise<void> {
+  async editCategory(oldCategory: string, newCategory: string): Promise<boolean> {
     const trimmedNew = newCategory.trim();
-    if (trimmedNew && oldCategory !== trimmedNew && !this.categoriesSignal().some(c => c.name === trimmedNew)) {
+    if (trimmedNew && oldCategory.toLowerCase() !== trimmedNew.toLowerCase() && this.categoriesSignal().some(c => c.name.toLowerCase() === trimmedNew.toLowerCase())) {
+      return false;
+    }
+    if (trimmedNew && oldCategory !== trimmedNew) {
       try {
         const db = this.dbService.getDb();
         await db.run('INSERT INTO categories (name) VALUES (?)', [trimmedNew]);
@@ -178,31 +185,39 @@ export class DataService {
         this.expensesSignal.update(expenses =>
           expenses.map(e => (e.category === oldCategory ? { ...e, category: trimmedNew } : e))
         );
+        return true;
       } catch (e) {
         console.error(e);
+        return false;
       }
     }
+    return false;
   }
 
-  async addSubcategory(parentCategory: string, subcategory: string): Promise<void> {
+  async addSubcategory(parentCategory: string, subcategory: string): Promise<boolean> {
     const trimmed = subcategory.trim();
-    if (trimmed) {
-      try {
-        const db = this.dbService.getDb();
-        await db.run('INSERT INTO subcategories (parent_category, name) VALUES (?, ?)', [parentCategory, trimmed]);
-        this.dbService.saveStore();
+    if (!trimmed) return false;
+    const parent = this.categoriesSignal().find(c => c.name === parentCategory);
+    if (!parent || parent.subcategories.some(s => s.toLowerCase() === trimmed.toLowerCase())) {
+      return false;
+    }
+    try {
+      const db = this.dbService.getDb();
+      await db.run('INSERT INTO subcategories (parent_category, name) VALUES (?, ?)', [parentCategory, trimmed]);
+      this.dbService.saveStore();
 
-        this.categoriesSignal.update(cats =>
-          cats.map(c => {
-            if (c.name === parentCategory && !c.subcategories.includes(trimmed)) {
-              return { ...c, subcategories: [...c.subcategories, trimmed] };
-            }
-            return c;
-          })
-        );
-      } catch (e) {
-        console.error(e);
-      }
+      this.categoriesSignal.update(cats =>
+        cats.map(c => {
+          if (c.name === parentCategory && !c.subcategories.includes(trimmed)) {
+            return { ...c, subcategories: [...c.subcategories, trimmed] };
+          }
+          return c;
+        })
+      );
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
     }
   }
 
@@ -225,8 +240,16 @@ export class DataService {
     }
   }
 
-  async editSubcategory(parentCategory: string, oldSub: string, newSub: string): Promise<void> {
+  async editSubcategory(parentCategory: string, oldSub: string, newSub: string): Promise<boolean> {
     const trimmedNew = newSub.trim();
+    const parent = this.categoriesSignal().find(c => c.name === parentCategory);
+    if (
+      !parent ||
+      (trimmedNew.toLowerCase() !== oldSub.toLowerCase() &&
+        parent.subcategories.some(s => s.toLowerCase() === trimmedNew.toLowerCase()))
+    ) {
+      return false;
+    }
     if (trimmedNew && oldSub !== trimmedNew) {
       try {
         const db = this.dbService.getDb();
@@ -252,10 +275,13 @@ export class DataService {
               : e
           )
         );
+        return true;
       } catch (e) {
         console.error(e);
+        return false;
       }
     }
+    return false;
   }
 
   getStats(): { total: number; byCategory: Record<string, number> } {

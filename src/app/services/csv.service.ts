@@ -64,38 +64,44 @@ export class CsvService {
     return `"${value.replace(/"/g, '""')}"`;
   }
 
-  async exportToCSV(): Promise<void> {
-    const expenses = this.dataService.expenses();
-    let csvStr = 'id,amount,category,subcategory,description,date,currency\n';
+  async exportToCSV(): Promise<boolean> {
+    try {
+      const expenses = this.dataService.expenses();
+      let csvStr = 'id,amount,category,subcategory,description,date,currency\n';
 
-    for (const e of expenses) {
-      const id = e.id;
-      const amount = e.amount.toString();
-      const cat = this.escapeCsvField(e.category);
-      const sub = this.escapeCsvField(e.subcategory || '');
-      const desc = this.escapeCsvField(e.description);
-      const date = e.date;
-      const curr = e.currency || 'USD';
-      csvStr += `${id},${amount},${cat},${sub},${desc},${date},${curr}\n`;
+      for (const e of expenses) {
+        const id = e.id;
+        const amount = e.amount.toString();
+        const cat = this.escapeCsvField(e.category);
+        const sub = this.escapeCsvField(e.subcategory || '');
+        const desc = this.escapeCsvField(e.description);
+        const date = e.date;
+        const curr = e.currency || 'USD';
+        csvStr += `${id},${amount},${cat},${sub},${desc},${date},${curr}\n`;
+      }
+
+      const blob = new Blob([csvStr], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `expense_tracker_backup_${new Date().toISOString().substring(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+      return true;
+    } catch (e) {
+      console.error('Failed to export CSV', e);
+      return false;
     }
-
-    const blob = new Blob([csvStr], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `expense_tracker_backup_${new Date().toISOString().substring(0, 10)}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
   }
 
-  async importFromCSV(file: File): Promise<void> {
-    if (!file) return;
+  async importFromCSV(file: File): Promise<boolean> {
+    if (!file) return false;
     try {
       const text = await file.text();
       const lines = text.split('\n').filter(l => l.trim().length > 0);
-      if (lines.length <= 1) return;
+      if (lines.length <= 1) return false;
 
       const parsedExpenses: Expense[] = [];
       const distinctCats = new Set<string>();
@@ -118,18 +124,22 @@ export class CsvService {
         }
       }
 
+      if (parsedExpenses.length === 0) return false;
+
       await this.dataService.replaceAllData(parsedExpenses, distinctCats, distinctSubs);
+      return true;
     } catch (e) {
       console.error('Failed to parse or import CSV', e);
+      return false;
     }
   }
 
-  async importExternalCSV(file: File): Promise<void> {
-    if (!file) return;
+  async importExternalCSV(file: File): Promise<boolean> {
+    if (!file) return false;
     try {
       const text = await file.text();
       const lines = text.split('\n').filter(l => l.trim().length > 0);
-      if (lines.length <= 1) return;
+      if (lines.length <= 1) return false;
 
       const headers = this.parseCsvLine(lines[0]).map(h => h.trim().toLowerCase());
       const indexMap = {
@@ -140,6 +150,10 @@ export class CsvService {
         date: headers.indexOf('date'),
         currency: headers.indexOf('currency'),
       };
+
+      if (indexMap.amount < 0 && indexMap.date < 0 && indexMap.category < 0) {
+        return false;
+      }
 
       const parsedExpenses: Expense[] = [];
       const distinctCats = new Set<string>();
@@ -164,9 +178,13 @@ export class CsvService {
         if (category && subcategory) distinctSubs.add(`${category}|${subcategory}`);
       }
 
+      if (parsedExpenses.length === 0) return false;
+
       await this.dataService.replaceAllData(parsedExpenses, distinctCats, distinctSubs);
+      return true;
     } catch (e) {
       console.error('Failed to parse or import External CSV', e);
+      return false;
     }
   }
 }

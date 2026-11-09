@@ -10,7 +10,7 @@ export const SUPPORTED_CURRENCIES: readonly CurrencyOption[] = [
   { code: 'GBP', symbol: '£', name: 'British Pound' },
   { code: 'JPY', symbol: '¥', name: 'Japanese Yen' },
   { code: 'CAD', symbol: '$', name: 'Canadian Dollar' },
-  { code: 'RON', symbol: 'lei', name: 'Romanian Leu' },
+  { code: 'RON', symbol: 'Lei', name: 'Romanian Leu' },
 ];
 
 export const CURRENCY_SYMBOLS: Readonly<Record<string, string>> = {
@@ -19,7 +19,7 @@ export const CURRENCY_SYMBOLS: Readonly<Record<string, string>> = {
   GBP: '£',
   JPY: '¥',
   CAD: '$',
-  RON: 'lei',
+  RON: 'Lei',
 };
 
 export function getCurrencySymbol(code: string): string {
